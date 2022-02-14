@@ -1,0 +1,4 @@
+=>Use url below and generate ASCII art.
+http://www.network-science.de/ascii/
+
+Now copy this ASCII art into "/etc/motd" file.
