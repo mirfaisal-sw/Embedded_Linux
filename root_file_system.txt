@@ -1,7 +1,8 @@
 1. If we get error - "sudo: unable to resolve host mir-faisal: Name or service not known" :-
    If command prompt is like this - "mir@mir-faisal $". Then edit files "/etc/hosts" and 
-   "/etc/hostname" with the name "mir-faisal".
-  
+   "/etc/hostname" with the name "mir-faisal".  
 2. To add a welcome message before login prompt, add message in file "/etc/motd".
-
 3. To add pre-login messages, add the messages in file "/etc/issue".
+4. To change SSH login welcome message, we need to look "Banner" flag in file "/etc/ssh/sshd_config".
+   We will see in this file as below:-
+   Banner <path/of/file/containing/welcome/message>
