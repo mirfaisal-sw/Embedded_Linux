@@ -1,0 +1,21 @@
+
+/*===========================================================================
+ * Obtain kernel config from running Linux system
+ *===========================================================================*/
+ 
+ The Linux kernel keep compressed kernel config file in /proc, as /proc/config.gz.
+ This is only possible if running Linux is configured while compiling as below.
+ 
+ General setup -->
+    [*] Kernel .config support
+        [*] Enable access to .config through /proc/config.gz
+        
+For an actual running kernel, one way to get the config file this is to run command
+as below.
+    $cat /proc/config.gz | gunzip > running.config
+    
+    or,
+
+    $zcat /proc/config.gz > running.config
+    
+Then running.config will contain the configuration of the running linux kernel.
