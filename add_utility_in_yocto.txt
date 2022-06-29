@@ -36,8 +36,8 @@ Procedure to add package/utility in Yocto build:-
 		..
 		..
 		IMAGE_INSTALL_append = " \
-								bootchart \
-								"
+					bootchart \
+					"
 		..
 		..
 	
