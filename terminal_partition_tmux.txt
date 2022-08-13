@@ -21,4 +21,6 @@ c) To split terminal Vertically: -
 d) To delete or close the child terminal: -
 	Press CTRL + D key.
 	
-e) 
+e) Suppose any child terminal we want to zoom, then do as below.
+	Press CTRL + B, followed by key Z.
+	To return back to original, do the same i.e. CTRL + B, followed by Z (zee) key.
