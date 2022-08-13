@@ -29,4 +29,6 @@ f) If we keep on creating teminal splits, then it will become messy, so in this 
    we can create new window.
    To create new window -> CTRL+B, c
    To come back to previous window -> CTRL+B, p
+   
+   To kill a window -> CTRL+B, &
 	
