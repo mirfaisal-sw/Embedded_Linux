@@ -1,0 +1,24 @@
+Introduction: -
+------------------
+
+Install tmux: -
+------------------
+	#sudo apt install tmux
+
+
+Usage: -
+-------------
+a) Start tmux shell: -
+	#tmux 
+	
+b) To split terminal Horizontally: -
+   	Press CTRL + B key, release it and then immediately press " (double quote).
+	Note - to press double quote key one have to use SHIFT key as well.
+	
+c) To split terminal Vertically: -
+	Press CTRL + B key, release it and then immediately press % (percent).	
+
+d) To delete or close the child terminal: -
+	Press CTRL + D key.
+	
+e) 
