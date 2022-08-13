@@ -1,10 +1,15 @@
 Introduction: -
 ------------------
+By using tmux tell, we can divide or spilt terminals in to various horizontal and vertical panes
+as well as we can create new window. We can switch to spillted terminals and windows using tmux.
+
+Reference: -
+-------------
+https://www.youtube.com/watch?v=FAU8rmS5NSE&list=PLT98CRl2KxKGiyV1u6wHDV8VwcQdzfuKe&index=4
 
 Install tmux: -
 ------------------
 	#sudo apt install tmux
-
 
 Usage: -
 -------------
@@ -40,4 +45,4 @@ f) If we keep on creating teminal splits, then it will become messy, so in this 
    Then we can rename window's name.
    
    
-	
+(TO WATCH Part - 4 ONWARDS)
