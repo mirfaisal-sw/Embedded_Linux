@@ -31,4 +31,13 @@ f) If we keep on creating teminal splits, then it will become messy, so in this 
    To come back to previous window -> CTRL+B, p
    
    To kill a window -> CTRL+B, &
+   
+   Renaming a window: -
+   If we are working on multiple windows, then it is hard to remember on which window what work is 
+   going on, for this we can give certain identifier or name to window. Fow this, do as below.
+   
+   Press CTRL+B and then press , (comma)
+   Then we can rename window's name.
+   
+   
 	
