@@ -78,6 +78,9 @@ i) Rename a session: -
 	For example: -
 	#tmux attach -t kernel_program
 	
+j) Create a new tmux session along with session name.
+	#tmux new -s <my_session_name>
+	
 	
 	
    
