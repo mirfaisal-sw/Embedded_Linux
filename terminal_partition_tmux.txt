@@ -44,5 +44,29 @@ f) If we keep on creating teminal splits, then it will become messy, so in this 
    Press CTRL+B and then press , (comma)
    Then we can rename window's name.
    
+g) Detaching from tmux session: -
+	Suppose we are working on tmux session having muyltiple splits, now we want to come to normal 
+	shell, then in that case we can detach from tmux shell.
+	For this we can press CTRL+B, d
+	
+	" d for detach"
+	
+h) Attaching to tmux sessions: -
+	Suppose we have created one or more tmux sessions, by running tmux command (i.e. #tmux <-|) and 
+	also we are detached from tmux sessions.
+	Now, we can attach to a tmux session back. For this first we may need to know list of sessions to 
+	which to attach. So, for this we will use command as below.
+	#tmux list-sessions
+	O/p - 
+		0: 2 windows (created Sun Aug 14 15:12:45 2022) [205x51]
+		1: 1 windows (created Sun Aug 14 15:17:38 2022) [205x51]
+	
+	Hence, for example there are two tmux sessions 0 and 1 currently running. 
+	Now, to attach back to a tmux session, we can use below command.
+	
+	#tmux attach -t <session_id>
+	Ex - #tmux attach -t 1
+	
    
-(TO WATCH Part - 4 ONWARDS)
+   
+
