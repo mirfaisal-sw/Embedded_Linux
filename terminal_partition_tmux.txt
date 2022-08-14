@@ -3,6 +3,9 @@ Introduction: -
 By using tmux tell, we can divide or spilt terminals in to various horizontal and vertical panes
 as well as we can create new window. We can switch to spillted terminals and windows using tmux.
 
+Compnents created by tmux for working are: -
+	Panes, Windows, Sessions
+
 Reference: -
 -------------
 https://www.youtube.com/watch?v=FAU8rmS5NSE&list=PLT98CRl2KxKGiyV1u6wHDV8VwcQdzfuKe&index=4
