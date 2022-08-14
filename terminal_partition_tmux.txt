@@ -67,6 +67,19 @@ h) Attaching to tmux sessions: -
 	#tmux attach -t <session_id>
 	Ex - #tmux attach -t 1
 	
+i) Rename a session: -
+	We can rename a session to meaningful identifier. For this we have to attach to a session which is
+	to be renamed. Then we use below key sequence to rename.
+	
+	CTRL+B, $
+	Now, type meaningful name, for example - kernel_program
+	
+	So, if we are detached and want to attach, then instead of using session ID we can use session name.
+	For example: -
+	#tmux attach -t kernel_program
+	
+	
+	
    
    
 
