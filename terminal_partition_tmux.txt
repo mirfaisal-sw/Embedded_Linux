@@ -142,7 +142,7 @@ n) As we can see tmux needs a lot of key sequences, which involves multiple fing
 	# Easy config reload
 	bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded."
 	
-After adding the above contents in file ".tmux.conf", we can get following shortcuts: -
+  	After adding the above contents in file ".tmux.conf", we can get following shortcuts: -
 	1. Use the prefix as "CTRL+a".
 	2. Use ALT+Arrow keys to move between different panes.
 	3. Use SHIFT+Arrow keys to move between windows.
@@ -150,7 +150,8 @@ After adding the above contents in file ".tmux.conf", we can get following short
 	5. Use Mouse for selecting a Pane or a Window and to resize them by sliding the cursor
 	   on lines.
 	   
-Note - If we do some change on .tmux.conf file, then to signal the change, we can run below 
+o) Reloading the .tmux.conf file: -
+	If we do some change on .tmux.conf file, then to signal this change, we can run below 
 	command.
 	#tmux source-file ~/.tmux.conf
 	
