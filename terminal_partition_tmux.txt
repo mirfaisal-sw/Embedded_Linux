@@ -98,6 +98,16 @@ k) Scroll among sessions: -
 	
 l) Toggle between current and previous pane: -
 	CTRL+B, ;
+
+m) Killing tmux session: -
+	1. #tmux kill-session -t <my_session>
+		It kills only "my_session" provided in the command.
+		
+	1. #tmux kill-session -a
+		It kills all the sessions except the current one.
+		
+	2. #tmux kill-session -a -t <my_session>
+		It kills all the sessions except "my_session".
 	
 	
 	
