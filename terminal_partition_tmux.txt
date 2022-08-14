@@ -56,7 +56,9 @@ h) Attaching to tmux sessions: -
 	also we are detached from tmux sessions.
 	Now, we can attach to a tmux session back. For this first we may need to know list of sessions to 
 	which to attach. So, for this we will use command as below.
-	#tmux list-sessions
+	#tmux list-sessions	
+		or	
+	#tmux ls       /*short form*/
 	O/p - 
 		0: 2 windows (created Sun Aug 14 15:12:45 2022) [205x51]
 		1: 1 windows (created Sun Aug 14 15:17:38 2022) [205x51]
@@ -77,9 +79,23 @@ i) Rename a session: -
 	So, if we are detached and want to attach, then instead of using session ID we can use session name.
 	For example: -
 	#tmux attach -t kernel_program
+		or
+	#tmux a -t kernel_program    /*short form*/
 	
 j) Create a new tmux session along with session name.
 	#tmux new -s <my_session_name>
+	
+k) Scroll among sessions: -
+	If we are working on multiple sessions, then to make multitasking easier, we can scroll among sessions, 
+	for this there is a wau by which we can easily select among sessions, by chosing a session from the list
+	(obtained by below key sequence) using UP and Down arrow key and pressing Enter.
+	
+	CTRL + B, s
+	
+l) Toggle between current and previous pane: -
+	CTRL+B, ;
+	
+	
 	
 	
 	
