@@ -9,6 +9,7 @@ Compnents created by tmux for working are: -
 Reference: -
 -------------
 https://www.youtube.com/watch?v=FAU8rmS5NSE&list=PLT98CRl2KxKGiyV1u6wHDV8VwcQdzfuKe&index=4
+https://tmuxcheatsheet.com/
 
 Install tmux: -
 ------------------
