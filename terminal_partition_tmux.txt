@@ -109,9 +109,50 @@ m) Killing tmux session: -
 	3. #tmux kill-session -a -t <my_session>
 		It kills all the sessions except "my_session".
 	
+n) As we can see tmux needs a lot of key sequences, which involves multiple finger usage as well as hard to remember.
+   To make it pretty easier, there is a file called .tmux.conf which resides in home directory. If this file is not there
+   then create one and add the contents of this file as below.
+   #vim ~/.tmux.conf
+   (Add below lines to this)
+   	# Send prefix, use CTRL+a key as prefix
+	set-option -g prefix C-a
+	unbind-key C-a
+	bind-key C-a send-prefix
+
+	# Use Alt-arrow keys to switch panes
+	bind -n M-Left select-pane -L
+	bind -n M-Right select-pane -R
+	bind -n M-Up select-pane -U
+	bind -n M-Down select-pane -D
+
+	# Shift+Left or Shift+Right Arrow to switch windows
+	bind -n S-Left previous-window
+	bind -n S-Right next-window
+
+	# Mouse mode, to select a pane or window or to resize it.
+	is_pre_2_1="[[ $(tmux -V | cut -d' ' -f2) < 2.1 ]] && echo true || echo false"
+	if-shell "$is_pre_2_1" "setw -g mode-mouse on; set -g mouse-resize-pane on;\
+      	set -g mouse-select-pane on; set -g mouse-select-window on" "set -g mouse on"
+
+	# Set easier window split keys
+	# Ctrl+a, v for vertical and Ctrl+a, h for horizontal split.
+	bind-key v split-window -h
+	bind-key h split-window -v
+
+	# Easy config reload
+	bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded."
 	
-	
-	
+After adding the above contents in file ".tmux.conf", we can get following shortcuts: -
+	1. Use the prefix as "CTRL+a".
+	2. Use ALT+Arrow keys to move between different panes.
+	3. Use SHIFT+Arrow keys to move between windows.
+	4. Use Ctrl+a, v for vertical split and Ctrl+a, h for horizontal split.
+	5. Use Mouse for selecting a Pane or a Window and to resize them by sliding the cursor
+	   on lines.
+	   
+Note - If we do some change on .tmux.conf file, then to signal the change, we can run below 
+	command.
+	#tmux source-file ~/.tmux.conf
 	
    
    
