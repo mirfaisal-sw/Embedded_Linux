@@ -15,6 +15,9 @@ Install tmux: -
 ------------------
 	#sudo apt install tmux
 
+=> Command to know the version of tmux installed: -
+	#tmux -V
+	
 Usage: -
 -------------
 a) Start tmux shell: -
@@ -154,6 +157,19 @@ o) Reloading the .tmux.conf file: -
 	If we do some change on .tmux.conf file, then to signal this change, we can run below 
 	command.
 	#tmux source-file ~/.tmux.conf
+	
+p) Copy and paste texts or lines between panes: -
+	Step I. Enter ‘copy mode’ by pressing CTRL+b, [ or "prefix, [".
+	Step II. Use the arrow keys to go to the position from where we want to start copying. 
+		Press CTRL+SPACE to start copying.
+	Step III. Use arrow keys to go to the end of text we want to copy. Press CTRL+w to copy into Tmux buffer.
+	Step IV. Press CTRL+b, ] or "prefix, ]" to paste in a different Tmux pane/window.
+	
+	Note - In some version of tmux in Step II do not press CTRL+Space key and in Step III go to the end line from
+	bottom line to top. Then press CTRL+w.
+	
+	
+	
 	
    
    
