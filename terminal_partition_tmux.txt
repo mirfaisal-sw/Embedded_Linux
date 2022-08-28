@@ -168,6 +168,8 @@ p) Copy and paste texts or lines between panes: -
 	Note - In some version of tmux in Step II do not press CTRL+Space key and in Step III go to the end line from
 	bottom line to top. Then press CTRL+w.
 	
+q) Copy and paste in VI mode.
+	
 	
 	
 	
