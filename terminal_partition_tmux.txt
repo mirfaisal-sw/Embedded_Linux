@@ -168,7 +168,26 @@ p) Copy and paste texts or lines between panes: -
 	Note - In some version of tmux in Step II do not press CTRL+Space key and in Step III go to the end line from
 	bottom line to top. Then press CTRL+w.
 	
-q) Copy and paste in VI mode.
+q) Copy and paste like VIM: -
+	For this add below lines in ~/.tmux.conf file.
+	(add below lines in .tmux.conf)
+	
+	unbind [
+	bind Escape copy-mode
+	unbind p
+	bind p paste-buffer
+	bind -t vi-copy 'v' begin-selection
+	bind -t vi-copy 'y' copy-selection
+
+	After adding above lines, copy paste can be performed as below: -
+	
+	To enter into copy mode press - Ctrl+A, ESC key and then to enter into VIM like visual mode, Press v and 
+	then using arrow keys select lines or texts to copy and then press y to yank.
+	Ctrl+A, ESC -> v -> select lines -> y
+	
+	Now, goto pane where to paste and then press Ctrl+A, p.
+	
+	
 	
 	
 	
