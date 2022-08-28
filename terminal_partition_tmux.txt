@@ -187,6 +187,22 @@ q) Copy and paste like VIM: -
 	
 	Now, goto pane where to paste and then press Ctrl+A, p.
 	
+r) Copy and paste from tmux to clipboard or any other application or place in PC: -
+	Fof this to work we have to install "xclip" as below.
+	$sudo apt-get install --assume-yes xclip
+	
+	After this we have to add below line in .tmux.conf file: -
+	
+	bind -t vi-copy y copy-pipe "xclip -sel clip -i"
+	
+	The procedure to copy from tmux and paste to any part in PC we have to as below: - 
+	Copy: -
+		Ctrl+A, ESC - > v (for visual mode) - > copy using yank i.e. presss y
+	Paste: - 
+		Use Shift+Insert or simply click on "Paste" button.
+	
+	
+	
 	
 	
 	
