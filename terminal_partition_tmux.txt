@@ -200,6 +200,75 @@ r) Copy and paste from tmux to clipboard or any other application or place in PC
 		Ctrl+A, ESC - > v (for visual mode) - > copy using yank i.e. presss y
 	Paste: - 
 		Use Shift+Insert or simply click on "Paste" button.
+		
+s) There is a lot of complexity involved in copying and paste, as shown in points - p), q) & r) above.
+   It will be much easier if we can do copy and paste using mouse selection. For this we have to disable 
+   mouse drag mode for panes by pressing "prefix, m". For this we have to add below two lines in .tmux.conf file.
+   
+   bind-key M set -g mouse on
+   bind-key m set -g mouse off
+   
+   To enable mouse resize of panes, we have to press prefix, M or Ctrl+a, M.
+   
+t) tmux will be much easier if we use newer version of "tmux". So we will install tmux as below and much easier 
+   .tmux.conf file will be used as below.
+   
+   Install latest version of tmux: -
+   	I. First uninstall existing version of tmux as below.
+		#sudo apt-get -y remove tmux
+	
+	II. If automake tool is not installed, then install it as below.
+		#apt install automake
+
+	III. Download tmux tool tar ball, extract it and go to the folder where Makefile is there.
+		Download tar ball using link - https://github.com/tmux/tmux/releases/tag/2.9
+		#tar -xvzf tmux-2.9.tar.gz
+		#cd tmux-2.9
+
+	IV. # autoreconf -f -i
+	     # ./configure
+	     # make
+	     # make install
+
+	V. Verfiy version of tmux installed.
+	     #tmux -V
+	     o/P - tmux 2.9
+
+	VI. Edit or create ~/.tmux.conf file as below.
+
+        # Send prefix, use CTRL+a key as prefix
+	set-option -g prefix C-a
+	unbind-key C-a
+	bind-key C-a send-prefix
+
+	# Use Alt-arrow keys to switch panes
+	bind -n M-Left select-pane -L
+	bind -n M-Right select-pane -R
+	bind -n M-Up select-pane -U
+	bind -n M-Down select-pane -D
+
+	# Shift+Left or Shift+Right Arrow to switch windows
+	bind -n S-Left previous-window
+	bind -n S-Right next-window
+
+	# Mouse mode, to select a pane or window or to resize it.
+	set -g mouse on
+
+	# Set easier window split keys
+	# Ctrl+a, v for vertical and Ctrl+a, h for horizontal split.
+	bind-key v split-window -h
+	bind-key h split-window -v
+
+	# Do copy paste using mouse, while using copy paste using mouse, 
+	# the mouse dragging of panes should be turned off by pressing "m".
+	bind-key M set -g mouse on
+	bind-key m set -g mouse off
+
+	# Easy config reload
+	bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded."
+	
+	#End of .tmux.conf file
+	
 	
 	
 	
