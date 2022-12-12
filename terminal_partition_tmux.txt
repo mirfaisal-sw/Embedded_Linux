@@ -269,6 +269,10 @@ t) tmux will be much easier if we use newer version of "tmux". So we will instal
 	
 	#End of .tmux.conf file
 	
+u) If we want to close any splitted terminal either horizontal or vertical then we have to
+   type "exit" to close.
+   	$ exit
+	
 	
 	
 	
