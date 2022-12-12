@@ -1,0 +1,10 @@
+
+
+	1) make > my.log 2>&1
+		i.e. > redirects stdout, 2>&1 redirects stderr to the same place as stdout
+
+	2) make 2>&1 | tee filetokeepitin.txt 
+		will let us watch the output scroll past.
+
+	3) If we want to hilight warning and error from build ouput:
+		make |& grep -E "warning|error"
