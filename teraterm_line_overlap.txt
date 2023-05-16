@@ -1,0 +1,5 @@
+
+=> Sometimes in tera term, if we type words in a line, then after some time line overlaps from beginning 
+   of line, after typing few words. To avoid this below command can be run on teraterm app.
+   
+# shopt -s checkwinsize; stty cols 400 rows 80
