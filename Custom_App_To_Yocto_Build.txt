@@ -1,0 +1,3 @@
+Follow below URL for complete steps:  -
+
+https://blog.mbedded.ninja/programming/embedded-linux/yocto-project/adding-a-custom-app-to-a-yocto-build/
