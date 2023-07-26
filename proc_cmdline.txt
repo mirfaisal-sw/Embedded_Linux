@@ -1,0 +1,5 @@
+
+1.) To see command line argument use below command.
+
+# cat /proc/cmdline
+O/p - 
