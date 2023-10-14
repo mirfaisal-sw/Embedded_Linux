@@ -1,0 +1,16 @@
+Procedure to send/ receive file using tera term: -
+===================================================
+
+1. Sending file to target using tera term: -
+
+In Tera term, File -> Transfer -> ZMODEM -> Send -> {Select the file and send to target}.
+
+2. Receiving file from target using tera term: -
+
+In target console, run below command.
+# sz <file_to_send_to_PC>
+
+On Tera term - > File -> Transfer -> ZMODEM -> Receive
+
+Note - The pulled will be saved on PC, the location of directory to save can be changed as below.
+In Tera Term, File -> Change directory -> {Select appropriate directory}
