@@ -1,0 +1,11 @@
+
+
+1. Thiagu, SSIR
+  https://www.youtube.com/watch?v=JzyVUrykDRs&t=1497s
+
+2. Linux boot flow using AM64x:- 
+    https://www.youtube.com/watch?v=W0iJtJ110fw
+
+3. How ARM systems are booted: -
+    https://www.youtube.com/watch?v=GXFw8SV-51g
+
