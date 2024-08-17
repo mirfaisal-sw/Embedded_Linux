@@ -9,3 +9,5 @@
 3. How ARM systems are booted: -
     https://www.youtube.com/watch?v=GXFw8SV-51g
 
+4. VVI based on TI OMAP
+	https://stackoverflow.com/questions/31244862/what-is-the-use-of-spl-secondary-program-loader
