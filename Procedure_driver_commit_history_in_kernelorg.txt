@@ -4,7 +4,7 @@ Procedure to see commit history of a driver in "kernel.org"
 
 
 kernel.org -> Click on "Browse" corresponding to a latest stable kernel version -> 
--> Now, got to appropriate driver's folder -> Click on "log" tab.
+-> Now, go to appropriate driver's folder -> Click on "log" tab.
 
 {It will list out all commits}
 
