@@ -1,0 +1,1 @@
+https://wiki.st.com/stm32mpu/wiki/Serial_TTY_overview
