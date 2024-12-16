@@ -1,0 +1,32 @@
+
+
+Spinlock function call path and disable of local irq: -
+=========================================================
+
+
+spin_lock() -> raw_spin_lock() -> _raw_spin_lock() -> spin_acquire() -> lock_acquire() -> do_raw_spin_lock() -> arch_spin_lock() -> queued_spin_lock() -> queued_spin_lock_slowpath()
+
+lock_acquire()
+{
+	//...
+	raw_local_irq_save(flags);
+	
+	....
+	__lock_acquire();
+	...
+	
+	raw_local_irq_restore(flags);
+}
+
+The main point of the lock_acquire function is to disable hardware interrupts by the call of the raw_local_irq_save macro, because the
+given spinlock might be acquired with enabled hardware interrupts.
+
+
+Reference : - https://0xax.gitbooks.io/linux-insides/content/SyncPrim/linux-sync-1.html
+==========
+
+
+
+Note: -
+=======
+It looks like, interrupts on local cpu is disabled by spin_lock_irqsave() API only.
