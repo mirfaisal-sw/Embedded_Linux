@@ -1,0 +1,7 @@
+
+
+I.   Open the gerrit and copy the gerrit link with title "Clone with commit-msg hook".
+II.  Run above "git clone ..." command in Linux shell.
+III. Find which branch to checkout from confluence page or any other resource.
+IV.  Create and checkout to remote/origin branch using below command.
+     $git checkout -b Elina_Master_EA910_IDCEvo_A1_IR220322 origin/Elina_Master_EA910_IDCEvo_A1_IR220322

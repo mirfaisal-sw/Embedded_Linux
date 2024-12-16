@@ -1,0 +1,9 @@
+
+
+
+1) Suppose we have synced a repo few days back and we want to sync for any changes, then we can 
+   sync latest changes as below.
+ 	
+	# git pull origin <branch name>
+
+	# gir pull origin					

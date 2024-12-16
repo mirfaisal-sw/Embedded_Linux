@@ -1,0 +1,54 @@
+
+==========================================================
+Harman's Git Push command for commit
+==========================================================
+git add arch/arm/boot/dts/j5entry_ntg7csb.dts
+git commit -s /*With this add commit message as 
+                shown in sample below, modify ALM
+				ID also*/
+git commit --amend   /*With this commad swap line 
+                       position of Change ID and 
+					   Signed-off message.*/
+git push origin HEAD:refs/for/Elina_StablePNP%topic=Disabled_SPI_Pullup_Resistors
+
+Note - Change Topic name as required.
+
+==================================================================
+Sample GIT commit message:-
+===================================================================
+SPI Driver - Production spot defconfig modified
+
+Description -: "j5entry_ntg7csb_production_spot_defconfig"
+			   file is modified to add PNP_DAB Tuner SPI
+			   driver to be built as linux kernel module.
+
+Variant-Sample -: J5_CSB
+Change-Type -: Feature
+Widget-Group -: Operating System
+Widget-Module -: ELINA Kernel
+Tracking-Id -: ALM-1642335
+Depends-On -: 00
+Unit-Test -: Done
+DSCA-Report -: Not Done
+
+Change-Id: I564570c4dd65f7aeb296070e1ec78f91a66a9101
+Signed-off-by: mirfaisal <Mir.Faisal2@harman.com>
+
+===================================================================
+Harman's Git Push command for patch
+====================================================================
+git add arch/arm/boot/dts/j5entry_ntg7csb.dts
+git commit --amend   /*With this commad swap line 
+                       position of Change ID and 
+		       Signed-off message.*/
+git push origin HEAD:refs/for/Elina_StablePNP%topic=Disabled_SPI_Pullup_Resistors
+
+Note - To Push as a patch, "git commit -s" is not required.
+
+========================================================================
+How to share patch URL of Gerrit
+=========================================================================
+If a gerrit has three patchset, then always send the latest patch,
+it will automatically take other patches too.
+And in URL, remove /1 at the end, where /<patch_no> indicates patch no.
+

@@ -1,0 +1,42 @@
+
+/*===================================*/
+  This is probable way of resolving merge conflict, it can be modified 
+  after testing
+ /*===================================*/
+
+	I. Delete the commit which is causing merge conflict.
+   		# git reset --hard <commit id>
+
+	II. Pull the latest code: -
+        	# git pull origin
+
+	III. If we try to do cherry pick our patch which gives merge conflict,
+             then it will not succeed.
+             So, in gerrit.com, click link corresponding to "format-patch" and run this
+             on local machine. This will create a file like - 0001-xyz.patch.
+
+
+	IV. Apply the patch as below.
+		# git am -3 <patch file created above>
+
+            Note - Here option - 3 means 3-way merge.
+
+	    If above command is failing, we can use "patch" command as below. The "patch"
+	    command takes a patch file and applies to the original file to update this.
+	    Ex. - #patch -Np1 < <Patch-file>
+		  #patch -Np1 < 0001-Boot-Time-KPI-Marker-To-enable-BOOT-Time-KPI-Marker-.patch
+
+	V. Stage the changes.
+		#git add <all modified files>
+
+	VI.  Edit commit message.
+		#git commit -s --amend
+	   For commit message, copy the same from patch file created above including the change ID.
+
+        VII. Push it.
+		# git push origin HEAD:refs/for/platform-t-mainline%topic=Boot_Time_KPI_Marker
+
+
+
+
+  

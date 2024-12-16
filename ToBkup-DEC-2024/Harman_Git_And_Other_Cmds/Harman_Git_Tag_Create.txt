@@ -1,0 +1,21 @@
+
+
+	I.  Login to gerrit1.harman.com
+	II. Click on Filter and enter repository name. Then click on link
+	    GTC_Foundation_Software.
+	III. Click on "Tags" menu on the left column.
+	IV.  Click on "CREATE NEW" menu on the right top corner.
+	V.  Now fill in the below parameters: -
+	    Tag Name: - <Tag name to be given to a commit>
+        Initial Revision: - <Branch name where to create tag>		
+	VI. Format of Tag name is as below: -
+	    Rel_Elina_J5Entry_NTG7CSB_22404A
+		
+		The format of suffix is as below: -
+		22401A
+		Here 22 - > means year
+		40 -> means Calender week
+		1 - > means Monday
+		A ->  First tag name created on a day, if on the same date we create another tag then \
+		it will be B and so on.
+

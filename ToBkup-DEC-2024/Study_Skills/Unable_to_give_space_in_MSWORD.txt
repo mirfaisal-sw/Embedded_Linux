@@ -1,0 +1,4 @@
+
+
+	1. If unable to give tab or space at the beginning of line, then go to the end of previous line and
+	   press "SHIFT + ENTER".

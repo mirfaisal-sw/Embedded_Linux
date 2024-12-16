@@ -1,0 +1,31 @@
+
+
+Git squash: -
+===============
+	"squash" in Git means to combine multiple commits into one.
+
+Suppose I have pushed multiple commits, let us say 4 commits and we want to squash
+them into single one.
+Ex - 	Commit -1 with id: aaaa
+	Commit -2 with id: bbbb
+	Commit -3 with id: cccc
+	Commit -4 with id: dddd
+
+Commit 1 is the latest commit and I want to merge commits 2, 3 and 4 to Commit -1, then 
+we will use below command.
+
+# git rebase -i
+O/p - 	pick aaaa
+	pick bbbb
+	pick cccc
+	pick dddd
+
+Then we will modify above as below: -
+	pick aaaa
+	s bbbb
+	s cccc
+	s dddd
+
+Now, all commits will merged to commit - 1. Now we can edit commit message.
+
+We can run "git commit --amend" and then we can push.

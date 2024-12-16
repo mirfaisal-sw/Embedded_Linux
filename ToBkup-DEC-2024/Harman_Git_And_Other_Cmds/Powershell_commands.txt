@@ -1,0 +1,6 @@
+
+
+1) To extract .7z file: -
+	# 7z e <name0f .7z file>
+
+2)

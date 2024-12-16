@@ -1,0 +1,10 @@
+
+
+
+For Harman, ELVIS is there and for Samsung JIRA is there.
+
+=> In order to exchange, Our commnet, we have to exchange information. For this procedure is as below.
+
+	I. Click on "Note" tab.
+	II. Click on "Add Receiver" and select JIRA Exchange(EjExchange).
+	III. Add messages and click on "Post".

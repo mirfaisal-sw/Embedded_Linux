@@ -1,0 +1,21 @@
+
+Table of content adding in word: -
+=====================================
+
+I. Create document with different headings and choose one heading and
+   convert it into Heading1, Heading 2 or so i.e. level of heading.
+   
+II. Then keep the cursor at first page and click on References menu and 
+    then select "Table of contents".
+
+III. We can modify table of content. Click on Table of content -> Custom table 
+     of content menu.
+
+IV. While preparing document if some more headings are added, then we need to
+    update the table. For this click on "Table of contents" in first page of word,
+    then click on "Update table".
+
+
+How to disable spelling check in word: -
+=========================================
+File -> Options -> Proofing -> Uncheck spelling check

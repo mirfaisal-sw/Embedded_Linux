@@ -1,0 +1,19 @@
+
+Reference - https://www.atlassian.com/git/tutorials/saving-changes/git-stash
+
+Git squash: -
+===============
+git stash temporarily shelves (or stashes) changes we've made to our working 
+copy so we can work on something else, and then come back and re-apply them 
+later on.
+
+Stashing is handy if we are mid-way through a code change and aren't quite ready to
+commit.
+
+Stash for future use: - 
+-------------------------
+	# git stash
+
+Reapplying stashed changes: - 
+------------------------------
+	# git stash pop

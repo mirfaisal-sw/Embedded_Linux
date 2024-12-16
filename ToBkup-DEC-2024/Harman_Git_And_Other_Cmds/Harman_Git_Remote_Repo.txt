@@ -1,0 +1,30 @@
+
+
+
+	Steps to find remote repo of a code base synced in local PC:-
+	===============================================================
+
+	Step I. Find the folder containing .git file.
+		#ls -a <folder_name>/
+
+	Step II. Go to the folder containing .git.
+		#cd <folder_name>
+
+	Step III. Run git command to find remote repository.
+		#git remote -v
+
+	Example: -
+	#git remote -v
+	O/p - 
+	origin  ssh://androidhub.harman.com:29418/and_ivi_dts-dev-la (fetch)
+	origin  ssh://androidhub.harman.com:29418/and_ivi_dts-dev-la (push)
+
+	So, repo name is "and_ivi_dts-dev-la"
+
+        Now, open "androidhub.harman.com" and then click on Browse->Repositories
+        and search in filter the repo name as "and_ivi_dts-dev-la".
+	
+	Then click on "gitweb". Now branches will be visible. Now click on the branch
+	name which appeared on local repo by running the command "git branch -a".
+
+	Now, we will get the list of all commits in the repo. 

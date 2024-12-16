@@ -1,0 +1,11 @@
+
+
+
+
+	git rm file1.txt
+	
+	git commit -s
+	
+	//Put ur commit message.
+	
+	git commit --amend

@@ -1,0 +1,27 @@
+
+Command: - 
+-------------
+# pidin syspage=cpuinfo
+
+Header size=0x00000108, Total Size=0x000054c8, #Cpu=8, Type=257
+Section:cpuinfo offset:0x00000328 size:0x00000100 elsize:0x00000020
+  0) cpu:51df805e flg:c0000c7a spd:998 hwid:81000000 cache i/d:0/1 name:34
+     history:6000848108c1905d
+  1) cpu:51df805e flg:c0000c7a spd:998 hwid:81000100 cache i/d:0/1 name:34
+     history:01200521002000cf
+  2) cpu:51df805e flg:c0000c7a spd:998 hwid:81000200 cache i/d:0/1 name:34
+     history:0000000040018004
+  3) cpu:51df805e flg:c0000c7a spd:998 hwid:81000300 cache i/d:0/1 name:34
+     history:00e0870000030388
+  4) cpu:51df805e flg:c0000c7a spd:998 hwid:81000400 cache i/d:0/1 name:34
+     history:ff60130808800098
+  5) cpu:51df805e flg:c0000c7a spd:998 hwid:81000500 cache i/d:0/1 name:34
+     history:00400600000000a0
+  6) cpu:51df804e flg:c0000c7a spd:1708 hwid:81000600 cache i/d:2/3 name:21
+     history:01f0a200080fffff
+  7) cpu:51df804e flg:c0000c7a spd:1708 hwid:81000700 cache i/d:2/3 name:21
+     history:20e000b82ff0a0b8
+	 
+=> Here, 998 means 998MHz.
+	spd: 1708 means 1708 MHz i.e. 1.708 GHz.
+	

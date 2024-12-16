@@ -1,0 +1,11 @@
+
+
+	Git - list all authors of a folder of files
+	==============================================
+
+	$ git ls-files | xargs -n1 git blame --line-porcelain | sed -n 's/^author //p' | sort -f | uniq -ic | sort -nr
+	Output: - 
+	  10900 Sanghoon Bae
+	    910 SVC_Jenkins_IDC
+	     17 Mir Faisal
+	      6 Not Committed Yet

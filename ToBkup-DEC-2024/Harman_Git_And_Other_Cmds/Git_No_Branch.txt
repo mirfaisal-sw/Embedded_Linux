@@ -1,0 +1,22 @@
+
+To find Remote branch in case of "no branch" in local: -
+========================================================
+
+Suppose we synced Yocto and we entered into a directory, where there is a repository. If we suppose run the
+command "git branch", then we get as below.
+
+$ git branch
+O/p - 
+* (no branch)
+
+Our requirement is to push my changes to remote repo, but not aware with the branch.So in this case to know remote
+branch, run below command.
+
+$ git branch -av
+O/p - 
+* (no branch)                            a7d17ad643ca Port V920 ES2 Changes
+  remotes/m/platform-t-mainline          -> origin/platform-t-mig-v920-ES2
+  remotes/origin/platform-t-mig-v920-ES2 a7d17ad643ca Port V920 ES2 Changes
+
+Now in this output we will se commit ID at local branch matches with which remote/origin branch, the matching remote branch 
+is the one to which we should push our changes.

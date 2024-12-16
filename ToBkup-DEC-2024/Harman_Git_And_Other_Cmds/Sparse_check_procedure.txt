@@ -1,0 +1,9 @@
+
+
+URLs: -
+1) https://elinux.org/Sparse#:~:text=Sparse%20is%20a%20static%20type,files%20that%20would%20be%20compiled.
+2) https://kernelnewbies.org/Sparse
+3) https://man7.org/linux/man-pages/man1/sparse.1.html
+4) https://rajanvaja.wordpress.com/2021/04/10/how-to-run-sparse-on-linux-kernel/
+5) https://yarchive.net/comp/linux/sparse.html
+6) https://en.wikipedia.org/wiki/Sparse

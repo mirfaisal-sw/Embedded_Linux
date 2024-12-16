@@ -1,0 +1,5 @@
+
+
+	1. Turn on the virtual box + Press Shift Key and hold.
+	2. It will let me select "Advanced Options", then using Grub Menu, we can select 
+           correct Linux.
