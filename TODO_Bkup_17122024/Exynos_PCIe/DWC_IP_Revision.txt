@@ -1,0 +1,4 @@
+
+
+	Here is the info for V920 EVT2.
+    - DWC_pcie_ctl : 5.97a-lu04

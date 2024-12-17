@@ -1,0 +1,10 @@
+
+
+	On RC side
+	-----------
+	#PERST signal is generally asserted once the RC initialization (clocks init, phy init, controller init) is completed and is ready for link initialization.
+
+	On EP side
+	-----------
+	Once the EP detects that the #PERST is asserted, it is an indication to EP that the RC provided power and clock are stable and EP side can start initialization
+	on the device for PCIe linkup.

@@ -1,0 +1,13 @@
+
+Procedure to test SPI transaction feasibility with CS per word:
+
+I. Apply the patches given in the folder "Software-Ptches".
+II. Compile the kernel image and modules.
+III. Flash the hardware with TI-DRA604 SOC and load the module "pnp_dabplugin.ko".
+     #insmod pnp_dabplugin.ko
+IV. Run the test application provided in the folder "Test-App".
+     #./test_app 1000
+
+     Now MOSI line and CS line can be monitored to verify toggling of CS line per 
+     word.   
+ 

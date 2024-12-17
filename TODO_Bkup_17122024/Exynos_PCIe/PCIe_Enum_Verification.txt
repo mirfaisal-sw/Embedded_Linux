@@ -1,0 +1,82 @@
+
+
+Trigger enumeration: -
+=========================
+## PCIe ch-2
+	echo 1 > /sys/devices/platform/161c0000.pcie/pcie_sysfs
+
+## PCIe ch-3
+	echo 1 > /sys/devices/platform/161c1000.pcie/pcie_sysfs
+
+Enumeration verification:-
+============================
+Way 1: -
+---------
+	lspci | grep 12be
+	
+Way 2: - (Without lspci command) 
+----------
+	cat /sys/bus/pci/devices/0000:01:00.0/vendor
+	o/p - 12be
+
+	cat /sys/bus/pci/devices/0001:01:00.0/vendor
+	o/p - 12be
+
+
+
+Verified PCIe enumeration and GPIO handling: -
+=====================================================
+# Test 1: -
+----------
+    echo 1 > /sys/bus/pci/devices/0001:01:00.0/remove
+    echo 1 > /sys/bus/pci/devices/0000:01:00.0/remove
+   
+    ./lspci | grep 12be
+    O/p - Nil
+   
+    echo 1 > /sys/bus/pci/rescan
+   
+    ./lspci | grep 12be
+    O/p - # /data/lspci
+    0000:00:00.0 Class 0604: Device 144d:ecee (rev 01)
+    0000:01:00.0 Class 0280: Device 12be:bd31 (rev 02)
+    0001:00:00.0 Class 0604: Device 144d:ecef (rev 01)
+    0001:01:00.0 Class 0280: Device 12be:bd31 (rev 02)
+   
+    cat /sys/class/gpio/gpio117/value
+    O/p - 1
+   
+   
+# Test 2: -
+----------
+    echo 1 > /sys/bus/pci/devices/0001:01:00.0/remove
+    echo 1 > /sys/bus/pci/devices/0000:01:00.0/remove
+   
+    /data/lspci
+    O/p -
+   
+    echo 2 > /sys/devices/platform/161c0000.pcie/pcie_sysfs
+    echo 2 > /sys/devices/platform/161c1000.pcie/pcie_sysfs
+   
+    /data/lspci
+    O/p -
+   
+    echo 1 > /sys/bus/pci/rescan
+   
+    /data/lspci
+   
+    cat /sys/class/gpio/gpio117/value
+    O/p - 0
+   
+    echo 1 > /sys/devices/platform/161c0000.pcie/pcie_sysfs
+    echo 1 > /sys/devices/platform/161c1000.pcie/pcie_sysfs
+   
+    cat /sys/class/gpio/gpio117/value
+    O/p - 1
+   
+    /data/lspci
+    O/p -
+    0000:00:00.0 Class 0604: Device 144d:ecee (rev 01)
+    0000:01:00.0 Class 0280: Device 12be:bd31 (rev 02)
+    0001:00:00.0 Class 0604: Device 144d:ecef (rev 01)
+    0001:01:00.0 Class 0280: Device 12be:bd31 (rev 02)

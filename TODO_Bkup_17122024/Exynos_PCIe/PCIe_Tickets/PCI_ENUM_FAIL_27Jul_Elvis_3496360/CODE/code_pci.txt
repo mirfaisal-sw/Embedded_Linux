@@ -1,0 +1,36 @@
+
+
+
+	exynos_v920_pcie_probe() {
+	{
+		struct device_node *np;
+
+		np = pdev->dev.of_node;
+		ret = exynos_v920_pcie_pinconfig(pp, pdev, np);
+		{
+			exynos_pcie->perst_gpio = of_get_gpio(np, 0);
+			/* set perst gpio to output mode low */
+                	ret = devm_gpio_request_one(pci->dev, exynos_pcie->perst_gpio,
+                                GPIOF_OUT_INIT_LOW,
+                                dev_name(pci->dev));
+
+			exynos_pcie->pin_state[PCIE_PIN_IDLE] =
+               	 	pinctrl_lookup_state(exynos_pcie->pcie_pinctrl, "idle");
+        		if (IS_ERR(exynos_pcie->pin_state[PCIE_PIN_IDLE]))
+                		dev_info(pci->dev, "No idle pin state\n");
+
+			exynos_pcie->pin_state[PCIE_PIN_DEFAULT] =
+                	pinctrl_lookup_state(exynos_pcie->pcie_pinctrl, "default");
+        		if (IS_ERR(exynos_pcie->pin_state[PCIE_PIN_DEFAULT])) {
+                		dev_err(pci->dev, "Can't set pcie clkerq to output high!\n");
+                		return -EINVAL;
+        		}
+        		else
+                	pinctrl_select_state(exynos_pcie->pcie_pinctrl,
+                                exynos_pcie->pin_state[PCIE_PIN_DEFAULT]);
+
+			....
+		}
+
+	}
+

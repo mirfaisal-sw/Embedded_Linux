@@ -1,0 +1,9 @@
+
+
+
+•	Basic Eth PHY  overview (Network stack io-pkt emac, phy block & layer block information  )
+•	RGMII interface between MAC & eth PHY (out of Various MII, RMII, GMII, RGMII, SGMII mac to phy interface ).
+•	EMAC and PHY communication via MDIO/MDC.
+•	Clause22 and Clause45(indirect and direct) standard 
+•	PHY initialization - Marvell phy reference  ( states & usecase
+•	Eth Phy diagnostic & use case

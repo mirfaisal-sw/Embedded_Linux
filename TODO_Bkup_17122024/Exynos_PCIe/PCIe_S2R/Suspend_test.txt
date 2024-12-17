@@ -1,0 +1,137 @@
+
+
+	# echo test_resume > /sys/power/disk
+	# echo disk > /sys/power/state --> worked
+
+
+	# echo devices > /sys/power/pm_test --> NA
+	# echo platform > /sys/power/disk
+	# echo disk > /sys/power/state
+
+
+	Note: -
+	========
+	echo mem > /sys/power/state
+	=> By this command system got rebooted.
+	
+	
+	File - drivers/pinctrl/samsung/pinctrl-samsung.c:48
+	======	
+	samsung,pin-val = <1>;
+	
+	File: - Documentation/devicetree/bindings/pinctrl/samsung-pinctrl.txt
+	======
+	- samsung,pin-val: Initial value of pin output buffer.
+	- samsung,pin-pud: Pull up/down configuration.
+    - samsung,pin-drv: Drive strength configuration.
+	
+    - samsung,pin-pud-pdn: Pull up/down configuration in power down mode.
+    - samsung,pin-drv-pdn: Drive strength configuration in power down mode.
+	- samsung,pin-con-pdn : Pin function in power down mode.
+	
+	
+File: - drivers/pinctrl/samsung/pinctrl-samsung.h
+=========	
+/**
+ * enum pincfg_type - possible pin configuration types supported.
+ * @PINCFG_TYPE_FUNC: Function configuration.
+ * @PINCFG_TYPE_DAT: Pin value configuration.
+ * @PINCFG_TYPE_PUD: Pull up/down configuration.
+ * @PINCFG_TYPE_DRV: Drive strength configuration.
+ * @PINCFG_TYPE_CON_PDN: Pin function in power down mode.
+ * @PINCFG_TYPE_PUD_PDN: Pull up/down configuration in power down mode.
+ */
+enum pincfg_type {
+        PINCFG_TYPE_FUNC,
+        PINCFG_TYPE_DAT,
+        PINCFG_TYPE_PUD,
+        PINCFG_TYPE_DRV,
+        PINCFG_TYPE_CON_PDN,
+        PINCFG_TYPE_PUD_PDN,
+        PINCFG_TYPE_NUM
+};
+
+
+
+Ex. - samsung,pin-con-pdn = <EXYNOS_PIN_PDN_PREV>;
+
+/* Pin function in power down mode */
+#define EXYNOS_PIN_PDN_OUT0             0
+#define EXYNOS_PIN_PDN_OUT1             1
+#define EXYNOS_PIN_PDN_INPUT            2
+#define EXYNOS_PIN_PDN_PREV             3
+
+	pcie_perst0_out: pcie_perst0_out {
+                samsung,pins = "gph0-1";
+                samsung,pin-function = <EXYNOS_PIN_FUNC_OUTPUT>;
+                samsung,pin-drv = <EXYNOS5420_PIN_DRV_LV4>;
+                samsung,pin-con-pdn = <EXYNOS_PIN_PDN_PREV>;
+    };
+
+
+File: - include/dt-bindings/pinctrl/samsung.h
+=======
+/* Pin function in power down mode */
+#define EXYNOS_PIN_PDN_OUT0             0
+#define EXYNOS_PIN_PDN_OUT1             1
+#define EXYNOS_PIN_PDN_INPUT            2
+#define EXYNOS_PIN_PDN_PREV             3
+
+
+File: - arch/arm/boot/dts/exynos3250-artik5.dtsi
+========
+&pinctrl_1 {
+        bten: bten {
+                samsung,pins ="gpx1-7";
+                samsung,pin-function = <EXYNOS_PIN_FUNC_OUTPUT>;
+                samsung,pin-pud = <EXYNOS_PIN_PULL_DOWN>;
+                samsung,pin-con-pdn = <EXYNOS_PIN_PDN_PREV>;
+                samsung,pin-pud-pdn = <EXYNOS_PIN_PULL_DOWN>;
+        };
+
+        wlanen: wlanen {
+                samsung,pins = "gpx2-3";
+                samsung,pin-function = <EXYNOS_PIN_FUNC_OUTPUT>;
+                samsung,pin-pud = <EXYNOS_PIN_PULL_NONE>;
+                samsung,pin-drv = <EXYNOS4_PIN_DRV_LV3>;
+                samsung,pin-val = <1>;
+        };
+
+        s2mps14_irq: s2mps14-irq {
+                samsung,pins = "gpx3-5";
+                samsung,pin-pud = <EXYNOS_PIN_PULL_NONE>;
+        };
+
+        bthostwake: bthostwake {
+                samsung,pins = "gpx3-6";
+                samsung,pin-function = <EXYNOS_PIN_FUNC_INPUT>;
+                samsung,pin-pud = <EXYNOS_PIN_PULL_UP>;
+                samsung,pin-con-pdn = <EXYNOS_PIN_PDN_INPUT>;
+                samsung,pin-pud-pdn = <EXYNOS_PIN_PULL_NONE>;
+        };
+
+        btwake: btwake {
+                samsung,pins = "gpx3-7";
+                samsung,pin-function = <EXYNOS_PIN_FUNC_OUTPUT>;
+                samsung,pin-pud = <EXYNOS_PIN_PULL_DOWN>;
+                samsung,pin-con-pdn = <EXYNOS_PIN_PDN_OUT0>;
+                samsung,pin-pud-pdn = <EXYNOS_PIN_PULL_DOWN>;
+        };
+};
+
+
+
+My changes: -
+================
+
+
+	wlanen: wlanen {
+        samsung,pins = "gpx2-3";
+        samsung,pin-function = <EXYNOS_PIN_FUNC_OUTPUT>;
+        samsung,pin-pud = <EXYNOS_PIN_PULL_NONE>;
+        samsung,pin-drv = <EXYNOS4_PIN_DRV_LV3>;
+        samsung,pin-val = <1>;
+		
+		samsung,pin-con-pdn = <EXYNOS_PIN_PDN_OUT0>;
+        samsung,pin-pud-pdn = <EXYNOS_PIN_PULL_DOWN>;
+    };

@@ -1,0 +1,10 @@
+
+
+## Path of AER driver: - 
+
+	drivers/pci/pcie/aer.c
+	
+## Config macro: -
+	CONFIG_PCIEAER
+	
+	

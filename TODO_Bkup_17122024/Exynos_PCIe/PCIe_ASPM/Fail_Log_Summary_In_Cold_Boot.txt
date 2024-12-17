@@ -1,0 +1,88 @@
+
+
+File - C:\Users\Mirfaisal\Desktop\In_Progress_Week_19thJune\CW_41_42\FCA_Log_Analysis\Logs-1_16102023\42_E3470081\FHE_Serial.txt
+====================================================================================================================================
+
+Log - 
+
+Line 560: - 
+2023-10-13 17:15:52.988032 - CPU: APL-F1 [4C @ 1900MHz: premium SKU], ucode rev.1E, PMC:3.21, power-on reset
+
+Line 643: -
+[    0.143465] pci 0000:00:13.1: Device - 0x8086:0x5ad9, LNKCTL reg - 0x70110080 after Re-Train
+2023-10-13 17:15:54.343399 - [    0.143743] pci 0000:00:13.1: Device - 0x8086:0x5ad9, Link Speed - 1, after Re-Train count - 0
+
+Line 855: -
+2023-10-13 17:15:59.042804 - [    5.130300] pcieport 0000:00:13.1: PCIe Bus Error: severity=Corrected, type=Physical Layer, id=0099(Receiver ID)
+2023-10-13 17:15:59.138548 - [    5.130302] pcieport 0000:00:13.1:   device [8086:5ad9] error status/mask=000020c1/00002000
+2023-10-13 17:15:59.138548 - [    5.130304] pcieport 0000:00:13.1:    [ 0] Receiver Error         (First)
+2023-10-13 17:15:59.138548 - [    5.130306] pcieport 0000:00:13.1:    [ 6] Bad TLP       
+2023-10-13 17:15:59.138548 - [    5.130308] pcieport 0000:00:13.1:    [ 7] Bad DLLP        
+2023-10-13 17:15:59.138548 - [    5.159391] pcieport 0000:00:13.1: PCIe Bus Error: severity=Corrected, type=Physical Layer, id=0099(Receiver ID)
+2023-10-13 17:15:59.138548 - [    5.159394] pcieport 0000:00:13.1:   device [8086:5ad9] error status/mask=00000001/00002000
+2023-10-13 17:15:59.138548 - [    5.159396] pcieport 0000:00:13.1:    [ 0] Receiver Error         (First)
+2023-10-13 17:15:59.193400 - [    5.289196] pciehp 0000:00:13.1:pcie004: Device 0000:02:00.0 already exists at 0000:02:00, cannot hot-add
+2023-10-13 17:15:59.193400 - [    5.300064] pciehp 0000:00:13.1:pcie004: Cannot add device at 0000:02:00
+
+Line 887: 
+2023-10-13 17:16:08.169344 - fca_dv2:/ # [   14.279582] wlan: Loading MWLAN driver
+2023-10-13 17:16:08.310965 - [   14.286274] wlan: Register to Bus Driver...
+
+Line 939: -
+2023-10-13 17:16:08.552316 - [   14.654224] PCIE registers from offset 0x1c20 to 0x1c9c:
+2023-10-13 17:16:08.552316 - [   14.660593] ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff 
+2023-10-13 17:16:08.552316 - [   14.675219] ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff 
+2023-10-13 17:16:08.561293 - [   14.699108] ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff 
+2023-10-13 17:16:08.658033 - [   14.722288] ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+
+Line 1003: -
+2023-10-13 17:16:08.907365 - [   15.011245] woal_request_fw failed
+2023-10-13 17:16:08.907365 - [   15.015481] Firmware Init Failed
+2023-10-13 17:16:08.976209 - [   15.031802] Free module params
+2023-10-13 17:16:08.976209 - [   15.036382] woal_pcie_probe: failed
+
+
+File: - C:\Users\Mirfaisal\Desktop\In_Progress_Week_19thJune\CW_41_42\FCA_Log_Analysis\Logs-1_16102023\318_E3470081
+======================================================================================================================
+
+Log: - 
+
+Line - 5286
+2023-10-15 06:03:53.255392 - CPU: APL-F1 [4C @ 1900MHz: premium SKU], ucode rev.1E, PMC:3.21, power-on reset
+
+Line - 5369
+[    0.139860] pci 0000:00:13.1: Device - 0x8086:0x5ad9, LNKCTL reg - 0x70110080 after Re-Train
+2023-10-15 06:03:54.479122 - [    0.140131] pci 0000:00:13.1: Device - 0x8086:0x5ad9, Link Speed - 1, after Re-Train count - 0
+
+Line - 5592
+2023-10-15 06:03:59.315196 - [    5.161706] pcieport 0000:00:13.1:   device [8086:5ad9] error status/mask=00000001/00002000
+2023-10-15 06:03:59.315196 - [    5.172059] pcieport 0000:00:13.1:    [ 0] Receiver Error         (First)
+2023-10-15 06:03:59.334172 - [    5.281659] pciehp 0000:00:13.1:pcie004: Device 0000:02:00.0 already exists at 0000:02:00, cannot hot-add
+2023-10-15 06:03:59.334172 - [    5.301931] pciehp 0000:00:13.1:pcie004: Cannot add device at 0000:02:00
+
+Line - 5618
+2023-10-15 06:04:06.177851 - [   12.091421] WLAN: Fail download FW with nowwait: 0
+
+Line - 5656
+2023-10-15 06:04:06.560827 - [   12.416418] PCIE registers from offset 0x1c20 to 0x1c9c:
+
+2023-10-15 06:04:06.560827 - [   12.423037] ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff 
+2023-10-15 06:04:06.560827 - [   12.432822] ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+2023-10-15 06:04:06.560827 - [   12.443466] ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff 
+2023-10-15 06:04:06.560827 - [   12.454247] ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff 
+
+Line - 5838
+2023-10-15 06:04:08.216432 - [   14.111783] woal_request_fw failed
+2023-10-15 06:04:08.216432 - [   14.119297] Firmware Init Failed
+2023-10-15 06:04:08.216432 - [   14.134168] Free module params
+2023-10-15 06:04:08.216432 - [   14.155232] woal_pcie_probe: failed
+2023-10-15 06:04:08.216432 - [   14.166335] wlan: Register to Bus Driver Done
+2023-10-15 06:04:08.216432 - [   14.174839] wlan: Driver loaded successfully
+
+Line - 5856
+
+2023-10-15 06:04:09.355386 - fca_dv2:/ # [   15.313947] wlan: Unloading MWLAN driver
+2023-10-15 06:04:09.355386 - [   15.323049] wlan: Driver unloaded
+
+
+

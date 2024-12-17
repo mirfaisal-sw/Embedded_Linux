@@ -1,0 +1,151 @@
+km@KM-BBB:~$ sudo ./test_pnp_ntg7_irq_cnt 100
+[sudo] password for km: 
+ms delay be  - 100
+[   67.888994] Unable to handle kernel NULL pointer dereference at virtual address 00000000
+[   67.897269] pgd = 412eff4b
+[   67.900125] [00000000] *pgd=9abf7831, *pte=00000000, *ppte=00000000
+[   67.906455] Internal error: Oops: 817 [#1] SMP ARM
+[   67.911273] Modules linked in: evdev musb_dsps musb_hdrc udc_core phy_am335x cppi41 usbcore phy_generic phy_am335x_control usb_commo4
+[   67.942858] CPU: 0 PID: 411 Comm: test_pnp_ntg7_i Not tainted 4.19.94-g58ac7b864-dirty #4
+[   67.951073] Hardware name: Generic AM33XX (Flattened Device Tree)
+[   67.957218] PC is at arm_copy_from_user+0xec/0x3d8
+[   67.962034] LR is at 0xf1
+[   67.964667] pc : [<c08fee74>]    lr : [<000000f1>]    psr: 00080013
+[   67.970962] sp : dd64df14  ip : 00000010  fp : 00000000
+[   67.976211] r10: 00000000  r9 : 00000051  r8 : 00000000
+[   67.981460] r7 : 01000003  r6 : 00524457  r5 : 00000000  r4 : 00000010
+[   67.988017] r3 : 00000000  r2 : fffffff0  r1 : 00022084  r0 : 00000000
+[   67.994578] Flags: nzcv  IRQs on  FIQs on  Mode SVC_32  ISA ARM  Segment user
+[   68.001747] Control: 10c5387d  Table: 9d4dc019  DAC: 00000055
+[   68.007521] Process test_pnp_ntg7_i (pid: 411, stack limit = 0xd20f3de3)
+[   68.014256] Stack: (0xdd64df14 to 0xdd64e000)
+[   68.018637] df00:                                              00000000 00022074 dd370200
+[   68.026858] df20: 00000000 00000000 00000010 00000000 00000010 bf06a260 00000010 dab28c00
+[   68.035079] df40: 00022074 dd64df78 00000000 dd64c000 00000000 c02ec890 dab28c00 c0e08948
+[   68.043299] df60: dab28c00 dab28c00 c0e08948 00022074 00000010 c02ecae8 00000000 00000000
+[   68.051519] df80: 00000001 4a99e67f 00000074 00000000 00000000 00000004 c01011c4 00000004
+[   68.059739] dfa0: beebcc54 c0101000 00000074 00000000 00000003 00022074 00000010 00000000
+[   68.067960] dfc0: 00000074 00000000 00000000 00000004 00000000 00000000 b6f70000 beebcc54
+[   68.076181] dfe0: 00000004 beebcc28 b6edb5b3 b6e64746 80080030 00000003 00000000 00000000
+[   68.084425] [<c08fee74>] (arm_copy_from_user) from [<bf06a260>] (mir_write+0x84/0x110 [microchip_st25_flash_both])
+[   68.094857] [<bf06a260>] (mir_write [microchip_st25_flash_both]) from [<c02ec890>] (vfs_write+0xa0/0x17c)
+[   68.104477] [<c02ec890>] (vfs_write) from [<c02ecae8>] (ksys_write+0x58/0xdc)
+[   68.111653] [<c02ecae8>] (ksys_write) from [<c0101000>] (ret_fast_syscall+0x0/0x28)
+[   68.119346] Exception stack(0xdd64dfa8 to 0xdd64dff0)
+[   68.124425] dfa0:                   00000074 00000000 00000003 00022074 00000010 00000000
+[   68.132645] dfc0: 00000074 00000000 00000000 00000004 00000000 00000000 b6f70000 beebcc54
+[   68.140861] dfe0: 00000004 beebcc28 b6edb5b3 b6e64746
+[   68.145945] Code: e320f000 e4803004 e4804004 e4805004 (e4806004) 
+[   68.152233] ---[ end trace 9f94759cbe3d84f1 ]---
+
+Message from syslogd@KM-BBB at Jan 25 05:21:53 ...
+ kernel:[   67.906455] Internal error: Oops: 817 [#1] SMP ARM
+
+Message from syslogd@KM-BBB at Jan 25 05:21:53 ...
+ kernel:[   68.007521] Process test_pnp_ntg7_i (pid: 411, stack limit = 0xd20f3de3)
+
+Message from syslogd@KM-BBB at Jan 25 05:21:53 ...
+ kernel:[   68.014256] Stack: (0xdd64df14 to 0xdd64e000)
+
+Message from syslogd@KM-BBB at Jan 25 05:21:53 ...
+ kernel:[   68.018637] df00:                                              00000000 00022074 dd370200
+
+Message from syslogd@KM-BBB at Jan 25 05:21:53 ...
+ kernel:[   68.026858] df20: 00000000 00000000 00000010 00000000 00000010 bf06a260 00000010 dab28c00
+
+Message from syslogd@KM-BBB at Jan 25 05:21:53 ...
+ kernel:[   68.035079] df40: 00022074 dd64df78 00000000 dd64c000 00000000 c02ec890 dab28c00 c0e08948
+
+Message from syslogd@KM-BBB at Jan 25 05:21:53 ...
+ kernel:[   68.043299] df60: dab28c00 dab28c00 c0e08948 00022074 00000010 c02ecae8 00000000 00000000
+
+Message from syslogd@KM-BBB at Jan 25 05:21:53 ...
+ kernel:[   68.051519] df80: 00000001 4a99e67f 00000074 00000000 00000000 00000004 c01011c4 00000004
+
+Message from syslogd@KM-BBB at Jan 25 05:21:53 ...
+ kernel:[   68.059739] dfa0: beebcc54 c0101000 00000074 00000000 00000003 00022074 00000010 00000000
+
+Message from syslogd@KM-BBB at Jan 25 05:21:53 ...
+ kernel:[   68.067960] dfc0: 00000074 00000000 00000000 00000004 00000000 00000000 b6f70000 beebcc54
+
+Message from syslogd@KM-BBB at Jan 25 05:21:53 ...
+ kernel:[   68.076181] dfe0: 00000004 beebcc28 b6edb5b3 b6e64746 80080030 00000003 00000000 00000000
+
+Message from syslogd@KM-BBB at Jan 25 05:21:53 ...
+ kernel:[   68.145945] Code: e320f000 e4803004 e4804004 e4805004 (e4806004) 
+Segmentation fault
+km@KM-BBB:~$ sudo ./test_pnp_ntg7_irq_cnt 100
+ms delay be  - 100
+[  115.880919] Unable to handle kernel NULL pointer dereference at virtual address 00000000
+[  115.889086] pgd = 3b7e7d2b
+[  115.891926] [00000000] *pgd=9d4ec831, *pte=00000000, *ppte=00000000
+[  115.898249] Internal error: Oops: 817 [#2] SMP ARM
+[  115.903067] Modules linked in: evdev musb_dsps musb_hdrc udc_core phy_am335x cppi41 usbcore phy_generic phy_am335x_control usb_commo4
+[  115.934652] CPU: 0 PID: 414 Comm: test_pnp_ntg7_i Tainted: G      D           4.19.94-g58ac7b864-dirty #4
+[  115.944263] Hardware name: Generic AM33XX (Flattened Device Tree)
+[  115.950407] PC is at arm_copy_from_user+0xec/0x3d8
+[  115.955224] LR is at 0xf1
+[  115.957859] pc : [<c08fee74>]    lr : [<000000f1>]    psr: 00080013
+[  115.964155] sp : dd4bff14  ip : 00000010  fp : 00000000
+[  115.969404] r10: 00000000  r9 : 00000051  r8 : 00000000
+[  115.974654] r7 : 01000003  r6 : 00524457  r5 : 00000000  r4 : 00000010
+[  115.981212] r3 : 00000000  r2 : fffffff0  r1 : 00022084  r0 : 00000000
+[  115.987773] Flags: nzcv  IRQs on  FIQs on  Mode SVC_32  ISA ARM  Segment user
+[  115.994943] Control: 10c5387d  Table: 9aa08019  DAC: 00000055
+[  116.000718] Process test_pnp_ntg7_i (pid: 414, stack limit = 0x0c778fb4)
+[  116.007452] Stack: (0xdd4bff14 to 0xdd4c0000)
+[  116.011833] ff00:                                              00000000 00022074 dd370200
+[  116.020053] ff20: 00000000 00000000 00000010 00000000 00000010 bf06a260 00000010 daac1800
+[  116.028273] ff40: 00022074 dd4bff78 00000000 dd4be000 00000000 c02ec890 daac1800 c0e08948
+[  116.036494] ff60: daac1800 daac1800 c0e08948 00022074 00000010 c02ecae8 00000000 00000000
+[  116.044713] ff80: 00000001 4a99e67f 00000074 00000000 00000000 00000004 c01011c4 00000004
+[  116.052934] ffa0: be897c54 c0101000 00000074 00000000 00000003 00022074 00000010 00000000
+[  116.061153] ffc0: 00000074 00000000 00000000 00000004 00000000 00000000 b6f1f000 be897c54
+[  116.069373] ffe0: 00000004 be897c28 b6e8a5b3 b6e13746 80080030 00000003 00000000 00000000
+[  116.077619] [<c08fee74>] (arm_copy_from_user) from [<bf06a260>] (mir_write+0x84/0x110 [microchip_st25_flash_both])
+[  116.088039] [<bf06a260>] (mir_write [microchip_st25_flash_both]) from [<c02ec890>] (vfs_write+0xa0/0x17c)
+[  116.097660] [<c02ec890>] (vfs_write) from [<c02ecae8>] (ksys_write+0x58/0xdc)
+[  116.104837] [<c02ecae8>] (ksys_write) from [<c0101000>] (ret_fast_syscall+0x0/0x28)
+[  116.112530] Exception stack(0xdd4bffa8 to 0xdd4bfff0)
+[  116.117610] ffa0:                   00000074 00000000 00000003 00022074 00000010 00000000
+[  116.125830] ffc0: 00000074 00000000 00000000 00000004 00000000 00000000 b6f1f000 be897c54
+[  116.134047] ffe0: 00000004 be897c28 b6e8a5b3 b6e13746
+[  116.139131] Code: e320f000 e4803004 e4804004 e4805004 (e4806004) 
+[  116.145393] ---[ end trace 9f94759cbe3d84f2 ]---
+
+Message from syslogd@KM-BBB at Jan 25 05:22:41 ...
+ kernel:[  115.898249] Internal error: Oops: 817 [#2] SMP ARM
+
+Message from syslogd@KM-BBB at Jan 25 05:22:41 ...
+ kernel:[  116.000718] Process test_pnp_ntg7_i (pid: 414, stack limit = 0x0c778fb4)
+
+Message from syslogd@KM-BBB at Jan 25 05:22:41 ...
+ kernel:[  116.007452] Stack: (0xdd4bff14 to 0xdd4c0000)
+
+Message from syslogd@KM-BBB at Jan 25 05:22:41 ...
+ kernel:[  116.011833] ff00:                                              00000000 00022074 dd370200
+
+Message from syslogd@KM-BBB at Jan 25 05:22:41 ...
+ kernel:[  116.020053] ff20: 00000000 00000000 00000010 00000000 00000010 bf06a260 00000010 daac1800
+
+Message from syslogd@KM-BBB at Jan 25 05:22:41 ...
+ kernel:[  116.028273] ff40: 00022074 dd4bff78 00000000 dd4be000 00000000 c02ec890 daac1800 c0e08948
+
+Message from syslogd@KM-BBB at Jan 25 05:22:41 ...
+ kernel:[  116.036494] ff60: daac1800 daac1800 c0e08948 00022074 00000010 c02ecae8 00000000 00000000
+
+Message from syslogd@KM-BBB at Jan 25 05:22:41 ...
+ kernel:[  116.044713] ff80: 00000001 4a99e67f 00000074 00000000 00000000 00000004 c01011c4 00000004
+
+Message from syslogd@KM-BBB at Jan 25 05:22:41 ...
+ kernel:[  116.052934] ffa0: be897c54 c0101000 00000074 00000000 00000003 00022074 00000010 00000000
+
+Message from syslogd@KM-BBB at Jan 25 05:22:41 ...
+ kernel:[  116.061153] ffc0: 00000074 00000000 00000000 00000004 00000000 00000000 b6f1f000 be897c54
+
+Message from syslogd@KM-BBB at Jan 25 05:22:41 ...
+ kernel:[  116.069373] ffe0: 00000004 be897c28 b6e8a5b3 b6e13746 80080030 00000003 00000000 00000000
+
+Message from syslogd@KM-BBB at Jan 25 05:22:41 ...
+ kernel:[  116.139131] Code: e320f000 e4803004 e4804004 e4805004 (e4806004) 
+Segmentation fault

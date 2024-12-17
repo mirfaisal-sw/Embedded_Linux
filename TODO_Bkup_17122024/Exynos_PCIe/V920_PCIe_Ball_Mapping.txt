@@ -1,0 +1,41 @@
+
+
+
+
+Hi..I looked into V920 TRM document what we are having. We could see that PCIe pins of SOC with WLAN1 and WLAN2 chips are as below.
+
+PCIe pins for WLAN1: -
+    XPCIE_2L_RXD0_N
+    XPCIE_2L_RXD0_P
+    XPCIE_2L_TXD0_N
+    XPCIE_2L_TXD0_P
+    XPCIE_2L_REF_ALT0_CLK_N
+    XPCIE_2L_REF_ALT0_CLK_P
+    XPCIE_PERSTN2
+    XPCIE_CLKREQ2
+
+PCIe pins for WLAN2: - 
+	XPCIE_2L_RXD1_N
+	XPCIE_2L_RXD1_P
+	XPCIE_2L_TXD1_N
+	XPCIE_2L_TXD1_P
+	XPCIE_2L_REF_ALT1_CLK_N
+	XPCIE_2L_REF_ALT1_CLK_P
+	XPCIE_PERSTN3
+	XPCIE_CLKREQ3
+	
+I could see Ball-Map description is there only in Page - 154 of TRM.
+While looking into "PCI Express: Register Description" chapter of TRM, section : 28.5.3 PCIe_GEN3 2 Lane Link.
+I could see Base addresses as below -
+	PCIe_GEN3_2L0 Link Base address : 0x1300_0000
+	PCIe_GEN3_2L1 Link Base address : 0x1500_0000
+	
+But when I see target or .dtsi file then Base addresses observed is as below: -
+	For WALN1: PCIe port - pcie_2: pcie@161C0000
+	For WALN2: PCIe port - pcie_3: pcie@161C1000
+	
+So, with available information/document, we are unable to map PCIe pins with PCIe port and its base addresses.
+
+
+
+	

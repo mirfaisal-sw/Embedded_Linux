@@ -1,0 +1,9 @@
+
+
+https://www.kernel.org/doc/Documentation/devicetree/bindings/pci/host-generic-pci.txt|https://www.kernel.org/doc/Documentation/devicetree/bindings/pci/host-generic-pci.txt
+
+ * *linux,pci-probe-only*
+ *: Optional property which takes a single-cell argument.*
+ *If '0', then Linux will assign devices in its usual manner,*
+ *otherwise it will not try to assign devices and instead use*
+ *them as they are configured already.*

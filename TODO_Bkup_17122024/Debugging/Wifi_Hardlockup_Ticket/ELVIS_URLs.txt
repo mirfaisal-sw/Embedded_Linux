@@ -1,0 +1,15 @@
+
+Samsung ticket: -	
+	https://elvis.harman.com/cgi-bin/ticket?TID=3528532
+
+Harman ticket: - 
+	https://elvis.harman.com/cgi-bin/ticket?TID=3528526
+	
+	
+Gerrits: -
+
+	https://asc.bmwgroup.net/gerrit/#/c/2352755/
+	
+	https://asc.bmwgroup.net/gerrit/#/c/2352755/
+
+	https://asc.bmwgroup.net/gerrit/#/c/2352755/

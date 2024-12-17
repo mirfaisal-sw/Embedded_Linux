@@ -1,0 +1,16 @@
+
+
+/data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/build-sdk1/conf
+
+Enable KASAN on SYS: -
+======================
+
+Modify below file  -
+
+File path and name - build-sdk1/conf/local.conf
+Code change: -
++DISTRO_FEATURES:append = " kasan"
+
+Path of kasan.cfg:-
+-----------------------
+./meta-samsung-bsp/recipes-kernel/linux/files/fragments/kasan.cfg

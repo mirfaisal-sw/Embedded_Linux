@@ -1,0 +1,10 @@
+
+Assert SPI-CS line:-
+
+if (gpio_is_valid(spi->cs_gpio))
+                omap2_mcspi_set_cs(spi, spi->mode & SPI_CS_HIGH);
+
+
+De-Assert SPI CS line-
+if (gpio_is_valid(spi->cs_gpio))
+                omap2_mcspi_set_cs(spi, !(spi->mode & SPI_CS_HIGH));

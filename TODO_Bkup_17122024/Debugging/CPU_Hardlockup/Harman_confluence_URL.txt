@@ -1,0 +1,3 @@
+
+
+	https://confluence.harman.com/confluence/display/ELINA/HardLockUp+and+SoftLockUP+detectors+in+kernel

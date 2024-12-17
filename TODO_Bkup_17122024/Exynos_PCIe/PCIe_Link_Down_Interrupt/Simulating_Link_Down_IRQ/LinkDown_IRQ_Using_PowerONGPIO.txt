@@ -1,0 +1,779 @@
+
+
+Method 1:-
+=============
+1. Let us say both WLAN devices are already enumerated. If we write 0 to PowerOnGPIO-117, then 
+   it gives LINK_DOWN interrupt. It is clear as below.
+
+# echo 0 > /sys/class/gpio/gpio117/value
+	
+# dmesg | grep pci
+
+O/p - 
+[  232.311720] exynos-v920-pcie 161c0000.pcie: !!PCIE LINK DOWN (state : 0x44000000)!!
+[  232.311751] exynos-v920-pcie 161c1000.pcie: !!PCIE LINK DOWN (state : 0x44000000)!!
+[  232.311770] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311778] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311783] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311787] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311790] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311794] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311798] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311802] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311806] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311809] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311813] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311813] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311817] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311818] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311820] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311822] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311824] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311826] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311827] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311830] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311831] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311835] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311835] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311839] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311840] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311843] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311844] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311847] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311847] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311850] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311851] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311854] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311854] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311858] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311859] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311862] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311863] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311866] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311866] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311869] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311870] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311873] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311874] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311877] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311877] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311881] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311885] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311889] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311892] exynos-v920-pcie 161c0000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311896] exynos-v920-pcie 161c0000.pcie: PCIE link state is 2
+[  232.311896] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311900] exynos-v920-pcie 161c0000.pcie: Print ELBI region...
+[  232.311900] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311904] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311906] exynos-v920-pcie 161c0000.pcie: ELBI 0x0000 : 0x00000014
+[  232.311907] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311911] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311912] exynos-v920-pcie 161c0000.pcie: ELBI 0x0004 : 0x00000000
+[  232.311914] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311918] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311918] exynos-v920-pcie 161c0000.pcie: ELBI 0x0008 : 0x00000001
+[  232.311922] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311923] exynos-v920-pcie 161c0000.pcie: ELBI 0x000c : 0x00000200
+[  232.311925] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311928] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311929] exynos-v920-pcie 161c0000.pcie: ELBI 0x0010 : 0x00000000
+[  232.311932] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311935] exynos-v920-pcie 161c0000.pcie: ELBI 0x0014 : 0x00000000
+[  232.311936] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311939] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311941] exynos-v920-pcie 161c0000.pcie: ELBI 0x0018 : 0x00000000
+[  232.311943] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311946] exynos-v920-pcie 161c1000.pcie: LTSSM: 0x00, L1sub: 0x0, D state: 0x0
+[  232.311947] exynos-v920-pcie 161c0000.pcie: ELBI 0x001c : 0x00000000
+[  232.311951] exynos-v920-pcie 161c1000.pcie: PCIE link state is 2
+[  232.311952] exynos-v920-pcie 161c0000.pcie: ELBI 0x0020 : 0x00000000
+[  232.311954] exynos-v920-pcie 161c1000.pcie: Print ELBI region...
+[  232.311958] exynos-v920-pcie 161c0000.pcie: ELBI 0x0024 : 0x00000000
+[  232.311960] exynos-v920-pcie 161c1000.pcie: ELBI 0x0000 : 0x00000014
+[  232.311962] exynos-v920-pcie 161c0000.pcie: ELBI 0x0028 : 0x00000000
+[  232.311967] exynos-v920-pcie 161c0000.pcie: ELBI 0x002c : 0x00000000
+[  232.311966] exynos-v920-pcie 161c1000.pcie: ELBI 0x0004 : 0x00000000
+[  232.311973] exynos-v920-pcie 161c0000.pcie: ELBI 0x0030 : 0x00280000
+[  232.311973] exynos-v920-pcie 161c1000.pcie: ELBI 0x0008 : 0x00000001
+[  232.311979] exynos-v920-pcie 161c0000.pcie: ELBI 0x0034 : 0x00000000
+[  232.311979] exynos-v920-pcie 161c1000.pcie: ELBI 0x000c : 0x00000200
+[  232.311985] exynos-v920-pcie 161c0000.pcie: ELBI 0x0038 : 0x00000000
+[  232.311985] exynos-v920-pcie 161c1000.pcie: ELBI 0x0010 : 0x00000000
+[  232.311990] exynos-v920-pcie 161c0000.pcie: ELBI 0x003c : 0x00000000
+[  232.311990] exynos-v920-pcie 161c1000.pcie: ELBI 0x0014 : 0x00000000
+[  232.311996] exynos-v920-pcie 161c0000.pcie: ELBI 0x0040 : 0x00000000
+[  232.311996] exynos-v920-pcie 161c1000.pcie: ELBI 0x0018 : 0x00000000
+[  232.312026] exynos-v920-pcie 161c0000.pcie: ELBI 0x0044 : 0x00000000
+[  232.312031] exynos-v920-pcie 161c1000.pcie: ELBI 0x001c : 0x00000000
+[  232.312031] exynos-v920-pcie 161c0000.pcie: ELBI 0x0048 : 0x00000000
+[  232.312037] exynos-v920-pcie 161c0000.pcie: ELBI 0x004c : 0x00000000
+[  232.312037] exynos-v920-pcie 161c1000.pcie: ELBI 0x0020 : 0x00000000
+[  232.312042] exynos-v920-pcie 161c0000.pcie: ELBI 0x0050 : 0x00000000
+[  232.312042] exynos-v920-pcie 161c1000.pcie: ELBI 0x0024 : 0x00000000
+[  232.312048] exynos-v920-pcie 161c0000.pcie: ELBI 0x0054 : 0x00000000
+[  232.312048] exynos-v920-pcie 161c1000.pcie: ELBI 0x0028 : 0x00000000
+[  232.312053] exynos-v920-pcie 161c0000.pcie: ELBI 0x0058 : 0x00000000
+[  232.312054] exynos-v920-pcie 161c1000.pcie: ELBI 0x002c : 0x00000000
+[  232.312059] exynos-v920-pcie 161c0000.pcie: ELBI 0x005c : 0x0000000f
+[  232.312059] exynos-v920-pcie 161c1000.pcie: ELBI 0x0030 : 0x00280000
+[  232.312064] exynos-v920-pcie 161c0000.pcie: ELBI 0x0060 : 0x00000000
+[  232.312065] exynos-v920-pcie 161c1000.pcie: ELBI 0x0034 : 0x00000000
+[  232.312070] exynos-v920-pcie 161c0000.pcie: ELBI 0x0064 : 0x00000000
+[  232.312070] exynos-v920-pcie 161c1000.pcie: ELBI 0x0038 : 0x00000000
+[  232.312076] exynos-v920-pcie 161c0000.pcie: ELBI 0x0068 : 0x00000000
+[  232.312076] exynos-v920-pcie 161c1000.pcie: ELBI 0x003c : 0x00000000
+[  232.312081] exynos-v920-pcie 161c0000.pcie: ELBI 0x006c : 0x00000000
+[  232.312082] exynos-v920-pcie 161c1000.pcie: ELBI 0x0040 : 0x00000000
+[  232.312087] exynos-v920-pcie 161c0000.pcie: ELBI 0x0070 : 0x00000000
+[  232.312087] exynos-v920-pcie 161c1000.pcie: ELBI 0x0044 : 0x00000000
+[  232.312092] exynos-v920-pcie 161c0000.pcie: ELBI 0x0074 : 0x00000000
+[  232.312093] exynos-v920-pcie 161c1000.pcie: ELBI 0x0048 : 0x00000000
+[  232.312098] exynos-v920-pcie 161c0000.pcie: ELBI 0x0078 : 0x00000000
+[  232.312098] exynos-v920-pcie 161c1000.pcie: ELBI 0x004c : 0x00000000
+[  232.312104] exynos-v920-pcie 161c0000.pcie: ELBI 0x007c : 0x00000000
+[  232.312104] exynos-v920-pcie 161c1000.pcie: ELBI 0x0050 : 0x00000000
+[  232.312109] exynos-v920-pcie 161c0000.pcie: ELBI 0x0080 : 0x00000000
+[  232.312109] exynos-v920-pcie 161c1000.pcie: ELBI 0x0054 : 0x00000000
+[  232.312115] exynos-v920-pcie 161c0000.pcie: ELBI 0x0084 : 0x00000000
+[  232.312116] exynos-v920-pcie 161c1000.pcie: ELBI 0x0058 : 0x00000000
+[  232.312121] exynos-v920-pcie 161c0000.pcie: ELBI 0x0088 : 0x0000c810
+[  232.312121] exynos-v920-pcie 161c1000.pcie: ELBI 0x005c : 0x0000000f
+[  232.312126] exynos-v920-pcie 161c0000.pcie: ELBI 0x008c : 0x00000000
+[  232.312127] exynos-v920-pcie 161c1000.pcie: ELBI 0x0060 : 0x00000000
+[  232.312132] exynos-v920-pcie 161c0000.pcie: ELBI 0x0090 : 0x00000000
+[  232.312132] exynos-v920-pcie 161c1000.pcie: ELBI 0x0064 : 0x00000000
+[  232.312137] exynos-v920-pcie 161c0000.pcie: ELBI 0x0094 : 0x40000000
+[  232.312137] exynos-v920-pcie 161c1000.pcie: ELBI 0x0068 : 0x00000000
+[  232.312143] exynos-v920-pcie 161c0000.pcie: ELBI 0x0098 : 0x00000000
+[  232.312143] exynos-v920-pcie 161c1000.pcie: ELBI 0x006c : 0x00000000
+[  232.312148] exynos-v920-pcie 161c0000.pcie: ELBI 0x009c : 0x00000000
+[  232.312148] exynos-v920-pcie 161c1000.pcie: ELBI 0x0070 : 0x00000000
+[  232.312153] exynos-v920-pcie 161c0000.pcie: ELBI 0x00a0 : 0x00000000
+[  232.312154] exynos-v920-pcie 161c1000.pcie: ELBI 0x0074 : 0x00000000
+[  232.312159] exynos-v920-pcie 161c0000.pcie: ELBI 0x00a4 : 0x00000000
+[  232.312159] exynos-v920-pcie 161c1000.pcie: ELBI 0x0078 : 0x00000000
+[  232.312164] exynos-v920-pcie 161c0000.pcie: ELBI 0x00a8 : 0x00000000
+[  232.312164] exynos-v920-pcie 161c1000.pcie: ELBI 0x007c : 0x00000000
+[  232.312169] exynos-v920-pcie 161c0000.pcie: ELBI 0x00ac : 0x00000000
+[  232.312169] exynos-v920-pcie 161c1000.pcie: ELBI 0x0080 : 0x00000000
+[  232.312174] exynos-v920-pcie 161c0000.pcie: ELBI 0x00b0 : 0x00000000
+[  232.312175] exynos-v920-pcie 161c1000.pcie: ELBI 0x0084 : 0x00000000
+[  232.312180] exynos-v920-pcie 161c0000.pcie: ELBI 0x00b4 : 0x00000000
+[  232.312180] exynos-v920-pcie 161c1000.pcie: ELBI 0x0088 : 0x0000c810
+[  232.312185] exynos-v920-pcie 161c0000.pcie: ELBI 0x00b8 : 0x00000000
+[  232.312185] exynos-v920-pcie 161c1000.pcie: ELBI 0x008c : 0x00000000
+[  232.312191] exynos-v920-pcie 161c0000.pcie: ELBI 0x00bc : 0x00000000
+[  232.312191] exynos-v920-pcie 161c1000.pcie: ELBI 0x0090 : 0x00000000
+[  232.312196] exynos-v920-pcie 161c0000.pcie: ELBI 0x00c0 : 0x00000000
+[  232.312196] exynos-v920-pcie 161c1000.pcie: ELBI 0x0094 : 0x40000000
+[  232.312201] exynos-v920-pcie 161c0000.pcie: ELBI 0x00c4 : 0x00000000
+[  232.312202] exynos-v920-pcie 161c1000.pcie: ELBI 0x0098 : 0x00000000
+[  232.312207] exynos-v920-pcie 161c0000.pcie: ELBI 0x00c8 : 0x00000000
+[  232.312208] exynos-v920-pcie 161c1000.pcie: ELBI 0x009c : 0x00000000
+[  232.312213] exynos-v920-pcie 161c0000.pcie: ELBI 0x00cc : 0x00000000
+[  232.312213] exynos-v920-pcie 161c1000.pcie: ELBI 0x00a0 : 0x00000000
+[  232.312219] exynos-v920-pcie 161c1000.pcie: ELBI 0x00a4 : 0x00000000
+[  232.312219] exynos-v920-pcie 161c0000.pcie: ELBI 0x00d0 : 0x00000000
+[  232.312225] exynos-v920-pcie 161c0000.pcie: ELBI 0x00d4 : 0x00000000
+[  232.312225] exynos-v920-pcie 161c1000.pcie: ELBI 0x00a8 : 0x00000000
+[  232.312230] exynos-v920-pcie 161c0000.pcie: ELBI 0x00d8 : 0x00000000
+[  232.312231] exynos-v920-pcie 161c1000.pcie: ELBI 0x00ac : 0x00000000
+[  232.312236] exynos-v920-pcie 161c0000.pcie: ELBI 0x00dc : 0x00000000
+[  232.312237] exynos-v920-pcie 161c1000.pcie: ELBI 0x00b0 : 0x00000000
+[  232.312242] exynos-v920-pcie 161c0000.pcie: ELBI 0x00e0 : 0x00000000
+[  232.312243] exynos-v920-pcie 161c1000.pcie: ELBI 0x00b4 : 0x00000000
+[  232.312248] exynos-v920-pcie 161c0000.pcie: ELBI 0x00e4 : 0x00000000
+[  232.312248] exynos-v920-pcie 161c1000.pcie: ELBI 0x00b8 : 0x00000000
+[  232.312253] exynos-v920-pcie 161c0000.pcie: ELBI 0x00e8 : 0x00000000
+[  232.312254] exynos-v920-pcie 161c1000.pcie: ELBI 0x00bc : 0x00000000
+[  232.312258] exynos-v920-pcie 161c0000.pcie: ELBI 0x00ec : 0x00000000
+[  232.312259] exynos-v920-pcie 161c1000.pcie: ELBI 0x00c0 : 0x00000000
+[  232.312264] exynos-v920-pcie 161c0000.pcie: ELBI 0x00f0 : 0x00000000
+[  232.312264] exynos-v920-pcie 161c1000.pcie: ELBI 0x00c4 : 0x00000000
+[  232.312269] exynos-v920-pcie 161c0000.pcie: ELBI 0x00f4 : 0x00000000
+[  232.312269] exynos-v920-pcie 161c1000.pcie: ELBI 0x00c8 : 0x00000000
+[  232.312274] exynos-v920-pcie 161c0000.pcie: ELBI 0x00f8 : 0x00000000
+[  232.312275] exynos-v920-pcie 161c1000.pcie: ELBI 0x00cc : 0x00000000
+[  232.312280] exynos-v920-pcie 161c0000.pcie: ELBI 0x00fc : 0x00000000
+[  232.312280] exynos-v920-pcie 161c1000.pcie: ELBI 0x00d0 : 0x00000000
+[  232.312285] exynos-v920-pcie 161c0000.pcie: ELBI 0x0100 : 0x00000000
+[  232.312285] exynos-v920-pcie 161c1000.pcie: ELBI 0x00d4 : 0x00000000
+[  232.312290] exynos-v920-pcie 161c0000.pcie: ELBI 0x0104 : 0x00000000
+[  232.312290] exynos-v920-pcie 161c1000.pcie: ELBI 0x00d8 : 0x00000000
+[  232.312296] exynos-v920-pcie 161c0000.pcie: ELBI 0x0108 : 0x00000000
+[  232.312296] exynos-v920-pcie 161c1000.pcie: ELBI 0x00dc : 0x00000000
+[  232.312301] exynos-v920-pcie 161c0000.pcie: ELBI 0x010c : 0x00000000
+[  232.312301] exynos-v920-pcie 161c1000.pcie: ELBI 0x00e0 : 0x00000000
+[  232.312306] exynos-v920-pcie 161c0000.pcie: ELBI 0x0110 : 0x00000000
+[  232.312306] exynos-v920-pcie 161c1000.pcie: ELBI 0x00e4 : 0x00000000
+[  232.312311] exynos-v920-pcie 161c0000.pcie: ELBI 0x0114 : 0x00000000
+[  232.312311] exynos-v920-pcie 161c1000.pcie: ELBI 0x00e8 : 0x00000000
+[  232.312316] exynos-v920-pcie 161c0000.pcie: ELBI 0x0118 : 0x00000000
+[  232.312317] exynos-v920-pcie 161c1000.pcie: ELBI 0x00ec : 0x00000000
+[  232.312322] exynos-v920-pcie 161c0000.pcie: ELBI 0x011c : 0x00000000
+[  232.312322] exynos-v920-pcie 161c1000.pcie: ELBI 0x00f0 : 0x00000000
+[  232.312327] exynos-v920-pcie 161c0000.pcie: ELBI 0x0120 : 0x00000000
+[  232.312327] exynos-v920-pcie 161c1000.pcie: ELBI 0x00f4 : 0x00000000
+[  232.312332] exynos-v920-pcie 161c0000.pcie: ELBI 0x0124 : 0x00000000
+[  232.312332] exynos-v920-pcie 161c1000.pcie: ELBI 0x00f8 : 0x00000000
+[  232.312337] exynos-v920-pcie 161c0000.pcie: ELBI 0x0128 : 0x00000000
+[  232.312338] exynos-v920-pcie 161c1000.pcie: ELBI 0x00fc : 0x00000000
+[  232.312343] exynos-v920-pcie 161c0000.pcie: ELBI 0x012c : 0x00000000
+[  232.312343] exynos-v920-pcie 161c1000.pcie: ELBI 0x0100 : 0x00000000
+[  232.312348] exynos-v920-pcie 161c0000.pcie: ELBI 0x0130 : 0x00000000
+[  232.312348] exynos-v920-pcie 161c1000.pcie: ELBI 0x0104 : 0x00000000
+[  232.312353] exynos-v920-pcie 161c0000.pcie: ELBI 0x0134 : 0x00000000
+[  232.312353] exynos-v920-pcie 161c1000.pcie: ELBI 0x0108 : 0x00000000
+[  232.312358] exynos-v920-pcie 161c0000.pcie: ELBI 0x0138 : 0x00000000
+[  232.312359] exynos-v920-pcie 161c1000.pcie: ELBI 0x010c : 0x00000000
+[  232.312364] exynos-v920-pcie 161c0000.pcie: ELBI 0x013c : 0x00000000
+[  232.312364] exynos-v920-pcie 161c1000.pcie: ELBI 0x0110 : 0x00000000
+[  232.312369] exynos-v920-pcie 161c0000.pcie: ELBI 0x0140 : 0x00000000
+[  232.312369] exynos-v920-pcie 161c1000.pcie: ELBI 0x0114 : 0x00000000
+[  232.312374] exynos-v920-pcie 161c0000.pcie: ELBI 0x0144 : 0x00000000
+[  232.312375] exynos-v920-pcie 161c1000.pcie: ELBI 0x0118 : 0x00000000
+[  232.312380] exynos-v920-pcie 161c0000.pcie: ELBI 0x0148 : 0x00000000
+[  232.312380] exynos-v920-pcie 161c1000.pcie: ELBI 0x011c : 0x00000000
+[  232.312385] exynos-v920-pcie 161c0000.pcie: ELBI 0x014c : 0x00000000
+[  232.312385] exynos-v920-pcie 161c1000.pcie: ELBI 0x0120 : 0x00000000
+[  232.312390] exynos-v920-pcie 161c0000.pcie: ELBI 0x0150 : 0x00000000
+[  232.312390] exynos-v920-pcie 161c1000.pcie: ELBI 0x0124 : 0x00000000
+[  232.312396] exynos-v920-pcie 161c0000.pcie: ELBI 0x0154 : 0x00000000
+[  232.312396] exynos-v920-pcie 161c1000.pcie: ELBI 0x0128 : 0x00000000
+[  232.312401] exynos-v920-pcie 161c0000.pcie: ELBI 0x0158 : 0x00000000
+[  232.312401] exynos-v920-pcie 161c1000.pcie: ELBI 0x012c : 0x00000000
+[  232.312406] exynos-v920-pcie 161c0000.pcie: ELBI 0x015c : 0x00000000
+[  232.312407] exynos-v920-pcie 161c1000.pcie: ELBI 0x0130 : 0x00000000
+[  232.312412] exynos-v920-pcie 161c0000.pcie: ELBI 0x0160 : 0x00000000
+[  232.312412] exynos-v920-pcie 161c1000.pcie: ELBI 0x0134 : 0x00000000
+[  232.312417] exynos-v920-pcie 161c0000.pcie: ELBI 0x0164 : 0x00000000
+[  232.312417] exynos-v920-pcie 161c1000.pcie: ELBI 0x0138 : 0x00000000
+[  232.312422] exynos-v920-pcie 161c0000.pcie: ELBI 0x0168 : 0x00000000
+[  232.312422] exynos-v920-pcie 161c1000.pcie: ELBI 0x013c : 0x00000000
+[  232.312428] exynos-v920-pcie 161c0000.pcie: ELBI 0x016c : 0x00000000
+[  232.312428] exynos-v920-pcie 161c1000.pcie: ELBI 0x0140 : 0x00000000
+[  232.312433] exynos-v920-pcie 161c0000.pcie: ELBI 0x0170 : 0x00000000
+[  232.312433] exynos-v920-pcie 161c1000.pcie: ELBI 0x0144 : 0x00000000
+[  232.312438] exynos-v920-pcie 161c0000.pcie: ELBI 0x0174 : 0x00000000
+[  232.312438] exynos-v920-pcie 161c1000.pcie: ELBI 0x0148 : 0x00000000
+[  232.312444] exynos-v920-pcie 161c0000.pcie: ELBI 0x0178 : 0x00000000
+[  232.312444] exynos-v920-pcie 161c1000.pcie: ELBI 0x014c : 0x00000000
+[  232.312449] exynos-v920-pcie 161c0000.pcie: ELBI 0x017c : 0x00000000
+[  232.312449] exynos-v920-pcie 161c1000.pcie: ELBI 0x0150 : 0x00000000
+[  232.312454] exynos-v920-pcie 161c0000.pcie: ELBI 0x0180 : 0x00000000
+[  232.312455] exynos-v920-pcie 161c1000.pcie: ELBI 0x0154 : 0x00000000
+[  232.312459] exynos-v920-pcie 161c0000.pcie: ELBI 0x0184 : 0x00000000
+[  232.312460] exynos-v920-pcie 161c1000.pcie: ELBI 0x0158 : 0x00000000
+[  232.312465] exynos-v920-pcie 161c0000.pcie: ELBI 0x0188 : 0x00000000
+[  232.312465] exynos-v920-pcie 161c1000.pcie: ELBI 0x015c : 0x00000000
+[  232.312470] exynos-v920-pcie 161c0000.pcie: ELBI 0x018c : 0x00000000
+[  232.312470] exynos-v920-pcie 161c1000.pcie: ELBI 0x0160 : 0x00000000
+[  232.312475] exynos-v920-pcie 161c0000.pcie: ELBI 0x0190 : 0x00000000
+[  232.312476] exynos-v920-pcie 161c1000.pcie: ELBI 0x0164 : 0x00000000
+[  232.312481] exynos-v920-pcie 161c0000.pcie: ELBI 0x0194 : 0x00000000
+[  232.312481] exynos-v920-pcie 161c1000.pcie: ELBI 0x0168 : 0x00000000
+[  232.312486] exynos-v920-pcie 161c0000.pcie: ELBI 0x0198 : 0x00000000
+[  232.312486] exynos-v920-pcie 161c1000.pcie: ELBI 0x016c : 0x00000000
+[  232.312491] exynos-v920-pcie 161c0000.pcie: ELBI 0x019c : 0x00000000
+[  232.312492] exynos-v920-pcie 161c1000.pcie: ELBI 0x0170 : 0x00000000
+[  232.312497] exynos-v920-pcie 161c0000.pcie: ELBI 0x01a0 : 0x00000000
+[  232.312497] exynos-v920-pcie 161c1000.pcie: ELBI 0x0174 : 0x00000000
+[  232.312502] exynos-v920-pcie 161c0000.pcie: ELBI 0x01a4 : 0x00000000
+[  232.312502] exynos-v920-pcie 161c1000.pcie: ELBI 0x0178 : 0x00000000
+[  232.312507] exynos-v920-pcie 161c0000.pcie: ELBI 0x01a8 : 0x00000000
+[  232.312508] exynos-v920-pcie 161c1000.pcie: ELBI 0x017c : 0x00000000
+[  232.312513] exynos-v920-pcie 161c0000.pcie: ELBI 0x01ac : 0x00000000
+[  232.312513] exynos-v920-pcie 161c1000.pcie: ELBI 0x0180 : 0x00000000
+[  232.312518] exynos-v920-pcie 161c0000.pcie: ELBI 0x01b0 : 0x00000000
+[  232.312518] exynos-v920-pcie 161c1000.pcie: ELBI 0x0184 : 0x00000000
+[  232.312523] exynos-v920-pcie 161c0000.pcie: ELBI 0x01b4 : 0x00000000
+[  232.312524] exynos-v920-pcie 161c1000.pcie: ELBI 0x0188 : 0x00000000
+[  232.312529] exynos-v920-pcie 161c0000.pcie: ELBI 0x01b8 : 0x00000000
+[  232.312529] exynos-v920-pcie 161c1000.pcie: ELBI 0x018c : 0x00000000
+[  232.312534] exynos-v920-pcie 161c0000.pcie: ELBI 0x01bc : 0x00000000
+[  232.312534] exynos-v920-pcie 161c1000.pcie: ELBI 0x0190 : 0x00000000
+[  232.312539] exynos-v920-pcie 161c0000.pcie: ELBI 0x01c0 : 0x00000000
+[  232.312539] exynos-v920-pcie 161c1000.pcie: ELBI 0x0194 : 0x00000000
+[  232.312545] exynos-v920-pcie 161c0000.pcie: ELBI 0x01c4 : 0x00000000
+[  232.312545] exynos-v920-pcie 161c1000.pcie: ELBI 0x0198 : 0x00000000
+[  232.312550] exynos-v920-pcie 161c0000.pcie: ELBI 0x01c8 : 0x00000000
+[  232.312550] exynos-v920-pcie 161c1000.pcie: ELBI 0x019c : 0x00000000
+[  232.312555] exynos-v920-pcie 161c0000.pcie: ELBI 0x01cc : 0x00000000
+[  232.312555] exynos-v920-pcie 161c1000.pcie: ELBI 0x01a0 : 0x00000000
+[  232.312560] exynos-v920-pcie 161c0000.pcie: ELBI 0x01d0 : 0x00000000
+[  232.312561] exynos-v920-pcie 161c1000.pcie: ELBI 0x01a4 : 0x00000000
+[  232.312566] exynos-v920-pcie 161c0000.pcie: ELBI 0x01d4 : 0x00000000
+[  232.312566] exynos-v920-pcie 161c1000.pcie: ELBI 0x01a8 : 0x00000000
+[  232.312571] exynos-v920-pcie 161c0000.pcie: ELBI 0x01d8 : 0x00000000
+[  232.312571] exynos-v920-pcie 161c1000.pcie: ELBI 0x01ac : 0x00000000
+[  232.312576] exynos-v920-pcie 161c0000.pcie: ELBI 0x01dc : 0x00000000
+[  232.312577] exynos-v920-pcie 161c1000.pcie: ELBI 0x01b0 : 0x00000000
+[  232.312582] exynos-v920-pcie 161c0000.pcie: ELBI 0x01e0 : 0x00000000
+[  232.312582] exynos-v920-pcie 161c1000.pcie: ELBI 0x01b4 : 0x00000000
+[  232.312587] exynos-v920-pcie 161c0000.pcie: ELBI 0x01e4 : 0x00000000
+[  232.312587] exynos-v920-pcie 161c1000.pcie: ELBI 0x01b8 : 0x00000000
+[  232.312592] exynos-v920-pcie 161c0000.pcie: ELBI 0x01e8 : 0x00000000
+[  232.312593] exynos-v920-pcie 161c1000.pcie: ELBI 0x01bc : 0x00000000
+[  232.312598] exynos-v920-pcie 161c0000.pcie: ELBI 0x01ec : 0x00000000
+[  232.312598] exynos-v920-pcie 161c1000.pcie: ELBI 0x01c0 : 0x00000000
+[  232.312603] exynos-v920-pcie 161c0000.pcie: ELBI 0x01f0 : 0x00000000
+[  232.312603] exynos-v920-pcie 161c1000.pcie: ELBI 0x01c4 : 0x00000000
+[  232.312608] exynos-v920-pcie 161c0000.pcie: ELBI 0x01f4 : 0x00000000
+[  232.312609] exynos-v920-pcie 161c1000.pcie: ELBI 0x01c8 : 0x00000000
+[  232.312614] exynos-v920-pcie 161c0000.pcie: ELBI 0x01f8 : 0x00000000
+[  232.312614] exynos-v920-pcie 161c1000.pcie: ELBI 0x01cc : 0x00000000
+[  232.312619] exynos-v920-pcie 161c0000.pcie: ELBI 0x01fc : 0x00000000
+[  232.312619] exynos-v920-pcie 161c1000.pcie: ELBI 0x01d0 : 0x00000000
+[  232.312624] exynos-v920-pcie 161c0000.pcie: ELBI 0x0200 : 0x00000000
+[  232.312625] exynos-v920-pcie 161c1000.pcie: ELBI 0x01d4 : 0x00000000
+[  232.312629] exynos-v920-pcie 161c0000.pcie: ELBI 0x0204 : 0x00000000
+[  232.312630] exynos-v920-pcie 161c1000.pcie: ELBI 0x01d8 : 0x00000000
+[  232.312635] exynos-v920-pcie 161c0000.pcie: ELBI 0x0208 : 0x00000000
+[  232.312635] exynos-v920-pcie 161c1000.pcie: ELBI 0x01dc : 0x00000000
+[  232.312640] exynos-v920-pcie 161c0000.pcie: ELBI 0x020c : 0x00000000
+[  232.312640] exynos-v920-pcie 161c1000.pcie: ELBI 0x01e0 : 0x00000000
+[  232.312645] exynos-v920-pcie 161c0000.pcie: ELBI 0x0210 : 0x00000000
+[  232.312646] exynos-v920-pcie 161c1000.pcie: ELBI 0x01e4 : 0x00000000
+[  232.312651] exynos-v920-pcie 161c0000.pcie: ELBI 0x0214 : 0x00000000
+[  232.312651] exynos-v920-pcie 161c1000.pcie: ELBI 0x01e8 : 0x00000000
+[  232.312656] exynos-v920-pcie 161c0000.pcie: ELBI 0x0218 : 0x00000000
+[  232.312656] exynos-v920-pcie 161c1000.pcie: ELBI 0x01ec : 0x00000000
+[  232.312661] exynos-v920-pcie 161c0000.pcie: ELBI 0x021c : 0x00000000
+[  232.312662] exynos-v920-pcie 161c1000.pcie: ELBI 0x01f0 : 0x00000000
+[  232.312667] exynos-v920-pcie 161c0000.pcie: ELBI 0x0220 : 0x00000000
+[  232.312667] exynos-v920-pcie 161c1000.pcie: ELBI 0x01f4 : 0x00000000
+[  232.312672] exynos-v920-pcie 161c0000.pcie: ELBI 0x0224 : 0x00000000
+[  232.312673] exynos-v920-pcie 161c1000.pcie: ELBI 0x01f8 : 0x00000000
+[  232.312677] exynos-v920-pcie 161c0000.pcie: ELBI 0x0228 : 0x00000000
+[  232.312678] exynos-v920-pcie 161c1000.pcie: ELBI 0x01fc : 0x00000000
+[  232.312683] exynos-v920-pcie 161c0000.pcie: ELBI 0x022c : 0x00000000
+[  232.312683] exynos-v920-pcie 161c1000.pcie: ELBI 0x0200 : 0x00000000
+[  232.312688] exynos-v920-pcie 161c0000.pcie: ELBI 0x0230 : 0x00000000
+[  232.312688] exynos-v920-pcie 161c1000.pcie: ELBI 0x0204 : 0x00000000
+[  232.312693] exynos-v920-pcie 161c0000.pcie: ELBI 0x0234 : 0x00000000
+[  232.312693] exynos-v920-pcie 161c1000.pcie: ELBI 0x0208 : 0x00000000
+[  232.312698] exynos-v920-pcie 161c0000.pcie: ELBI 0x0238 : 0x00000000
+[  232.312699] exynos-v920-pcie 161c1000.pcie: ELBI 0x020c : 0x00000000
+[  232.312704] exynos-v920-pcie 161c0000.pcie: ELBI 0x023c : 0x00000000
+[  232.312704] exynos-v920-pcie 161c1000.pcie: ELBI 0x0210 : 0x00000000
+[  232.312709] exynos-v920-pcie 161c0000.pcie: ELBI 0x0240 : 0x00000000
+[  232.312709] exynos-v920-pcie 161c1000.pcie: ELBI 0x0214 : 0x00000000
+[  232.312714] exynos-v920-pcie 161c0000.pcie: ELBI 0x0244 : 0x00000000
+[  232.312714] exynos-v920-pcie 161c1000.pcie: ELBI 0x0218 : 0x00000000
+[  232.312719] exynos-v920-pcie 161c0000.pcie: ELBI 0x0248 : 0x00000000
+[  232.312720] exynos-v920-pcie 161c1000.pcie: ELBI 0x021c : 0x00000000
+[  232.312724] exynos-v920-pcie 161c0000.pcie: ELBI 0x024c : 0x00000000
+[  232.312724] exynos-v920-pcie 161c1000.pcie: ELBI 0x0220 : 0x00000000
+[  232.312729] exynos-v920-pcie 161c0000.pcie: ELBI 0x0250 : 0x00000000
+[  232.312730] exynos-v920-pcie 161c1000.pcie: ELBI 0x0224 : 0x00000000
+[  232.312734] exynos-v920-pcie 161c0000.pcie: ELBI 0x0254 : 0x00000000
+[  232.312735] exynos-v920-pcie 161c1000.pcie: ELBI 0x0228 : 0x00000000
+[  232.312740] exynos-v920-pcie 161c0000.pcie: ELBI 0x0258 : 0x00000000
+[  232.312740] exynos-v920-pcie 161c1000.pcie: ELBI 0x022c : 0x00000000
+[  232.312744] exynos-v920-pcie 161c0000.pcie: ELBI 0x025c : 0x00000000
+[  232.312744] exynos-v920-pcie 161c1000.pcie: ELBI 0x0230 : 0x00000000
+[  232.312749] exynos-v920-pcie 161c0000.pcie: ELBI 0x0260 : 0x00000000
+[  232.312750] exynos-v920-pcie 161c1000.pcie: ELBI 0x0234 : 0x00000000
+[  232.312755] exynos-v920-pcie 161c0000.pcie: ELBI 0x0264 : 0x00000000
+[  232.312755] exynos-v920-pcie 161c1000.pcie: ELBI 0x0238 : 0x00000000
+[  232.312760] exynos-v920-pcie 161c0000.pcie: ELBI 0x0268 : 0x00000000
+[  232.312760] exynos-v920-pcie 161c1000.pcie: ELBI 0x023c : 0x00000000
+[  232.312765] exynos-v920-pcie 161c0000.pcie: ELBI 0x026c : 0x00000000
+[  232.312766] exynos-v920-pcie 161c1000.pcie: ELBI 0x0240 : 0x00000000
+[  232.312770] exynos-v920-pcie 161c0000.pcie: ELBI 0x0270 : 0x00000000
+[  232.312771] exynos-v920-pcie 161c1000.pcie: ELBI 0x0244 : 0x00000000
+[  232.312776] exynos-v920-pcie 161c0000.pcie: ELBI 0x0274 : 0x00000000
+[  232.312776] exynos-v920-pcie 161c1000.pcie: ELBI 0x0248 : 0x00000000
+[  232.312781] exynos-v920-pcie 161c0000.pcie: ELBI 0x0278 : 0x00000000
+[  232.312781] exynos-v920-pcie 161c1000.pcie: ELBI 0x024c : 0x00000000
+[  232.312786] exynos-v920-pcie 161c0000.pcie: ELBI 0x027c : 0x00000000
+[  232.312787] exynos-v920-pcie 161c1000.pcie: ELBI 0x0250 : 0x00000000
+[  232.312792] exynos-v920-pcie 161c0000.pcie: ELBI 0x0280 : 0x00000000
+[  232.312792] exynos-v920-pcie 161c1000.pcie: ELBI 0x0254 : 0x00000000
+[  232.312797] exynos-v920-pcie 161c0000.pcie: ELBI 0x0284 : 0x00000000
+[  232.312797] exynos-v920-pcie 161c1000.pcie: ELBI 0x0258 : 0x00000000
+[  232.312802] exynos-v920-pcie 161c0000.pcie: ELBI 0x0288 : 0x00000000
+[  232.312803] exynos-v920-pcie 161c1000.pcie: ELBI 0x025c : 0x00000000
+[  232.312808] exynos-v920-pcie 161c0000.pcie: ELBI 0x028c : 0x00000000
+[  232.312808] exynos-v920-pcie 161c1000.pcie: ELBI 0x0260 : 0x00000000
+[  232.312813] exynos-v920-pcie 161c0000.pcie: ELBI 0x0290 : 0x00000000
+[  232.312813] exynos-v920-pcie 161c1000.pcie: ELBI 0x0264 : 0x00000000
+[  232.312819] exynos-v920-pcie 161c0000.pcie: ELBI 0x0294 : 0x00000000
+[  232.312819] exynos-v920-pcie 161c1000.pcie: ELBI 0x0268 : 0x00000000
+[  232.312824] exynos-v920-pcie 161c0000.pcie: ELBI 0x0298 : 0x00000000
+[  232.312824] exynos-v920-pcie 161c1000.pcie: ELBI 0x026c : 0x00000000
+[  232.312829] exynos-v920-pcie 161c0000.pcie: ELBI 0x029c : 0x00000000
+[  232.312829] exynos-v920-pcie 161c1000.pcie: ELBI 0x0270 : 0x00000000
+[  232.312834] exynos-v920-pcie 161c0000.pcie: ELBI 0x02a0 : 0x00000000
+[  232.312835] exynos-v920-pcie 161c1000.pcie: ELBI 0x0274 : 0x00000000
+[  232.312839] exynos-v920-pcie 161c0000.pcie: ELBI 0x02a4 : 0x00000000
+[  232.312840] exynos-v920-pcie 161c1000.pcie: ELBI 0x0278 : 0x00000000
+[  232.312845] exynos-v920-pcie 161c0000.pcie: ELBI 0x02a8 : 0x00000000
+[  232.312845] exynos-v920-pcie 161c1000.pcie: ELBI 0x027c : 0x00000000
+[  232.312850] exynos-v920-pcie 161c0000.pcie: ELBI 0x02ac : 0x00000000
+[  232.312851] exynos-v920-pcie 161c1000.pcie: ELBI 0x0280 : 0x00000000
+[  232.312855] exynos-v920-pcie 161c0000.pcie: ELBI 0x02b0 : 0x00000000
+[  232.312856] exynos-v920-pcie 161c1000.pcie: ELBI 0x0284 : 0x00000000
+[  232.312861] exynos-v920-pcie 161c0000.pcie: ELBI 0x02b4 : 0x00000000
+[  232.312861] exynos-v920-pcie 161c1000.pcie: ELBI 0x0288 : 0x00000000
+[  232.312866] exynos-v920-pcie 161c0000.pcie: ELBI 0x02b8 : 0x00000000
+[  232.312866] exynos-v920-pcie 161c1000.pcie: ELBI 0x028c : 0x00000000
+[  232.312871] exynos-v920-pcie 161c0000.pcie: ELBI 0x02bc : 0x00000000
+[  232.312871] exynos-v920-pcie 161c1000.pcie: ELBI 0x0290 : 0x00000000
+[  232.312876] exynos-v920-pcie 161c0000.pcie: ELBI 0x02c0 : 0x00000000
+[  232.312877] exynos-v920-pcie 161c1000.pcie: ELBI 0x0294 : 0x00000000
+[  232.312880] exynos-v920-pcie 161c0000.pcie:
+[  232.312882] exynos-v920-pcie 161c1000.pcie: ELBI 0x0298 : 0x00000000
+[  232.312883] exynos-v920-pcie 161c0000.pcie: Print PHY region...
+[  232.312888] exynos-v920-pcie 161c1000.pcie: ELBI 0x029c : 0x00000000
+[  232.312888] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0000 : 0x000074cd
+[  232.312894] exynos-v920-pcie 161c1000.pcie: ELBI 0x02a0 : 0x00000000
+[  232.312894] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0004 : 0x00006d44
+[  232.312899] exynos-v920-pcie 161c1000.pcie: ELBI 0x02a4 : 0x00000000
+[  232.312899] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0008 : 0x00000e00
+[  232.312905] exynos-v920-pcie 161c1000.pcie: ELBI 0x02a8 : 0x00000000
+[  232.312905] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x000c : 0x00000e00
+[  232.312911] exynos-v920-pcie 161c1000.pcie: ELBI 0x02ac : 0x00000000
+[  232.312911] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0010 : 0x00000387
+[  232.312917] exynos-v920-pcie 161c1000.pcie: ELBI 0x02b0 : 0x00000000
+[  232.312917] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0014 : 0x00000000
+[  232.312922] exynos-v920-pcie 161c1000.pcie: ELBI 0x02b4 : 0x00000000
+[  232.312922] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0018 : 0x00000000
+[  232.312927] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x001c : 0x00000120
+[  232.312928] exynos-v920-pcie 161c1000.pcie: ELBI 0x02b8 : 0x00000000
+[  232.312933] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0020 : 0x00000019
+[  232.312933] exynos-v920-pcie 161c1000.pcie: ELBI 0x02bc : 0x00000000
+[  232.312938] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0024 : 0x00000002
+[  232.312938] exynos-v920-pcie 161c1000.pcie: ELBI 0x02c0 : 0x00000000
+[  232.312942] exynos-v920-pcie 161c1000.pcie:
+[  232.312943] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0028 : 0x00000043
+[  232.312945] exynos-v920-pcie 161c1000.pcie: Print PHY region...
+[  232.312949] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x002c : 0x00000043
+[  232.312949] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0000 : 0x000074cd
+[  232.312954] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0030 : 0x00000000
+[  232.312955] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0004 : 0x00006d44
+[  232.312960] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0034 : 0x00000000
+[  232.312960] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0008 : 0x00000e00
+[  232.312965] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0038 : 0x00000000
+[  232.312966] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x000c : 0x00000e00
+[  232.312971] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x003c : 0x00000000
+[  232.312971] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0010 : 0x00000387
+[  232.312976] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0040 : 0x00000000
+[  232.312977] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0014 : 0x00000000
+[  232.312982] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0044 : 0x00000000
+[  232.312982] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0018 : 0x00000000
+[  232.312988] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0048 : 0x00000000
+[  232.312988] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x001c : 0x00000120
+[  232.312993] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x004c : 0x00000120
+[  232.312994] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0020 : 0x00000019
+[  232.312999] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0050 : 0x00000019
+[  232.312999] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0024 : 0x00000002
+[  232.313005] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0054 : 0x00000007
+[  232.313005] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0028 : 0x00000043
+[  232.313010] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0058 : 0x00000043
+[  232.313011] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x002c : 0x00000043
+[  232.313016] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0030 : 0x00000000
+[  232.313017] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x005c : 0x00000043
+[  232.313022] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0034 : 0x00000000
+[  232.313022] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0060 : 0x00000000
+[  232.313027] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0038 : 0x00000000
+[  232.313028] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0064 : 0x00000000
+[  232.313033] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x003c : 0x00000000
+[  232.313033] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0068 : 0x00000000
+[  232.313039] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0040 : 0x00000000
+[  232.313039] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x006c : 0x00000000
+[  232.313044] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0044 : 0x00000000
+[  232.313045] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0070 : 0x00000000
+[  232.313050] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0074 : 0x00000000
+[  232.313050] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0048 : 0x00000000
+[  232.313056] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0078 : 0x00000000
+[  232.313056] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x004c : 0x00000120
+[  232.313062] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0050 : 0x00000019
+[  232.313062] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x007c : 0x00000008
+[  232.313068] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0054 : 0x00000007
+[  232.313068] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0080 : 0x00000000
+[  232.313074] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0084 : 0x00000000
+[  232.313074] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0058 : 0x00000043
+[  232.313080] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0088 : 0x00000010
+[  232.313080] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x005c : 0x00000043
+[  232.313085] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0060 : 0x00000000
+[  232.313086] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x008c : 0x00000010
+[  232.313091] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0064 : 0x00000000
+[  232.313091] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0090 : 0x00000000
+[  232.313096] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0068 : 0x00000000
+[  232.313097] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0094 : 0x00002160
+[  232.313102] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x006c : 0x00000000
+[  232.313102] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0098 : 0x00000064
+[  232.313108] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0070 : 0x00000000
+[  232.313108] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x009c : 0x0000062f
+[  232.313113] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0074 : 0x00000000
+[  232.313114] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00a0 : 0x0000062f
+[  232.313119] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0078 : 0x00000000
+[  232.313119] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00a4 : 0x00000000
+[  232.313124] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x007c : 0x00000008
+[  232.313125] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00a8 : 0x00000c63
+[  232.313130] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0080 : 0x00000000
+[  232.313130] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00ac : 0x00000000
+[  232.313135] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0084 : 0x00000000
+[  232.313136] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00b0 : 0x00002666
+[  232.313141] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0088 : 0x00000010
+[  232.313141] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00b4 : 0x00000000
+[  232.313147] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x008c : 0x00000010
+[  232.313147] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00b8 : 0x00000000
+[  232.313152] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0090 : 0x00000000
+[  232.313153] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00bc : 0x00000000
+[  232.313158] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0094 : 0x00002160
+[  232.313158] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00c0 : 0x00006421
+[  232.313164] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0098 : 0x00000064
+[  232.313164] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00c4 : 0x000000a0
+[  232.313170] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x009c : 0x0000062f
+[  232.313170] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00c8 : 0x0000062f
+[  232.313175] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00a0 : 0x0000062f
+[  232.313176] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00cc : 0x0000062f
+[  232.313181] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00a4 : 0x00000000
+[  232.313181] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00d0 : 0x00000000
+[  232.313187] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00a8 : 0x00000c63
+[  232.313187] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00d4 : 0x000013d1
+[  232.313193] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00ac : 0x00000000
+[  232.313193] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00d8 : 0x00000000
+[  232.313198] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00dc : 0x00003d71
+[  232.313199] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00b0 : 0x00002666
+[  232.313204] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00e0 : 0x00000000
+[  232.313204] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00b4 : 0x00000000
+[  232.313209] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00e4 : 0x00000000
+[  232.313210] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00b8 : 0x00000000
+[  232.313214] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00e8 : 0x00000000
+[  232.313215] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00bc : 0x00000000
+[  232.313220] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00ec : 0x00000200
+[  232.313220] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00c0 : 0x00006421
+[  232.313225] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00f0 : 0x00000f23
+[  232.313226] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00c4 : 0x000000a0
+[  232.313231] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00f4 : 0x00000f23
+[  232.313231] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00c8 : 0x0000062f
+[  232.313236] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00f8 : 0x00000000
+[  232.313236] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00cc : 0x0000062f
+[  232.313241] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x00fc : 0x00001300
+[  232.313242] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00d0 : 0x00000000
+[  232.313247] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0100 : 0x0000c005
+[  232.313247] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00d4 : 0x000013d1
+[  232.313252] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0104 : 0x00006954
+[  232.313252] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00d8 : 0x00000000
+[  232.313258] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0108 : 0x00000000
+[  232.313258] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00dc : 0x00003d71
+[  232.313262] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x010c : 0x00000000
+[  232.313263] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00e0 : 0x00000000
+[  232.313268] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00e4 : 0x00000000
+[  232.313268] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0110 : 0x00000000
+[  232.313274] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00e8 : 0x00000000
+[  232.313274] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0114 : 0x00000002
+[  232.313279] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00ec : 0x00000200
+[  232.313279] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0118 : 0x00000000
+[  232.313284] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00f0 : 0x00000f23
+[  232.313285] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x011c : 0x00000000
+[  232.313290] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00f4 : 0x00000f23
+[  232.313290] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0120 : 0x00000000
+[  232.313295] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0124 : 0x00000000
+[  232.313295] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00f8 : 0x00000000
+[  232.313300] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0128 : 0x00000000
+[  232.313301] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x00fc : 0x00001300
+[  232.313306] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x012c : 0x00000000
+[  232.313306] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0100 : 0x0000c005
+[  232.313311] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0130 : 0x00000000
+[  232.313311] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0104 : 0x00006954
+[  232.313317] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0134 : 0x00000000
+[  232.313317] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0108 : 0x00000000
+[  232.313322] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0138 : 0x00000000
+[  232.313323] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x010c : 0x00000000
+[  232.313328] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x013c : 0x00000000
+[  232.313328] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0110 : 0x00000000
+[  232.313333] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0140 : 0x00000000
+[  232.313334] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0114 : 0x00000002
+[  232.313339] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0144 : 0x00000000
+[  232.313339] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0118 : 0x00000000
+[  232.313344] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0148 : 0x00000000
+[  232.313344] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x011c : 0x00000000
+[  232.313349] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x014c : 0x00000000
+[  232.313350] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0120 : 0x00000000
+[  232.313355] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0150 : 0x00000000
+[  232.313355] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0124 : 0x00000000
+[  232.313360] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0154 : 0x00000000
+[  232.313360] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0128 : 0x00000000
+[  232.313365] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0158 : 0x00000000
+[  232.313366] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x012c : 0x00000000
+[  232.313371] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x015c : 0x00000000
+[  232.313371] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0130 : 0x00000000
+[  232.313376] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0160 : 0x00000000
+[  232.313376] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0134 : 0x00000000
+[  232.313381] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0164 : 0x00000000
+[  232.313382] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0138 : 0x00000000
+[  232.313387] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0168 : 0x00000000
+[  232.313387] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x013c : 0x00000000
+[  232.313392] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x016c : 0x00000000
+[  232.313392] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0140 : 0x00000000
+[  232.313398] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0170 : 0x00000000
+[  232.313398] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0144 : 0x00000000
+[  232.313403] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0174 : 0x00000000
+[  232.313403] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0148 : 0x00000000
+[  232.313408] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0178 : 0x00000000
+[  232.313409] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x014c : 0x00000000
+[  232.313414] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x017c : 0x00000000
+[  232.313414] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0150 : 0x00000000
+[  232.313419] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0180 : 0x00000000
+[  232.313419] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0154 : 0x00000000
+[  232.313424] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0184 : 0x00000014
+[  232.313425] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0158 : 0x00000000
+[  232.313430] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0188 : 0x000002ef
+[  232.313430] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x015c : 0x00000000
+[  232.313435] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x018c : 0x00000000
+[  232.313435] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0160 : 0x00000000
+[  232.313440] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0190 : 0x00000000
+[  232.313441] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0164 : 0x00000000
+[  232.313446] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0194 : 0x00000000
+[  232.313446] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0168 : 0x00000000
+[  232.313451] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x0198 : 0x00000033
+[  232.313451] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x016c : 0x00000000
+[  232.313456] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x019c : 0x0000008f
+[  232.313457] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0170 : 0x00000000
+[  232.313462] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01a0 : 0x000002ef
+[  232.313462] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0174 : 0x00000000
+[  232.313467] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01a4 : 0x00000000
+[  232.313467] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0178 : 0x00000000
+[  232.313473] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01a8 : 0x00000000
+[  232.313473] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x017c : 0x00000000
+[  232.313478] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01ac : 0x00000000
+[  232.313478] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0180 : 0x00000000
+[  232.313483] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01b0 : 0x00000000
+[  232.313484] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0184 : 0x00000014
+[  232.313489] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01b4 : 0x00000000
+[  232.313489] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0188 : 0x000002ef
+[  232.313494] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01b8 : 0x00000000
+[  232.313494] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x018c : 0x00000000
+[  232.313499] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01bc : 0x00000000
+[  232.313500] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0190 : 0x00000000
+[  232.313505] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01c0 : 0x00000082
+[  232.313505] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0194 : 0x00000000
+[  232.313510] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01c4 : 0x00000082
+[  232.313510] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x0198 : 0x00000033
+[  232.313515] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01c8 : 0x00000068
+[  232.313516] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x019c : 0x0000008f
+[  232.313521] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01cc : 0x00000000
+[  232.313521] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01a0 : 0x000002ef
+[  232.313526] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01d0 : 0x0000000b
+[  232.313526] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01a4 : 0x00000000
+[  232.313531] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01d4 : 0x00000003
+[  232.313532] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01a8 : 0x00000000
+[  232.313537] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01d8 : 0x00000000
+[  232.313537] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01ac : 0x00000000
+[  232.313542] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01dc : 0x00000000
+[  232.313542] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01b0 : 0x00000000
+[  232.313548] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01e0 : 0x00000000
+[  232.313548] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01b4 : 0x00000000
+[  232.313553] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01e4 : 0x00000000
+[  232.313553] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01b8 : 0x00000000
+[  232.313558] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01e8 : 0x00000000
+[  232.313559] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01bc : 0x00000000
+[  232.313564] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01ec : 0x00000000
+[  232.313564] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01c0 : 0x00000082
+[  232.313569] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01f0 : 0x00000000
+[  232.313569] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01c4 : 0x00000082
+[  232.313574] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01f4 : 0x00000000
+[  232.313575] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01c8 : 0x00000068
+[  232.313580] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01f8 : 0x00000000
+[  232.313580] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01cc : 0x00000000
+[  232.313585] exynos-v920-pcie 161c0000.pcie: PHY PMA 0x01fc : 0x00000000
+[  232.313585] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01d0 : 0x0000000b
+[  232.313588] exynos-v920-pcie 161c0000.pcie:
+[  232.313591] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01d4 : 0x00000003
+[  232.313592] exynos-v920-pcie 161c0000.pcie: PHY PMA PLL MON : 0x00000000
+[  232.313596] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01d8 : 0x00000000
+[  232.313597] exynos-v920-pcie 161c0000.pcie: PHY PMA CDR LOCK : 0x00000000
+[  232.313600] exynos-v920-pcie 161c0000.pcie:
+[  232.313601] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01dc : 0x00000000
+[  232.313603] exynos-v920-pcie 161c0000.pcie: link down and recovery cnt: 1
+[  232.313606] exynos-v920-pcie 161c0000.pcie: Client driver does not have
+[  232.313607] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01e0 : 0x00000000
+[  232.313609] exynos-v920-pcie 161c0000.pcie: registration of the event : 1
+[  232.313612] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01e4 : 0x00000000
+[  232.313613] exynos-v920-pcie 161c0000.pcie: Force PCIe poweroff --> poweron
+[  232.313616] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_poweroff] start of poweroff, pcie state: 2
+[  232.313618] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01e8 : 0x00000000
+[  232.313623] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01ec : 0x00000000
+[  232.313625] exynos-v920-pcie 161c0000.pcie: exynos_v920_pcie_send_pme_turn_off: link state:5
+[  232.313627] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01f0 : 0x00000000
+[  232.313629] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_send_pme_turn_off] pcie link is not up
+[  232.313632] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01f4 : 0x00000000
+[  232.313637] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01f8 : 0x00000000
+[  232.313642] exynos-v920-pcie 161c1000.pcie: PHY PMA 0x01fc : 0x00000000
+[  232.313646] exynos-v920-pcie 161c1000.pcie:
+[  232.313650] exynos-v920-pcie 161c1000.pcie: PHY PMA PLL MON : 0x00000000
+[  232.313656] exynos-v920-pcie 161c1000.pcie: PHY PMA CDR LOCK : 0x00000000
+[  232.313659] exynos-v920-pcie 161c1000.pcie:
+[  232.313662] exynos-v920-pcie 161c1000.pcie: link down and recovery cnt: 1
+[  232.313665] exynos-v920-pcie 161c1000.pcie: Client driver does not have
+[  232.313668] exynos-v920-pcie 161c1000.pcie: registration of the event : 1
+[  232.313671] exynos-v920-pcie 161c1000.pcie: Force PCIe poweroff --> poweron
+[  232.313675] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_poweroff] start of poweroff, pcie state: 2
+[  232.313684] exynos-v920-pcie 161c1000.pcie: exynos_v920_pcie_send_pme_turn_off: link state:5
+[  232.313687] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_send_pme_turn_off] pcie link is not up
+[  232.323660] exynos-v920-pcie 161c0000.pcie: exynos_v920_pcie_poweroff: Set PERST to LOW, gpio val = 0
+[  232.323704] exynos-v920-pcie 161c1000.pcie: exynos_v920_pcie_poweroff: Set PERST to LOW, gpio val = 0
+[  232.323783] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_poweroff] end of poweroff, pcie state: 0
+[  232.323788] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_poweron] start of poweron, pcie state: 0
+[  232.323791] exynos-v920-pcie 161c0000.pcie: pcie clk enable, ret value = 0
+[  232.323802] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_poweroff] end of poweroff, pcie state: 0
+[  232.323806] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_poweron] start of poweron, pcie state: 0
+[  232.323809] exynos-v920-pcie 161c1000.pcie: pcie clk enable, ret value = 0
+[  232.323815] exynos-v920-pcie 161c1000.pcie: phy clk enable, ret value = 0
+[  232.323822] exynos-v920-pcie 161c1000.pcie: linkA: 5 and linkB: 5
+[  232.323837] exynos-v920-pcie 161c0000.pcie: phy clk enable, ret value = 0
+[  232.323844] exynos-v920-pcie 161c0000.pcie: linkA: 5 and linkB: 0
+[  232.334115] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_establish_link] Set PERST to HIGH, gpio val = 1
+[  232.334127] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_establish_link] Set PERST to HIGH, gpio val = 1
+[  232.334153] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] Before RC BAR0 = 0x0
+[  232.334158] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] After RC BAR0 = 0x0
+[  232.334159] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] Before RC BAR0 = 0x0
+[  232.334163] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] After RC BAR0 = 0x0
+[  232.334164] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] Before RC Expansion ROM = 0x0
+[  232.334168] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] After RC Expansion ROM = 0x0
+[  232.334169] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] Before RC Expansion ROM = 0x0
+[  232.334173] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] After RC Expansion ROM = 0x0
+[  232.334182] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] EQ-Off(0x12001) 0x12001
+[  232.334187] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] EQ-Off(0x12001) 0x12001
+[  232.334188] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] Ch:3  bif, 1lane.
+[  232.334194] exynos-v920-pcie 161c1000.pcie: PCIE_PORT_LINK_CTRL  10120
+[  232.334194] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] Ch:2  bif, 1lane.
+[  232.334200] exynos-v920-pcie 161c0000.pcie: PCIE_PORT_LINK_CTRL  10120
+[  232.334202] exynos-v920-pcie 161c1000.pcie: D state: 0, 20000000
+[  232.334207] exynos-v920-pcie 161c0000.pcie: D state: 0, 20000000
+[  232.346796] exynos-v920-pcie 161c1000.pcie: LTSSM: 1
+[  232.346807] exynos-v920-pcie 161c0000.pcie: LTSSM: 1
+[  232.347644] exynos-v920-pcie 161c1000.pcie: LTSSM: 2
+[  232.347655] exynos-v920-pcie 161c0000.pcie: LTSSM: 2
+[  232.347719] exynos-v920-pcie 161c1000.pcie: LTSSM: 4
+[  232.347731] exynos-v920-pcie 161c0000.pcie: LTSSM: f
+[  232.347735] exynos-v920-pcie 161c1000.pcie: LTSSM: e
+[  232.347746] exynos-v920-pcie 161c0000.pcie: LTSSM: e
+[  232.347762] exynos-v920-pcie 161c0000.pcie: LTSSM: d
+[  232.347768] exynos-v920-pcie 161c1000.pcie: LTSSM: f
+[  232.347777] exynos-v920-pcie 161c0000.pcie: LTSSM: 11
+[  232.347782] exynos-v920-pcie 161c1000.pcie: LTSSM: 11
+[  232.347782] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_establish_link] Link up:20000d1
+[  232.347789] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_establish_link] Link up:20000d1
+[  232.347790] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_msi_init] val:0x1
+[  232.347797] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_msi_init] val:0x1
+[  232.360207] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_poweron]pci_dev->subordinate->number:1, busdev:1000000
+[  232.360223] exynos-v920-pcie 161c0000.pcie: Current Link Speed is GEN2 (MAX GEN3)
+[  232.360227] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_poweron] end of poweron, pcie state: 3
+[  232.360242] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_poweron]pci_dev->subordinate->number:1, busdev:1000000
+[  232.360251] exynos-v920-pcie 161c1000.pcie: Current Link Speed is GEN2 (MAX GEN3)
+[  232.360254] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_poweron] end of poweron, pcie state: 3
+
+Issue afetr LINK_DOWN recovery: - 
+====================================
+As LINK_DOWN_IRQ re-enumerates and recovers, but after this if we try to load the WiFi driver, then 
+it do not load WiFi driver.
+
+# insmod /vendor/lib/modules/bcmdhd.ko firmware_path=/lib/firmware/CYW89570_firmware_pcie.trxse nvram_path=/lib/firmware/bcmdhd.cal clm_path=/lib/firmware/bcmdhd_89570-cypress_auto.clm_blob
+O/p - 
+insmod: failed to load /vendor/lib/modules/bcmdhd.ko: Operation not permitted

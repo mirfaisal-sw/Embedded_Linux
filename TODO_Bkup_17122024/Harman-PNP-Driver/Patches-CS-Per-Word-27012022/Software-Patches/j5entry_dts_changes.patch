@@ -1,0 +1,31 @@
+diff --git a/arch/arm/boot/dts/j5entry_ntg7csb.dts b/arch/arm/boot/dts/j5entry_ntg7csb.dts
+index 00b7349..88cd795 100644
+--- a/arch/arm/boot/dts/j5entry_ntg7csb.dts
++++ b/arch/arm/boot/dts/j5entry_ntg7csb.dts
+@@ -135,6 +135,14 @@
+ &spi0 {
+         status = "okay";
+         pinctrl-names = "default";
++	
++	/*MIR*/
++	pnp_dabplugin: pnp_dabplugin@0 {
++		compatible = "pnp_dabplugin";
++                spi-max-frequency = <1500000>;
++                reg = <0x0>;
++	};
++
+ #if EMLINUX_KERNEL
+ 	spidev0: spi@0 {
+                 compatible = "spidev";
+@@ -208,9 +216,9 @@
+ 	};
+ 
+ 	dabplugin {
+-		dab-cs-gpio = <5>;
++		//dab-cs-gpio = <5>; /*MIR*/
+ 		dab-irq-gpio = <90>;
+-		dab-cs-pinmux = <0x44e1095c 0x2F>;
++		/*dab-cs-pinmux = <0x44e1095c 0x2F>;*/ /*MIR*/
+ 		dab-pm-disable;
+ 	};
+ };

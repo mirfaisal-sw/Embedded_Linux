@@ -1,0 +1,117 @@
+
+
+[    4.911273][    T1] exynos-v920-pcie 163c0000.pcie: exynos_v920_pcie_probe: V920 start probe
+[    4.918992][    T1] exynos-v920-pcie 163c0000.pcie: EP device type is NOT defined. (Set to default)
+[    4.927973][    T1] exynos-v920-pcie 163c0000.pcie: PCIe coherency:0(0:Disabled,1: Enabled)
+[    4.936266][    T1] exynos-v920-pcie 163c0000.pcie: PCIe MSI:1(0:Disabled,1: Enabled)
+[    4.944042][    T1] exynos-v920-pcie 163c0000.pcie: PCIe SICD:1(0:Disabled,1: Enabled)
+[    4.951904][    T1] exynos-v920-pcie 163c0000.pcie: PCIe SysMMU:0(0:Disabled,1: Enabled)
+[    4.959939][    T1] exynos-v920-pcie 163c0000.pcie: PCIe I/A:0(0:Disabled,1: Enabled)
+[    4.967718][    T1] exynos-v920-pcie 163c0000.pcie: PCIe bifurcation:0(0:Disabled,1: Enabled)
+[    4.976183][    T1] exynos-v920-pcie 163c0000.pcie: PCIe SRIS:0(0:Disabled,1: Enabled)
+[    4.984073][    T1] exynos-v920-pcie 163c0000.pcie: No idle pin state
+[    4.990477][    T1] exynos-v920-pcie 163c0000.pcie: Initialize v920 PHY functions.
+[    4.997956][    T1] exynos-v920-pcie 163c0000.pcie: pcie clk enable, ret value = 0
+[    5.005473][    T1] exynos-v920-pcie 163c0000.pcie: phy clk enable, ret value = 0
+[    5.012906][    T1] exynos-v920-pcie 163c0000.pcie: linkA: 0 and linkB: 0
+[    5.019949][    T1] exynos-v920-pcie 163c0000.pcie: [exynos_v920_pcie_setup_rc] Before RC BAR0 = 0x4
+[    5.028718][    T1] exynos-v920-pcie 163c0000.pcie: [exynos_v920_pcie_setup_rc] After RC BAR0 = 0x4
+[    5.037701][    T1] exynos-v920-pcie 163c0000.pcie: [exynos_v920_pcie_setup_rc] Before RC Expansion ROM = 0x0
+[    5.047549][    T1] exynos-v920-pcie 163c0000.pcie: [exynos_v920_pcie_setup_rc] After RC Expansion ROM = 0x0
+[    5.057319][    T1] exynos-v920-pcie 163c0000.pcie: [exynos_v920_pcie_setup_rc] EQ-Off(0x12001) 0x12001
+[    5.066646][    T1] exynos-v920-pcie 163c0000.pcie: [exynos_v920_pcie_setup_rc] Ch:0 no bif, 4lane.
+[    5.075631][    T1] exynos-v920-pcie 163c0000.pcie: PCIE_PORT_LINK_CTRL  70120
+[    5.082823][    T1] exynos-v920-pcie 163c0000.pcie: host bridge /pcie@163C0000 ranges:
+[    5.090664][    T1] exynos-v920-pcie 163c0000.pcie:   No bus range found for /pcie@163C0000, using [bus 00-ff]
+[    5.100604][    T1] exynos-v920-pcie 163c0000.pcie:      MEM 0x0020000000..0x003fffcfff -> 0x0020000000
+[    5.110020][    T1] exynos-v920-pcie 163c0000.pcie: iATU unroll: enabled
+[    5.116587][    T1] exynos-v920-pcie 163c0000.pcie: Detected iATU regions: 0 outbound, 0 inbound
+[    6.119964][    T1] exynos-v920-pcie 163c0000.pcie: Phy link never came up
+[    6.120133][    T1] exynos-v920-pcie 163c0000.pcie: PCI host bridge to bus 0000:00
+[    6.120239][    T1] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    6.120325][    T1] pci_bus 0000:00: root bus resource [mem 0x20000000-0x3fffcfff]
+[    6.125829][    T1] pci 0000:00:00.0: [144d:ecec] type 01 class 0x060400
+[    6.132529][    T1] pci 0000:00:00.0: supports D1
+[    6.137089][    T1] pci 0000:00:00.0: PME# supported from D0 D1 D3hot D3cold
+[    6.149623][    T1] pci 0000:00:00.0: PCI bridge to [bus 01-ff]
+[    6.151585][    T1] pcieport 0000:00:00.0: PME: Signaling with IRQ 355
+[    6.156575][    T1] exynos-v920-pcie 163c0000.pcie: MSI Message Address : 0xefc00000
+[    6.164302][    T1] exynos-v920-pcie 163c0000.pcie: exynos_v920_pcie_probe: pcie probe success
+[    6.172961][    T1] exynos-v920-pcie 161c0000.pcie: exynos_v920_pcie_probe: V920 start probe
+[    6.181070][    T1] exynos-v920-pcie 161c0000.pcie: EP device type is NOT defined. (Set to default)
+[    6.190052][    T1] exynos-v920-pcie 161c0000.pcie: PCIe coherency:0(0:Disabled,1: Enabled)
+[    6.198346][    T1] exynos-v920-pcie 161c0000.pcie: PCIe MSI:1(0:Disabled,1: Enabled)
+[    6.206121][    T1] exynos-v920-pcie 161c0000.pcie: PCIe SICD:1(0:Disabled,1: Enabled)
+[    6.213983][    T1] exynos-v920-pcie 161c0000.pcie: PCIe SysMMU:0(0:Disabled,1: Enabled)
+[    6.222018][    T1] exynos-v920-pcie 161c0000.pcie: PCIe I/A:0(0:Disabled,1: Enabled)
+[    6.229796][    T1] exynos-v920-pcie 161c0000.pcie: PCIe bifurcation:1(0:Disabled,1: Enabled)
+[    6.238262][    T1] exynos-v920-pcie 161c0000.pcie: PCIe SRIS:0(0:Disabled,1: Enabled)
+[    6.246155][    T1] exynos-v920-pcie 161c0000.pcie: No idle pin state
+[    6.252574][    T1] exynos-v920-pcie 161c0000.pcie: Initialize v920 PHY functions.
+[    6.260036][    T1] exynos-v920-pcie 161c0000.pcie: pcie clk enable, ret value = 0
+[    6.267551][    T1] exynos-v920-pcie 161c0000.pcie: phy clk enable, ret value = 0
+[    6.274985][    T1] exynos-v920-pcie 161c0000.pcie: linkA: 0 and linkB: 0
+[    6.282044][    T1] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] Before RC BAR0 = 0x4
+[    6.290794][    T1] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] After RC BAR0 = 0x4
+[    6.299780][    T1] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] Before RC Expansion ROM = 0x0
+[    6.309628][    T1] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] After RC Expansion ROM = 0x0
+[    6.319398][    T1] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] EQ-Off(0x12001) 0x12001
+[    6.328725][    T1] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] Ch:2  bif, 1lane.
+[    6.337537][    T1] exynos-v920-pcie 161c0000.pcie: PCIE_PORT_LINK_CTRL  10120
+[    6.344741][    T1] exynos-v920-pcie 161c0000.pcie: host bridge /pcie@161C0000 ranges:
+[    6.352571][    T1] exynos-v920-pcie 161c0000.pcie:   No bus range found for /pcie@161C0000, using [bus 00-ff]
+[    6.362511][    T1] exynos-v920-pcie 161c0000.pcie:      MEM 0x0060000000..0x006fffcfff -> 0x0060000000
+[    6.371927][    T1] exynos-v920-pcie 161c0000.pcie: iATU unroll: enabled
+[    6.378495][    T1] exynos-v920-pcie 161c0000.pcie: Detected iATU regions: 0 outbound, 0 inbound
+[    7.387330][    T1] exynos-v920-pcie 161c0000.pcie: Phy link never came up
+[    7.387490][    T1] exynos-v920-pcie 161c0000.pcie: PCI host bridge to bus 0001:00
+[    7.387594][    T1] pci_bus 0001:00: root bus resource [bus 00-ff]
+[    7.387679][    T1] pci_bus 0001:00: root bus resource [mem 0x60000000-0x6fffcfff]
+[    7.393165][    T1] pci 0001:00:00.0: [144d:ecee] type 01 class 0x060400
+[    7.399889][    T1] pci 0001:00:00.0: supports D1
+[    7.404448][    T1] pci 0001:00:00.0: PME# supported from D0 D1 D3hot D3cold
+[    7.416879][    T1] pci 0001:00:00.0: PCI bridge to [bus 01-ff]
+[    7.418897][    T1] pcieport 0001:00:00.0: PME: Signaling with IRQ 357
+[    7.423929][    T1] exynos-v920-pcie 161c0000.pcie: MSI Message Address : 0xefc00800
+[    7.431624][    T1] exynos-v920-pcie 161c0000.pcie: exynos_v920_pcie_probe: pcie probe success
+[    7.440287][    T1] exynos-v920-pcie 161c1000.pcie: exynos_v920_pcie_probe: V920 start probe
+[    7.448429][    T1] exynos-v920-pcie 161c1000.pcie: EP device type is NOT defined. (Set to default)
+[    7.457411][    T1] exynos-v920-pcie 161c1000.pcie: PCIe coherency:0(0:Disabled,1: Enabled)
+[    7.465706][    T1] exynos-v920-pcie 161c1000.pcie: PCIe MSI:1(0:Disabled,1: Enabled)
+[    7.473483][    T1] exynos-v920-pcie 161c1000.pcie: PCIe SICD:1(0:Disabled,1: Enabled)
+[    7.481344][    T1] exynos-v920-pcie 161c1000.pcie: PCIe SysMMU:0(0:Disabled,1: Enabled)
+[    7.489379][    T1] exynos-v920-pcie 161c1000.pcie: PCIe I/A:0(0:Disabled,1: Enabled)
+[    7.497156][    T1] exynos-v920-pcie 161c1000.pcie: PCIe bifurcation:1(0:Disabled,1: Enabled)
+[    7.505622][    T1] exynos-v920-pcie 161c1000.pcie: PCIe SRIS:0(0:Disabled,1: Enabled)
+[    7.513521][    T1] exynos-v920-pcie 161c1000.pcie: No idle pin state
+[    7.519933][    T1] exynos-v920-pcie 161c1000.pcie: Initialize v920 PHY functions.
+[    7.527395][    T1] exynos-v920-pcie 161c1000.pcie: pcie clk enable, ret value = 0
+[    7.534912][    T1] exynos-v920-pcie 161c1000.pcie: phy clk enable, ret value = 0
+[    7.542344][    T1] exynos-v920-pcie 161c1000.pcie: linkA: 0 and linkB: 0
+[    7.549400][    T1] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] Before RC BAR0 = 0x4
+[    7.558154][    T1] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] After RC BAR0 = 0x4
+[    7.567140][    T1] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] Before RC Expansion ROM = 0x0
+[    7.576989][    T1] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] After RC Expansion ROM = 0x0
+[    7.586759][    T1] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] EQ-Off(0x12001) 0x12001
+[    7.596085][    T1] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] Ch:3  bif, 1lane.
+[    7.604897][    T1] exynos-v920-pcie 161c1000.pcie: PCIE_PORT_LINK_CTRL  10120
+[    7.612092][    T1] exynos-v920-pcie 161c1000.pcie: host bridge /pcie@161C1000 ranges:
+[    7.619930][    T1] exynos-v920-pcie 161c1000.pcie:   No bus range found for /pcie@161C1000, using [bus 00-ff]
+[    7.629871][    T1] exynos-v920-pcie 161c1000.pcie:      MEM 0x0070000000..0x007fffcfff -> 0x0070000000
+[    7.639281][    T1] exynos-v920-pcie 161c1000.pcie: iATU unroll: enabled
+[    7.645852][    T1] exynos-v920-pcie 161c1000.pcie: Detected iATU regions: 0 outbound, 0 inbound
+[    8.654687][    T1] exynos-v920-pcie 161c1000.pcie: Phy link never came up
+[    8.654840][    T1] exynos-v920-pcie 161c1000.pcie: PCI host bridge to bus 0002:00
+[    8.654944][    T1] pci_bus 0002:00: root bus resource [bus 00-ff]
+[    8.655028][    T1] pci_bus 0002:00: root bus resource [mem 0x70000000-0x7fffcfff]
+[    8.660535][    T1] pci 0002:00:00.0: [144d:ecef] type 01 class 0x060400
+[    8.667227][    T1] pci 0002:00:00.0: supports D1
+[    8.671805][    T1] pci 0002:00:00.0: PME# supported from D0 D1 D3hot D3cold
+[    8.684229][    T1] pci 0002:00:00.0: PCI bridge to [bus 01-ff]
+[    8.686213][    T1] pcieport 0002:00:00.0: PME: Signaling with IRQ 358
+[    8.691277][    T1] exynos-v920-pcie 161c1000.pcie: MSI Message Address : 0xefc01000
+[    8.698985][    T1] exynos-v920-pcie 161c1000.pcie: exynos_v920_pcie_probe: pcie probe success
+[    8.708602][    T1] exynos-boottimelog exynos-boottime-log: exynos_boottime_probe start
+[    8.715355][    T1] exynos-boottimelog exynos-boottime-log: Base(0xe9a41000) Size(0x1bf000)
+[    8.724036][    T1] exynos-debug-test exynos-debug-test: exynos_debug_test_probe() called
+[    8.731875][    T1] exynos-debug-test exynos-debug-test: exynos_debug_test_probe() ret=[0x0]

@@ -1,0 +1,129 @@
+
+
+Filtered LOG where ANDROID resumes, specialized for PCIe
+===================================================================
+
+============================> LOG where ANDROID resumes  <===========================================
+COMMAND: - s2r resume 3
+
+PCIe ch-3 suspend callback: -
+---------------------------
+[  815.188328][ T1166] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_suspend_noirq] PCIe interface does not control PCIe link 3
+[  815.188345][ T1166] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_poweroff] start of poweroff, pcie state: 3
+[  815.188361][ T1166] exynos-v920-pcie 161c1000.pcie: exynos_v920_pcie_send_pme_turn_off: link state:11
+[  815.188372][ T1166] exynos-v920-pcie 161c1000.pcie: Current LTSSM State is 0x11 with retry_cnt =0.
+[  815.213035][ T1166] exynos-v920-pcie 161c1000.pcie: cannot receive ack message from wifi
+[  815.213045][ T1166] exynos-v920-pcie 161c1000.pcie: received Enter_L23_READY DLLP packet
+[  815.223068][ T1166] exynos-v920-pcie 161c1000.pcie: exynos_v920_pcie_poweroff: Set PERST to LOW, gpio val = 0
+[  815.223105][ T1166] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_poweroff] end of poweroff, pcie state: 0
+
+PCIe ch-2 suspend callback: -
+---------------------------
+[  815.223117][ T1166] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_suspend_noirq] PCIe interface does not control PCIe link 2
+[  815.223121][ T1166] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_poweroff] start of poweroff, pcie state: 3
+[  815.223129][ T1166] exynos-v920-pcie 161c0000.pcie: exynos_v920_pcie_send_pme_turn_off: link state:11
+[  815.223136][ T1166] exynos-v920-pcie 161c0000.pcie: Current LTSSM State is 0x11 with retry_cnt =0.
+[  815.246971][ T1166] exynos-v920-pcie 161c0000.pcie: cannot receive ack message from wifi
+[  815.246977][ T1166] exynos-v920-pcie 161c0000.pcie: received Enter_L23_READY DLLP packet
+[  815.256989][ T1166] exynos-v920-pcie 161c0000.pcie: exynos_v920_pcie_poweroff: Set PERST to LOW, gpio val = 0
+[  815.257063][ T1166] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_poweroff] end of poweroff, pcie state: 0
+
+
+PCIe ch-2 RESUME callback: -
+---------------------------
+[  815.280482][ T1166] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_resume_noirq] PCIe ch2 Resume: Interface control:0
+[  815.280489][ T1166] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_poweron] start of poweron, pcie state: 0
+[  815.280494][ T1166] exynos-v920-pcie 161c0000.pcie: pcie clk enable, ret value = 0
+[  815.280559][ T1166] exynos-v920-pcie 161c0000.pcie: phy clk enable, ret value = 0
+[  815.280567][ T1166] exynos-v920-pcie 161c0000.pcie: linkA: 0 and linkB: 0
+[  815.290858][ T1166] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_establish_link] Set PERST to HIGH, gpio val = 1
+[  815.290898][ T1166] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] Before RC BAR0 = 0x0
+[  815.290903][ T1166] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] After RC BAR0 = 0x0
+[  815.290910][ T1166] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] Before RC Expansion ROM = 0x0
+[  815.290914][ T1166] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] After RC Expansion ROM = 0x0
+[  815.290930][ T1166] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] EQ-Off(0x12001) 0x12001
+[  815.290938][ T1166] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_setup_rc] Ch:2  bif, 1lane.
+[  815.290944][ T1166] exynos-v920-pcie 161c0000.pcie: PCIE_PORT_LINK_CTRL  10120
+[  815.290953][ T1166] exynos-v920-pcie 161c0000.pcie: D state: 0, 20000000
+[  815.304184][ T1166] exynos-v920-pcie 161c0000.pcie: LTSSM: 1
+[  815.305032][ T1166] exynos-v920-pcie 161c0000.pcie: LTSSM: 2
+[  815.305107][ T1166] exynos-v920-pcie 161c0000.pcie: LTSSM: b
+[  815.305123][ T1166] exynos-v920-pcie 161c0000.pcie: LTSSM: 11
+[  815.305128][ T1166] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_establish_link] Link up:d1
+[  815.305136][ T1166] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_msi_init] val:0x1
+[  815.310863][ T1166] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_poweron]pci_dev->subordinate->number:1, busdev:1000000
+[  815.310876][ T1166] exynos-v920-pcie 161c0000.pcie: Current Link Speed is GEN1 (MAX GEN3)
+[  815.310880][ T1166] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_poweron] end of poweron, pcie state: 3
+
+PCIe ch-3 RESUME callback: -
+---------------------------
+[  815.310899][ T1166] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_resume_noirq] PCIe ch3 Resume: Interface control:0
+[  815.310903][ T1166] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_poweron] start of poweron, pcie state: 0
+[  815.310907][ T1166] exynos-v920-pcie 161c1000.pcie: pcie clk enable, ret value = 0
+[  815.310916][ T1166] exynos-v920-pcie 161c1000.pcie: phy clk enable, ret value = 0
+[  815.310925][ T1166] exynos-v920-pcie 161c1000.pcie: linkA: 11 and linkB: 0
+[  815.321094][ T1166] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_establish_link] Set PERST to HIGH, gpio val = 1
+[  815.321132][ T1166] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] Before RC BAR0 = 0x0
+[  815.321136][ T1166] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] After RC BAR0 = 0x0
+[  815.321143][ T1166] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] Before RC Expansion ROM = 0x0
+[  815.321146][ T1166] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] After RC Expansion ROM = 0x0
+[  815.321161][ T1166] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] EQ-Off(0x12001) 0x12001
+[  815.321169][ T1166] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_setup_rc] Ch:3  bif, 1lane.
+[  815.321176][ T1166] exynos-v920-pcie 161c1000.pcie: PCIE_PORT_LINK_CTRL  10120
+[  815.321184][ T1166] exynos-v920-pcie 161c1000.pcie: D state: 0, 20000000
+[  815.333777][ T1166] exynos-v920-pcie 161c1000.pcie: LTSSM: 1
+[  815.334625][ T1166] exynos-v920-pcie 161c1000.pcie: LTSSM: 2
+[  815.334702][ T1166] exynos-v920-pcie 161c1000.pcie: LTSSM: 7
+[  815.334718][ T1166] exynos-v920-pcie 161c1000.pcie: LTSSM: e
+[  815.334748][ T1166] exynos-v920-pcie 161c1000.pcie: LTSSM: f
+[  815.334764][ T1166] exynos-v920-pcie 161c1000.pcie: LTSSM: 11
+[  815.334770][ T1166] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_establish_link] Link up:20000d1
+[  815.334778][ T1166] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_msi_init] val:0x1
+[  815.340617][ T1166] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_poweron]pci_dev->subordinate->number:1, busdev:1000000
+[  815.340629][ T1166] exynos-v920-pcie 161c1000.pcie: Current Link Speed is GEN2 (MAX GEN3)
+[  815.340633][ T1166] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_poweron] end of poweron, pcie state: 3
+
+1|console:/ #
+1|console:/ #
+1|console:/ #
+1|console:/ #
+1|console:/ #
+1|console:/ # mount -t debugfs none /sys/kernel/debug
+console:/ #
+console:/ #
+console:/ #
+console:/ #
+console:/ #
+console:/ # cat /sys/kernel/debug/suspend_stats
+success: 1
+fail: 0
+failed_freeze: 0
+failed_prepare: 0
+failed_suspend: 0
+failed_suspend_late: 0
+failed_suspend_noirq: 0
+failed_resume: 0
+failed_resume_early: 0
+failed_resume_noirq: 0
+failures:
+  last_failed_dev:
+
+  last_failed_errno:    0
+                        0
+  last_failed_step:
+
+console:/ #
+console:/ #
+console:/ #
+console:/ #
+console:/ #
+console:/ # cat /sys/bus/pci/devices/0000:01:00.0/vendor
+0x12be
+console:/ #
+console:/ #
+console:/ #
+console:/ #
+console:/ # cat /sys/bus/pci/devices/0001:01:00.0/vendor
+0x12be
+console:/ #
+

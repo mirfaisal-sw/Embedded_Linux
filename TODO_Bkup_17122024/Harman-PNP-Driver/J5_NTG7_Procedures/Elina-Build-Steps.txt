@@ -1,0 +1,56 @@
+
+    ====================================================
+    Steps To Get J5Entry Kernel Source  
+    ====================================================
+    mkdir J5Entry
+    cd  J5Entry  
+    git clone ssh://<username>@gerrit1.harman.com:29418/GTC_Foundation_Software/Development/Kernel/BSP/Linux/ti_lts_4.4
+    git checkout –b <Branch Name> <Remote Branch>
+    Example :  git checkout –b Elina_Stable origin/Elina_Stable
+
+    ====================================================
+    Export the tool chain path and build environment
+    ====================================================
+    cd ~/Elina_Sdk/SDK_Installed_Path
+    source environment-setup-cortexa8hf-vfp-neon-elina-linux-gnueabi
+    export PATH=$PATH:/data/home/mirfaisal/Elina_Sdk/SDK_Installed_Path/sysroots/x86_64-elinasdk-linux/usr/bin/arm-elina-linux-gnueabi
+    export ARCH=arm
+    export CROSS_COMPILE=arm-elina-linux-gnueabi-
+
+    ====================================================
+    Steps to build Application kernel
+    ====================================================
+    make j5entry_ntg7csb_defconfig
+    make j5entry_ntg7csb.dtb
+    make  -j12 zImage
+    cat arch/arm/boot/zImage arch/arm/boot/dts/j5entry_ntg7csb.dtb > zImage_NTG7
+    mkimage -A arm -O linux -T kernel -C none -a 0x80008000 -e 0x80008000 -n "Linux NTG7" -d zImage_NTG7 uImage.bin
+
+    /*Generate .ko files*/
+    make -j12 modules
+
+    /*Install the lib/modules complete folder in a specific path defined by INSTALL_MOD_PATH*/
+    make INSTALL_MOD_PATH=/path/to/target modules_install
+
+
+    ==========================================================================
+    Command to build test application:-
+    ==========================================================================
+    ${CC} test_pnp_ntg7_irq_cnt.c -o test_pnp_ntg7_irq_cnt_cmdline -lpthread
+
+
+    ==========================================================
+     MIR SPI CS Toggle Driver Testing
+    ==========================================================
+    make mir_ntg7.dtb
+    make  -j12 zImage
+    cat arch/arm/boot/zImage arch/arm/boot/dts/mir_ntg7.dtb > zImage_NTG7
+    mkimage -A arm -O linux -T kernel -C none -a 0x80008000 -e 0x80008000 -n "Linux NTG7" -d zImage_NTG7 uImage.bin
+
+
+    ===========================================================
+    Target running commands
+    ===========================================================
+    cd /lib/modules/4.4.14/kernel/drivers/harman/dynamic_s
+
+

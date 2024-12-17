@@ -1,0 +1,11 @@
+
+
+mount -t debugfs none /sys/kernel/debug
+dmesg -n 8
+echo "file drivers/pinctrl* +p" > /sys/kernel/debug/dynamic_debug/control
+cd /sys/kernel/debug/pinctrl/44e10800.pinmux
+cat pins
+
+
+
+echo "file drivers/harman/dynamic_spi_node/spi_pinctrl.c +p" > control

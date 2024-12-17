@@ -1,0 +1,8 @@
+menu "MIR SPI FLASH DRIVER MICROCHIP ST25"
+
+ config MIR_SPI_FLASH
+         tristate "Mir's Microchip SPI flash driver"
+         help
+           Microchip SPI flash  driver.
+endmenu
+

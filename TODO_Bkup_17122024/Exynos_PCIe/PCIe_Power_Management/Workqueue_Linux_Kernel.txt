@@ -1,0 +1,35 @@
+
+
+	Workqueue in Linux Kernel
+	--------------------------------
+	Work queues are added in the Linux kernel 2.6 version. Work queues are a different form of 
+	deferring work. Work queues defer work into a kernel thread; this bottom half always runs in
+	the process context. Because workqueue is allowing users to create a kernel thread and bind 
+	work to the kernel thread. So, this will run in the process context and the work queue can sleep.
+
+	Code deferred to a work queue has all the usual benefits of process context. Most importantly, work
+	queues are schedulable and can therefore sleep. Normally, it is easy to decide between using workqueue 
+	and softirq/tasklet:
+
+	If the deferred work needs to sleep, then workqueue is used. If the deferred work need not sleep, then
+	softirq or tasklet are used. There are two ways to implement Workqueue in the Linux kernel.
+
+	1. Using global workqueue (Static / Dynamic)
+	2. Creating Own workqueue (We will see in the next tutorial)
+
+
+	Initialize work using Static Method
+	---------------------------------------
+
+	The below call creates a workqueue by the name and the function that we are passing in the second argument gets scheduled in the queue.
+
+	DECLARE_WORK(name, void (*func)(void *))
+
+	Where,
+
+	name: The name of the “work_struct” structure that has to be created.
+	func: The function to be scheduled in this workqueue.
+
+
+	Example: -
+		DECLARE_WORK(workqueue,workqueue_fn);

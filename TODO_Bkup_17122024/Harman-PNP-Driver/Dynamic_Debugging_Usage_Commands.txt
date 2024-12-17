@@ -1,0 +1,6 @@
+cd /sys/kernel/debug/dynamic_debug/
+
+cat control | grep pnp_dabp
+
+
+cd /lib/modules/4.4.14/kernel/drivers/harman/pnp_plugin/

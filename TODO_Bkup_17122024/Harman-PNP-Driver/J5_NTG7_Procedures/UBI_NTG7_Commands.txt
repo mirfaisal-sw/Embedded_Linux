@@ -1,0 +1,44 @@
+boot into emlinux
+mkdir rfs
+ubiattach -m 1
+mount -t ubifs ubi0:APPFS ./rfs
+mount /dev/sda1 /mnt
+ubiupdatevol /dev/ubi0_3 /mnt/uImage
+cp -r /mnt/lib ./rfs/lib/
+sync && reboot
+
+================================================
+Steps to update Kernel Image and PNP driver
+================================================
+1.Copy uImage.bin and my_modules.tar.gz in a USB drive attached in this confluence as Zip file.
+
+2.Boot the target and connect USB Drive.
+
+3.Mount the usb drive.
+
+        #mount /dev/sda1 /mnt
+
+4. Update kernel image to ubi0_3 or ubi0_2.
+
+      #ubiupdatevol /dev/ubi0_3 /mnt/<path of uImage.bin>
+
+5.Extract my_modules.tar.gz in USB drive.
+
+      # cd /mnt
+
+      # tar -xvzf <path of my_modules.tar.gz> -C <path_to_folder>
+
+6.Go to extracted folder and copy entire lib/modules… folder to target root file system.
+
+      #cd  <my_modules folder>
+
+      #cp -r  <lib/…folder>  </Target’s/lib folder>
+
+7.Run sync command
+
+      #sync
+
+
+Note:- Command to boot:
+=> ub 1   [Here 1 is the partition to boot Embedded Linux, we can even use 
+           2 or 3 to boot other kernel images].

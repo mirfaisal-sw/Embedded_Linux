@@ -1,0 +1,11 @@
+
+
+
+	1) Explore /sys/class/pci_bus/ ....
+	2) Explore PCIe test utility.
+
+	3) Youtube channel :- Johannes 4GNU_Linux
+		https://www.youtube.com/watch?v=454KPcO95jY&list=PLCGpd0Do5-I3HkdOJ6SaFwNJgAcj8cDAh
+
+	4) Debugging PCIe using command: -
+		https://support.xilinx.com/s/article/1148199?language=en_US

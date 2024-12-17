@@ -1,0 +1,9 @@
+
+
+Config macros needed to enable PCIe endpoint test driver: -
+===============================================================
+
+CONFIG_PCI_ENDPOINT
+CONFIG_PCI_ENDPOINT_CONFIGFS
+CONFIG_PCI_EPF_TEST=y
+CONFIG_PCI_ENDPOINT_TEST=y

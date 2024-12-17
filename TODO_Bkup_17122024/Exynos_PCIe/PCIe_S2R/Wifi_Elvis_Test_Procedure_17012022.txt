@@ -1,0 +1,227 @@
+
+	Prerequisite: -
+	----------------
+	adb push 55560a1.clm_blob bcmdhd.ko fw.trxse lspci /data/misc/wifi/
+	
+	cd /data/misc/wifi/
+	./lspci -vvvs 01:00.0
+
+
+	WLAN-1 driver: -
+	==================
+	echo 1 > /sys/devices/platform/161c0000.pcie/pcie_sysfs
+	cd /vendor/lib/modules/
+	insmod bcmdhd.ko firmware_path=/data/misc/wifi/fw.trxse nvram_path=/lib/firmware/bcmdhd.cal clm_path=/data/misc/wifi/55560a1.clm_blob pcie_dev_bus_name='"PCI Bus 0000:01"' dhd_msg_level=0xffff
+	lsmod | grep bcmdhd
+	
+	insmod bcmdhd.ko firmware_path=/data/misc/wifi/fw.trxse nvram_path=/lib/firmware/bcmdhd.cal clm_path=/data/misc/wifi/55560a1.clm_blob pcie_dev_bus_name='"PCI Bus 0000:01"' dhd_msg_level=0xffff
+
+
+	WLAN-2 driver: -
+	==================
+	echo 1 > /sys/devices/platform/161c1000.pcie/pcie_sysfs
+	cd /vendor/lib/modules/
+	insmod bcmdhd.ko firmware_path=/data/misc/wifi/fw.trxse nvram_path=/lib/firmware/bcmdhd.cal clm_path=/data/misc/wifi/55560a1.clm_blob pcie_dev_bus_name='"PCI Bus 0001:01"' dhd_msg_level=0xffff
+	lsmod | grep bcmdhd
+	
+	
+	dmesg -w | grep -i -e pcie -e dhd -e MIR
+	
+	
+
+Bug hunting: -
+------------------
+drivers/net/wireless/cypress/bcmdhd/dhd_linux.c:18226
+
+Bug - 
+dhd_bud_start() failed
+
+2182                 if (dhd_download_fw_on_driverload) {
+2183                         if (dhd_bus_start(bus->dhd)) {
+2184                                 DHD_ERROR(("%s: dhd_bud_start() failed\n", __FUNCTION__));
+2185                                 if (!allow_delay_fwdl)
+2186                                         break;
+2187                         }
+2188                 } 
+
+
+
+
+Test PCIe_ch - 2: -
+=====================
+echo 0 > /sys/devices/platform/161c0000.pcie/pcie_sysfs
+O/p - 
+ $ dmesg -w | grep -i -e pcie -e dhd -e MIR
+[  523.554891] [ T3811] exynos-v920-pcie 161c0000.pcie: PCIe UNIT test START.
+[  523.654985] [ T3811] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_poweron] start of poweron, pcie state: 3
+[  523.655013] [ T3811] exynos-v920-pcie 161c0000.pcie: [exynos_v920_pcie_poweron] end of poweron, pcie state: 3
+[  523.655027] [ T3811] exynos-v920-pcie 161c0000.pcie: PCIe link test Success.
+[  523.655043] [ T3811] exynos-v920-pcie 161c0000.pcie: PCIe DBI access Success.
+[  523.655082] [ T3811] exynos-v920-pcie 161c0000.pcie: PCIe DBI access Success.
+[  523.655114] [ T3811] exynos-v920-pcie 161c0000.pcie: Set BAR0 : 0x60000004
+[  523.655208] [ T3811] exynos-v920-pcie 161c0000.pcie: PCIe EP Outbound mem access Fail...
+[  523.655217] [ T3811] exynos-v920-pcie 161c0000.pcie: PCIe UNIT test FAIL[4/7]!!!
+
+Test PCIe_ch - 3: -
+=====================
+echo 0 > /sys/devices/platform/161c1000.pcie/pcie_sysfs
+O/p -
+[  457.562852] [ T3811] exynos-v920-pcie 161c1000.pcie: PCIe UNIT test START.
+[  457.662925] [ T3811] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_poweron] start of poweron, pcie state: 3
+[  457.662965] [ T3811] exynos-v920-pcie 161c1000.pcie: [exynos_v920_pcie_poweron] end of poweron, pcie state: 3
+[  457.662995] [ T3811] exynos-v920-pcie 161c1000.pcie: PCIe link test Success.
+[  457.663011] [ T3811] exynos-v920-pcie 161c1000.pcie: PCIe DBI access Success.
+[  457.663053] [ T3811] exynos-v920-pcie 161c1000.pcie: PCIe DBI access Success.
+[  457.663086] [ T3811] exynos-v920-pcie 161c1000.pcie: Set BAR0 : 0x70000004
+[  457.663176] [ T3811] exynos-v920-pcie 161c1000.pcie: PCIe EP Outbound mem access Fail...
+[  457.663185] [ T3811] exynos-v920-pcie 161c1000.pcie: PCIe UNIT test FAIL[4/7]!!!
+
+
+Test: Get PCIe ch - 2 link information
+------------------------------------------
+echo 3 > /sys/devices/platform/161c0000.pcie/pcie_sysfs
+O/p - 
+ dmesg -w | grep -i -e pcie -e dhd -e MIR
+[ 2189.015947] [ T3811] exynos-v920-pcie 161c0000.pcie: RC vendor_id: 0x144d device_id: 0xecee
+[ 2189.016028] [ T3811] exynos-v920-pcie 161c0000.pcie: EP vendor_id: 0x12be device_id: 0xbd31
+[ 2189.016055] [ T3811] exynos-v920-pcie 161c0000.pcie: Current Link Speed is
+[ 2189.016063] [ T3811] exynos-v920-pcie 161c0000.pcie: GEN2 (MAX GEN3)
+[ 2189.016076] [ T3811] exynos-v920-pcie 161c0000.pcie: BAR 0: [mem 0x70800000-0x7080ffff 64bit]
+[ 2189.016085] [ T3811] exynos-v920-pcie 161c0000.pcie: BAR 2: [mem 0x70000000-0x707fffff 64bit]
+
+Test: Get PCIe ch - 3 link information
+--------------------------------------------
+echo 3 > /sys/devices/platform/161c1000.pcie/pcie_sysfs
+O/p - 
+ $ dmesg -w | grep -i -e pcie -e dhd -e MIR
+[ 2636.945353] [ T3811] exynos-v920-pcie 161c1000.pcie: RC vendor_id: 0x144d device_id: 0xecef
+[ 2636.945434] [ T3811] exynos-v920-pcie 161c1000.pcie: EP vendor_id: 0x12be device_id: 0xbd31
+[ 2636.945467] [ T3811] exynos-v920-pcie 161c1000.pcie: Current Link Speed is
+[ 2636.945481] [ T3811] exynos-v920-pcie 161c1000.pcie: GEN2 (MAX GEN3)
+[ 2636.945496] [ T3811] exynos-v920-pcie 161c1000.pcie: BAR 0: [mem 0x70800000-0x7080ffff 64bit]
+[ 2636.945504] [ T3811] exynos-v920-pcie 161c1000.pcie: BAR 2: [mem 0x70000000-0x707fffff 64bit]
+ 
+ 
+lspci output: -
+==================
+
+# ./lspci -vvvs 01:00.0
+0000:01:00.0 Class 0280: Device 12be:bd31 (rev 01)
+        Subsystem: Device 12be:bd31
+        Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+        Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort+ <TAbort- <MAbort- >SERR- <PERR- INTx-
+        Latency: 0
+        Interrupt: pin A routed to IRQ 0
+        Region 0: Memory at 60800000 (64-bit, non-prefetchable) [size=64K]
+        Region 2: Memory at 60000000 (64-bit, non-prefetchable) [size=8M]
+        Capabilities: [48] Power Management version 3
+                Flags: PMEClk- DSI- D1+ D2+ AuxCurrent=0mA PME(D0-,D1-,D2-,D3hot-,D3cold-)
+                Status: D0 NoSoftRst+ PME-Enable+ DSel=0 DScale=2 PME-
+        Capabilities: [58] MSI: Enable- Count=1/32 Maskable- 64bit+
+                Address: 0000000000000000  Data: 0000
+        Capabilities: [68] Vendor Specific Information: Len=38 <?>
+        Capabilities: [a0] MSI-X: Enable- Count=64 Masked-
+                Vector table: BAR=0 offset=00008000
+                PBA: BAR=0 offset=00008800
+        Capabilities: [ac] Express (v2) Endpoint, MSI 00
+                DevCap: MaxPayload 512 bytes, PhantFunc 0, Latency L0s <4us, L1 unlimited
+                        ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset+
+                DevCtl: Report errors: Correctable- Non-Fatal- Fatal- Unsupported-
+                        RlxdOrd+ ExtTag- PhantFunc- AuxPwr+ NoSnoop+ FLReset-
+                        MaxPayload 128 bytes, MaxReadReq 512 bytes
+                DevSta: CorrErr+ UncorrErr- FatalErr- UnsuppReq- AuxPwr+ TransPend-
+                LnkCap: Port #0, Speed 5GT/s, Width x1, ASPM L0s L1, Latency L0 <2us, L1 <32us
+                        ClockPM+ Surprise- LLActRep- BwNot-
+                LnkCtl: ASPM Disabled; RCB 64 bytes Disabled- Retrain- CommClk+
+                        ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+                LnkSta: Speed 5GT/s, Width x1, TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+                DevCap2: Completion Timeout: Range ABCD, TimeoutDis+
+                DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis-
+                LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-, Selectable De-emphasis: -6dB
+                         Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+                         Compliance De-emphasis: -6dB
+                LnkSta2: Current De-emphasis Level: -6dB
+        Capabilities: [100 v1] Advanced Error Reporting
+                UESta:  DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+                UEMsk:  DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+                UESvrt: DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+                CESta:  RxErr- BadTLP- BadDLLP- Rollover- Timeout- NonFatalErr+
+                CEMsk:  RxErr- BadTLP- BadDLLP- Rollover- Timeout- NonFatalErr+
+                AERCap: First Error Pointer: 00, GenCap+ CGenEn- ChkCap+ ChkEn-
+        Capabilities: [13c v1] Device Serial Number 00-00-00-ff-ff-00-00-00
+        Capabilities: [150 v1] Power Budgeting <?>
+        Capabilities: [160 v1] Virtual Channel
+                Caps:   LPEVC=0 RefClk=100ns PATEntryBits=1
+                Arb:    Fixed- WRR32- WRR64- WRR128-
+                Ctrl:   ArbSelect=Fixed
+                Status: InProgress-
+                VC0:    Caps:   PATOffset=00 MaxTimeSlots=1 RejSnoopTrans-
+                        Arb:    Fixed- WRR32- WRR64- WRR128- TWRR128- WRR256-
+                        Ctrl:   Enable+ ID=0 ArbSelect=Fixed TC/VC=ff
+                        Status: NegoPending- InProgress-
+        Capabilities: [1b0 v1] Latency Tolerance Reporting
+                Max snoop latency: 0ns
+                Max no snoop latency: 0ns
+        Capabilities: [220 v1] #15
+        Capabilities: [240 v1] #1e
+        Capabilities: [200 v1] #1f
+
+0001:01:00.0 Class 0280: Device 12be:bd31 (rev 01)
+        Subsystem: Device 12be:bd31
+        Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr+ Stepping- SERR+ FastB2B- DisINTx-
+        Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort+ <TAbort- <MAbort- >SERR- <PERR- INTx-
+        Latency: 0
+        Interrupt: pin A routed to IRQ 0
+        Region 0: Memory at 70800000 (64-bit, non-prefetchable) [size=64K]
+        Region 2: Memory at 70000000 (64-bit, non-prefetchable) [size=8M]
+        Capabilities: [48] Power Management version 3
+                Flags: PMEClk- DSI- D1+ D2+ AuxCurrent=0mA PME(D0-,D1-,D2-,D3hot-,D3cold-)
+                Status: D0 NoSoftRst+ PME-Enable+ DSel=0 DScale=2 PME-
+        Capabilities: [58] MSI: Enable- Count=1/32 Maskable- 64bit+
+                Address: 0000000000000000  Data: 0000
+        Capabilities: [68] Vendor Specific Information: Len=38 <?>
+        Capabilities: [a0] MSI-X: Enable- Count=64 Masked-
+                Vector table: BAR=0 offset=00008000
+                PBA: BAR=0 offset=00008800
+        Capabilities: [ac] Express (v2) Endpoint, MSI 00
+                DevCap: MaxPayload 512 bytes, PhantFunc 0, Latency L0s <4us, L1 unlimited
+                        ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset+
+                DevCtl: Report errors: Correctable- Non-Fatal- Fatal- Unsupported-
+                        RlxdOrd+ ExtTag- PhantFunc- AuxPwr+ NoSnoop+ FLReset-
+                        MaxPayload 128 bytes, MaxReadReq 512 bytes
+                DevSta: CorrErr+ UncorrErr- FatalErr- UnsuppReq- AuxPwr+ TransPend-
+                LnkCap: Port #0, Speed 5GT/s, Width x1, ASPM L0s L1, Latency L0 <2us, L1 <32us
+                        ClockPM+ Surprise- LLActRep- BwNot-
+                LnkCtl: ASPM Disabled; RCB 64 bytes Disabled- Retrain- CommClk+
+                        ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+                LnkSta: Speed 5GT/s, Width x1, TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+                DevCap2: Completion Timeout: Range ABCD, TimeoutDis+
+                DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis-
+                LnkCtl2: Target Link Speed: 2.5GT/s, EnterCompliance- SpeedDis-, Selectable De-emphasis: -6dB
+                         Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+                         Compliance De-emphasis: -6dB
+                LnkSta2: Current De-emphasis Level: -6dB
+        Capabilities: [100 v1] Advanced Error Reporting
+                UESta:  DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+                UEMsk:  DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+                UESvrt: DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+                CESta:  RxErr- BadTLP- BadDLLP- Rollover- Timeout- NonFatalErr+
+                CEMsk:  RxErr- BadTLP- BadDLLP- Rollover- Timeout- NonFatalErr+
+                AERCap: First Error Pointer: 00, GenCap+ CGenEn- ChkCap+ ChkEn-
+        Capabilities: [13c v1] Device Serial Number 00-00-00-ff-ff-00-00-00
+        Capabilities: [150 v1] Power Budgeting <?>
+        Capabilities: [160 v1] Virtual Channel
+                Caps:   LPEVC=0 RefClk=100ns PATEntryBits=1
+                Arb:    Fixed- WRR32- WRR64- WRR128-
+                Ctrl:   ArbSelect=Fixed
+                Status: InProgress-
+                VC0:    Caps:   PATOffset=00 MaxTimeSlots=1 RejSnoopTrans-
+                        Arb:    Fixed- WRR32- WRR64- WRR128- TWRR128- WRR256-
+                        Ctrl:   Enable+ ID=0 ArbSelect=Fixed TC/VC=ff
+                        Status: NegoPending- InProgress-
+        Capabilities: [1b0 v1] Latency Tolerance Reporting
+                Max snoop latency: 0ns
+                Max no snoop latency: 0ns
+        Capabilities: [220 v1] #15
+        Capabilities: [240 v1] #1e
+        Capabilities: [200 v1] #1f

@@ -1,0 +1,17 @@
+
+
+SError: -
+==========
+
+	Reference: -
+	1. https://embear.ch/blog/deferred-interrupts
+	2. https://lore.kernel.org/linux-arm-kernel/b28b1585-742c-16be-3295-f00d03897579@arm.com/T/
+
+	Note: - 
+	---------
+	First I tried to understand what triggers an SError interrupt. It seems ARMv8 (and also ARMv7) has three types of
+	interrupts. FIQ, IRQ and System Error Interrupts. According to the ARM manual System Error Interrupts are often thrown
+	when there is something wrong with memory access. The cause can be found by reading out the ESR register which is also 
+	printed as code when the SError interrupt happens:
+
+	https://developer.arm.com/documentation/ddi0595/2020-12/AArch64-Registers/ESR-EL1--Exception-Syndrome-Register--EL1-?lang=en

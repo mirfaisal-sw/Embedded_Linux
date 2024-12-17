@@ -1,0 +1,21 @@
+
+
+   Buf size = 5760B
+   You tried to read = 5760 i.e. 5704 + 56 i.e. 64 - 8
+   
+   Requirement - 
+   App requested - 5760 bytes
+   App actually received - 5704 bytes
+   
+   
+   FIFO - 
+   ======================
+   5760 - (56| 8 bytes) 
+   ======================
+           ^
+		   |
+	    Next packet	
+
+
+    |12 B header + Data + 4B checksum | Packet 2 | Packet 3 |
+	

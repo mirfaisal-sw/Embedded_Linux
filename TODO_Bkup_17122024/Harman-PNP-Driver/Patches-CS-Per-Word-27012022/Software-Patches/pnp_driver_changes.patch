@@ -1,0 +1,144 @@
+diff --git a/drivers/harman/pnp_plugin/pnp_dabplugin.c b/drivers/harman/pnp_plugin/pnp_dabplugin.c
+index 43f4572..54c8390 100644
+--- a/drivers/harman/pnp_plugin/pnp_dabplugin.c
++++ b/drivers/harman/pnp_plugin/pnp_dabplugin.c
+@@ -76,12 +76,16 @@ struct dabspi_data {
+ 
+ static void dab_cs_assert(unsigned int gpio)
+ {
++	#ifdef GPIO_CS
+ 	gpio_set_value(gpio, 0);
++	#endif
+ }
+ 
+ static void dab_cs_deassert(unsigned int gpio)
+ {
++	#ifdef GPIO_CS
+ 	gpio_set_value(gpio, 1);
++	#endif
+ }
+ 
+ static int spi_xchange(struct spi_device *spi, unsigned char *txbuf,
+@@ -217,7 +221,11 @@ static int send_write_data(void *data, size_t count)
+ 	int res;
+ 
+ 	mutex_lock(&dabspi->txrx_lck);
++	
++	#ifdef GPIO_CS
+ 	dab_cs_assert(dabspi->cs_gpio);
++	#endif
++
+ 	dabspi->txlen = count;
+ 
+ 	res = spi_xchange(dabspi->spi, dabspi->tx_buf, dabspi->rx_buf,
+@@ -230,7 +238,10 @@ static int send_write_data(void *data, size_t count)
+ 	if (res)
+ 		dev_err(&dabspi->spi->dev,"PNP_Dabplugin: Fill KFifo Error %s\n", __func__);
+ ret:
++	#ifdef GPIO_CS
+ 	dab_cs_deassert(dabspi->cs_gpio);
++	#endif
++
+ 	mutex_unlock(&dabspi->txrx_lck);
+ 	return res;
+ }
+@@ -447,11 +458,13 @@ static int dab_gpio_alloc(struct dabspi_data *dabspi)
+ 	struct irq_desc *dab_irq_desc;
+ 	struct sched_param param = { .sched_priority = MAX_RT_PRIO - 1 };
+ 
++	#ifdef GPIO_CS
+ 	if (!gpio_is_valid(dabspi->cs_gpio)) {
+ 		dev_err(&dabspi->spi->dev,"PNP_Dabplugin: Invalid cs gpio number %d\n",
+ 			dabspi->cs_gpio);
+ 		goto err_gpio_invalid;
+ 	}
++	#endif
+ 
+ 	if (!gpio_is_valid(dabspi->irq_gpio)) {
+ 		dev_err(&dabspi->spi->dev,"PNP_Dabplugin: Invalid irq gpio number %d\n",
+@@ -459,12 +472,14 @@ static int dab_gpio_alloc(struct dabspi_data *dabspi)
+ 		goto err_gpio_invalid;
+ 	}
+ 
++	#ifdef GPIO_CS
+ 	status = gpio_request(dabspi->cs_gpio, "dab_cs_pin");
+ 	if (status) {
+ 		dev_err(&dabspi->spi->dev,"PNP_Dabplugin: Claiming cs gpio pin %d failed!\n",
+ 				dabspi->cs_gpio);
+ 		goto err_gpio_invalid;
+ 	}
++	#endif 
+ 
+ 	status = gpio_request(dabspi->irq_gpio, "dab_irq_pin");
+ 	if (status) {
+@@ -473,12 +488,14 @@ static int dab_gpio_alloc(struct dabspi_data *dabspi)
+ 		goto err_gpio_invalid;
+ 	}
+ 
++	#ifdef GPIO_CS
+ 	status = gpio_direction_output(dabspi->cs_gpio, 1);
+ 	if (status) {
+ 		dev_err(&dabspi->spi->dev,"PNP_Dabplugin: Setting direction cs gpio %d failed\n",
+ 				dabspi->cs_gpio);
+ 		goto err_gpio_dir;
+ 	}
++	#endif
+ 
+ 	status = gpio_direction_input(dabspi->irq_gpio);
+ 	if (status) {
+@@ -507,7 +524,10 @@ static int dab_gpio_alloc(struct dabspi_data *dabspi)
+ 	return status;
+ 
+ err_gpio_dir:
++	#ifdef GPIO_CS
+ 	gpio_free(dabspi->cs_gpio);
++	#endif
++
+ 	gpio_free(dabspi->irq_gpio);
+ err_gpio_invalid:
+ 	status = -EIO;
+@@ -517,7 +537,11 @@ err_gpio_invalid:
+ static void dab_gpio_dealloc(struct dabspi_data *dabspi)
+ {
+ 	free_irq(dabspi->gpio_irq_num, dabspi);
++	
++	#ifdef GPIO_CS	
+ 	gpio_free(dabspi->cs_gpio);
++	#endif
++
+ 	gpio_free(dabspi->irq_gpio);
+ }
+ 
+@@ -551,7 +575,7 @@ static int dab_read_of_node(struct dabspi_data *dabspi)
+ 	const __be32 *p = NULL;
+ 	struct property *prop;
+ 
+-
++	#ifdef GPIO_CS
+ 	rc = of_property_read_u32(dn, "dab-cs-gpio", &value);
+ 	if (rc) {
+ 		dev_err(&dabspi->spi->dev,"PNP_Dabplugin: %s has no valid 'dab-cs-gpio' property (%d)\n",
+@@ -559,6 +583,7 @@ static int dab_read_of_node(struct dabspi_data *dabspi)
+ 		return rc;
+ 	}
+ 	dabspi->cs_gpio = value;
++	#endif
+ 
+ 	rc = of_property_read_u32(dn, "dab-irq-gpio", &value);
+ 	if (rc) {
+@@ -568,12 +593,15 @@ static int dab_read_of_node(struct dabspi_data *dabspi)
+ 	}
+ 	dabspi->irq_gpio = value;
+ 
++	#ifdef GPIO_CS
+ 	prop = of_find_property(dn, "dab-cs-pinmux", NULL);
+ 	if (prop) {
+ 		p = of_prop_next_u32(prop, p, &cs_reg);
+ 		if (p && of_prop_next_u32(prop, p, &value))
+ 			dab_set_pinmux(cs_reg, value);
+ 	}
++	#endif
++
+ 	return rc;
+ }
+ 

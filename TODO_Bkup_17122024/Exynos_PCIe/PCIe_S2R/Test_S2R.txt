@@ -1,0 +1,59 @@
+
+
+
+	On SYS console: -
+	
+	I. Trigger suspend of IVI
+	
+	# echo -ne '\x01' > /sys/nk/prop/nk.vm.3.s2r  
+
+	Switch to IVI console (ESC+O+6+R) and then see if 
+	suspended in 30s and if not then run below command.
+	
+	(On IVI console)
+	# echo -ne mem > /sys/power/state
+	
+	II. Trigger the Resume of IVI Partition:
+
+	# echo -ne '\x00' > /sys/nk/prop/nk.vm.3.s2r
+	
+	
+	Suspend Tested Result: -
+	===========================
+	
+
+root@idcevo-hv-v920:~# echo -ne '\x01' > /sys/nk/prop/nk.vm.3.s2r
+root@idcevo-hv-v920:~#
+root@idcevo-hv-v920:~#
+root@idcevo-hv-v920:~#
+root@idcevo-hv-v920:~#
+console:/ #
+console:/ #
+console:/ #
+console:/ #
+console:/ #
+console:/ # LS
+/system/bin/sh: LS: inaccessible or not found
+127|console:/ # LS
+/system/bin/sh: LS: inaccessible or not found
+127|console:/ # LS
+/system/bin/sh: LS: inaccessible or not found
+127|console:/ # echo -ne mem > /sys/power/state
+
+root@idcevo-hv-v920:~#
+root@idcevo-hv-v920:~#
+root@idcevo-hv-v920:~#
+root@idcevo-hv-v920:~#
+root@idcevo-hv-v920:~#
+root@idcevo-hv-v920:~# echo -ne '\x00' > /sys/nk/prop/nk.vm.3.s2r
+1 HYP:[+1047730 ms] [01050135 ms] (3) VGIC: pending SW vIRQ4096 pIRQ1152
+1 HYP:[+1047730 ms] [01050135 ms] (3) VGIC: pending SW vIRQ4097 pIRQ1153
+root@idcevo-hv-v920:~# [  826.741861][T13157] MIR: In function - exynos_v920_pcie_suspend_noirq
+[  826.741876][T13157] MIR: In function - exynos_v920_pcie_suspend_noirq
+[  826.784252][T13157] MIR: In function - exynos_v920_pcie_resume_noirq
+[  826.784280][T13157] MIR: In function - exynos_v920_pcie_resume_noirq
+	
+	
+	
+	
+	

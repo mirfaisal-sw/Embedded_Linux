@@ -1,0 +1,91 @@
+
+
+
+
+============================================================================
+File - exynosautov920-pinctrl.dtsi"
+
+	pcie_clkreq2: pcie_clkreq2 {
+                samsung,pins = "gph0-4";
+                samsung,pin-function = <EXYNOS_PIN_FUNC_2>;
+                samsung,pin-pud = <EXYNOS_PIN_PULL_UP>;
+        };
+
+        pcie_perst2_out: pcie_perst2_out {
+                samsung,pins = "gph0-5";
+                samsung,pin-function = <EXYNOS_PIN_FUNC_OUTPUT>;
+                samsung,pin-drv = <EXYNOS5420_PIN_DRV_LV4>;
+                samsung,pin-con-pdn = <EXYNOS_PIN_PDN_PREV>;
+        };
+
+	pcie_clkreq3: pcie_clkreq3 {
+                samsung,pins = "gph1-0";
+                samsung,pin-function = <EXYNOS_PIN_FUNC_2>;
+                samsung,pin-pud = <EXYNOS_PIN_PULL_UP>;
+        };
+
+        pcie_perst3_out: pcie_perst3_out {
+                samsung,pins = "gph1-1";
+                samsung,pin-function = <EXYNOS_PIN_FUNC_OUTPUT>;
+                samsung,pin-drv = <EXYNOS5420_PIN_DRV_LV4>;
+                samsung,pin-con-pdn = <EXYNOS_PIN_PDN_PREV>;
+        };
+
+=============================================================================
+&pinctrl_peric0 {
+wifi_reg_ch2: wifi_reg_ch2 {
+                      samsung,pins = "gpp1-5";
+                      samsung,pin-function = <EXYNOS_PIN_FUNC_OUTPUT>;
+                      samsung,pin-pud = <EXYNOS_PIN_PULL_NONE>;
+                      samsung,pin-drv = <EXYNOS5420_PIN_DRV_LV1>;
+              };
+
+wifi_reg_ch3: wifi_reg_ch3 {
+                      samsung,pins = "gpp1-7";
+                      samsung,pin-function = <EXYNOS_PIN_FUNC_OUTPUT>;
+                      samsung,pin-pud = <EXYNOS_PIN_PULL_NONE>;
+                      samsung,pin-drv = <EXYNOS5420_PIN_DRV_LV1>;
+              };
+
+wifibt_power_enable_pin_active: wifibt_power_enable_pin_active {
+                                        samsung,pins = "gpp1-1";
+                                        samsung,pin-function = <EXYNOS_PIN_FUNC_OUTPUT>;
+                                        samsung,pin-pud = <EXYNOS_PIN_PULL_UP>;
+                                        samsung,pin-drv = <EXYNOS5420_PIN_DRV_LV1>;
+                                        samsung,pin-val = <1>;
+                                };
+
+wifibt_power_enable_pin_sleep: wifibt_power_enable_pin_sleep {
+                                       samsung,pins = "gpp1-1";
+                                       samsung,pin-function = <EXYNOS_PIN_FUNC_OUTPUT>;
+                                       samsung,pin-pud = <EXYNOS_PIN_PULL_DOWN>;
+                                       samsung,pin-drv = <EXYNOS5420_PIN_DRV_LV1>;
+                                       samsung,pin-val = <0>;
+                               };
+};
+
+/*PCIe channel for WiFi Master chip*/
+&pcie_2 {
+        status = "okay";
+        use-msi = "true";
+
+        use-bifurcation = "true";
+        num-lanes = <1>;
+        pinctrl-names = "default", "idle";
+        pinctrl-0 = <&pcie_clkreq2 &pcie_perst2_out &wifi_reg_ch2 &wifibt_power_enable_pin_active>;
+        pinctrl-1 = <&pcie_clkreq2 &pcie_perst2_out &wifi_reg_ch2 &wifibt_power_enable_pin_sleep>;
+        gpio_wifi_reg_on = <&gpp1 5 GPIO_ACTIVE_HIGH>;
+};
+
+&pcie_3 {
+        status = "okay";
+        use-msi = "true";
+        use-bifurcation = "true";
+        num-lanes = <1>;
+        pinctrl-0 = <&pcie_clkreq3 &pcie_perst3_out &wifi_reg_ch3>;
+        gpio_wifi_reg_on = <&gpp1 7 GPIO_ACTIVE_HIGH>;
+};
+
+=======================================================================================================
+======> Note: pinctrl states defualt and idle only changes in terms of "Power-On-GPIOs logic level".
+=======================================================================================================

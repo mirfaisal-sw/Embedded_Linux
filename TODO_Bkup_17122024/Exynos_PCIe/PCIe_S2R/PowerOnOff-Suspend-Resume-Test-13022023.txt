@@ -1,0 +1,109 @@
+
+
+Test: WiFi PCIe chip power On by default and Power off in suspend state: -
+===========================================================================
+
+
+console:/ # echo 1 > /sys/devices/platform/161c0000.pcie/pcie_sysfs
+[  149.291077][  T646] MIR: wifi_reg_on - 121
+[  149.292309][  T646] CPU: 1 PID: 646 Comm: sh Tainted: G        W   E     5.15.41MIRPINCTRL-android13-8-g8e15289f0527-dirty #1
+[  149.293783][  T646] Hardware name: BMW IDCEvo (SP21-v920-B1) Android IVI VM (DT)
+[  149.294071][  T646] Call trace:
+[  149.295188][  T646]  dump_backtrace+0x0/0x208
+[  149.295324][  T646]  show_stack+0x1c/0x2c
+[  149.295443][  T646]  dump_stack_lvl+0x68/0x84
+[  149.296581][  T646]  store_pcie_v920+0x84/0x9bc [pcie_exynos_v920_dw_rc]
+[  149.296785][  T646]  dev_attr_store+0x1c/0x34
+[  149.297922][  T646]  sysfs_kf_write+0x40/0x58
+[  149.298051][  T646]  kernfs_fop_write_iter+0xf0/0x190
+[  149.317665][  T646]  vfs_write+0x244/0x33c
+[  149.317682][  T646]  ksys_write+0x7c/0xec
+[  149.317689][  T646]  __arm64_sys_write+0x20/0x30
+[  149.317696][  T646]  invoke_syscall+0x44/0x120
+[  149.317705][  T646]  el0_svc_common+0xb8/0xf8
+[  149.317712][  T646]  do_el0_svc+0x28/0x88
+[  149.317719][  T646]  el0_svc+0x24/0x84
+[  149.317726][  T646]  el0t_64_sync_handler+0x88/0xec
+[  149.317735][  T646]  el0t_64_sync+0x1b4/0x1b8
+console:/ # echo 1 > /sys/devices/platform/161c1000.pcie/pcie_sysfs
+[  159.686252][  T646] MIR: wifi_reg_on - 123
+[  159.687474][  T646] CPU: 1 PID: 646 Comm: sh Tainted: G        W   E     5.15.41MIRPINCTRL-android13-8-g8e15289f0527-dirty #1
+[  159.688935][  T646] Hardware name: BMW IDCEvo (SP21-v920-B1) Android IVI VM (DT)
+[  159.689212][  T646] Call trace:
+[  159.690322][  T646]  dump_backtrace+0x0/0x208
+[  159.690456][  T646]  show_stack+0x1c/0x2c
+[  159.690573][  T646]  dump_stack_lvl+0x68/0x84
+[  159.691714][  T646]  store_pcie_v920+0x84/0x9bc [pcie_exynos_v920_dw_rc]
+[  159.691922][  T646]  dev_attr_store+0x1c/0x34
+[  159.693054][  T646]  sysfs_kf_write+0x40/0x58
+[  159.693182][  T646]  kernfs_fop_write_iter+0xf0/0x190
+[  159.712749][  T646]  vfs_write+0x244/0x33c
+[  159.712873][  T646]  ksys_write+0x7c/0xec
+[  159.713998][  T646]  __arm64_sys_write+0x20/0x30
+[  159.714135][  T646]  invoke_syscall+0x44/0x120
+[  159.733722][  T646]  el0_svc_common+0xb8/0xf8
+[  159.733852][  T646]  do_el0_svc+0x28/0x88
+[  159.734976][  T646]  el0_svc+0x24/0x84
+[  159.735083][  T646]  el0t_64_sync_handler+0x88/0xec
+[  159.735226][  T646]  el0t_64_sync+0x1b4/0x1b8
+console:/ #
+console:/ #
+console:/ #
+console:/ #
+console:/ #
+console:/ #
+console:/ #
+console:/ # echo mem > /sys/power/state
+1 HYP:[+201421 ms] [00203867 ms] (3) VGIC: pending SW vIRQ4097 pIRQ1153
+1 HYP:[+201421 ms] [00203867 ms] (3) VGIC: LR0 pending SW vIRQ27 pIRQ27
+[  200.471254][  T646] MIR:  In function - exynos_v920_pcie_suspend_noirq
+[  200.504568][  T646] MIR:  In function - exynos_v920_pcie_suspend_noirq
+[  200.564601][  T646] MIR:  In function - exynos_v920_pcie_resume_noirq
+[  200.587054][  T646] MIR:  In function - exynos_v920_pcie_resume_noirq
+console:/ #
+console:/ #
+console:/ #
+console:/ # echo 1 > /sys/devices/platform/161c0000.pcie/pcie_sysfs
+[  256.269781][  T646] MIR: wifi_reg_on - 121
+[  256.269985][  T646] CPU: 3 PID: 646 Comm: sh Tainted: G        W   E     5.15.41MIRPINCTRL-android13-8-g8e15289f0527-dirty #1
+[  256.271432][  T646] Hardware name: BMW IDCEvo (SP21-v920-B1) Android IVI VM (DT)
+[  256.272707][  T646] Call trace:
+[  256.272823][  T646]  dump_backtrace+0x0/0x208
+[  256.272957][  T646]  show_stack+0x1c/0x2c
+[  256.274083][  T646]  dump_stack_lvl+0x68/0x84
+[  256.274213][  T646]  store_pcie_v920+0x84/0x9bc [pcie_exynos_v920_dw_rc]
+[  256.275422][  T646]  dev_attr_store+0x1c/0x34
+[  256.275550][  T646]  sysfs_kf_write+0x40/0x58
+[  256.275678][  T646]  kernfs_fop_write_iter+0xf0/0x190
+[  256.295326][  T646]  vfs_write+0x244/0x33c
+[  256.295454][  T646]  ksys_write+0x7c/0xec
+[  256.296582][  T646]  __arm64_sys_write+0x20/0x30
+[  256.296716][  T646]  invoke_syscall+0x44/0x120
+[  256.316298][  T646]  el0_svc_common+0xb8/0xf8
+[  256.316436][  T646]  do_el0_svc+0x28/0x88
+[  256.317562][  T646]  el0_svc+0x24/0x84
+[  256.317670][  T646]  el0t_64_sync_handler+0x88/0xec
+[  256.317811][  T646]  el0t_64_sync+0x1b4/0x1b8
+console:/ # echo 1 > /sys/devices/platform/161c1000.pcie/pcie_sysfs
+[  269.862113][  T646] MIR: wifi_reg_on - 123
+[  269.863334][  T646] CPU: 3 PID: 646 Comm: sh Tainted: G        W   E     5.15.41MIRPINCTRL-android13-8-g8e15289f0527-dirty #1
+[  269.864793][  T646] Hardware name: BMW IDCEvo (SP21-v920-B1) Android IVI VM (DT)
+[  269.865080][  T646] Call trace:
+[  269.866191][  T646]  dump_backtrace+0x0/0x208
+[  269.866326][  T646]  show_stack+0x1c/0x2c
+[  269.866441][  T646]  dump_stack_lvl+0x68/0x84
+[  269.867579][  T646]  store_pcie_v920+0x84/0x9bc [pcie_exynos_v920_dw_rc]
+[  269.867780][  T646]  dev_attr_store+0x1c/0x34
+[  269.868917][  T646]  sysfs_kf_write+0x40/0x58
+[  269.869044][  T646]  kernfs_fop_write_iter+0xf0/0x190
+[  269.888661][  T646]  vfs_write+0x244/0x33c
+[  269.888788][  T646]  ksys_write+0x7c/0xec
+[  269.889920][  T646]  __arm64_sys_write+0x20/0x30
+[  269.890060][  T646]  invoke_syscall+0x44/0x120
+[  269.909718][  T646]  el0_svc_common+0xb8/0xf8
+[  269.909853][  T646]  do_el0_svc+0x28/0x88
+[  269.910979][  T646]  el0_svc+0x24/0x84
+[  269.911089][  T646]  el0t_64_sync_handler+0x88/0xec
+[  269.911231][  T646]  el0t_64_sync+0x1b4/0x1b8
+console:/ #
+console:/ #

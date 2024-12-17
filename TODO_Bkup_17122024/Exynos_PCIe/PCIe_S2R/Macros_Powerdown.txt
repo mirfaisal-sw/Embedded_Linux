@@ -1,0 +1,9 @@
+
+
+/* Pin function in power down mode */
+#define EXYNOS_PIN_PDN_OUT0             0
+#define EXYNOS_PIN_PDN_OUT1             1
+#define EXYNOS_PIN_PDN_INPUT            2
+#define EXYNOS_PIN_PDN_PREV             3
+
+

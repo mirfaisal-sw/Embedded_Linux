@@ -1,0 +1,60 @@
+
+
+1) AM625 SOC related full documentation:-
+https://dev.ti.com/tirex/explore/node?node=A__AJA1BTLLBS7OV5BqrwZiag__am62x-devices__coGQ502__LATEST
+
+1) Root URL: -
+https://www.ti.com/tool/PROCESSOR-SDK-AM62X
+
+2) Creating SD card: -
+https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/08_04_01_03/exports/docs/linux/Overview/Processor_SDK_Linux_create_SD_card.html
+
+3) Build SDK: -
+https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/08_04_01_03/exports/docs/devices/AM62X/index.html
+
+4) AM62x quick starter guide: -
+https://dev.ti.com/tirex/explore/node?node=A__AHfuoVse3tNf0ejVDqHu9A__am62x-devtools__FUz-xrs__LATEST&search=am62x
+
+5) Download and install SDK: -
+https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/08_04_01_03/exports/docs/devices/AM62X/linux/Overview/Download_and_Install_the_SDK.html#download-and-install-sdk
+https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/08_04_01_03/exports/docs/linux/Overview_Building_the_SDK.html
+
+Run setup.sh: -
+https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/08_04_01_03/exports/docs/devices/AM62X/linux/Overview_Getting_Started_Guide.html
+https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/08_04_01_03/exports/docs/devices/AM62X/linux/Overview/Run_Setup_Scripts.html
+
+6) AM62 Linux Academy: -
+https://dev.ti.com/tirex/explore/node?node=A__APVGH4iNvyKxG.AeLQAVgg__linux_academy_am62x__XaWts8R__LATEST&search=am62x
+
+7) Build and run demos: -
+https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/08_04_01_03/exports/docs/devices/AM62X/linux/Overview/Build_and_Run_the_Demos.html
+
+8) TRM and Datasheet: -
+https://www.ti.com/product/AM625
+
+9) AM625 Forums: -
+https://www.ti.com/product/AM625#support-training
+
+[VVI]
+10) Getting started guide: -
+===============================
+https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/08_04_01_03/exports/docs/devices/AM62X/linux/Overview_Getting_Started_Guide.html
+
+11) SDK BSP source download: -
+https://www.ti.com/tool/PROCESSOR-SDK-AM62X#downloads
+File name downloded - 
+am62xx-evm-linux-sdk-src-08.04.01.03.tar.xz 
+
+12) SK-AM62 forum: -
+https://e2e.ti.com/search?category=forum&q=SK-AM62
+
+[VVI]
+13) Complete kernel build explanation: -
+=========================================
+https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/08_03_00_19/exports/docs/linux/Foundational_Components_Kernel.html
+
+[VVI]
+14) How to guide: -
+=====================
+https://software-dl.ti.com/processor-sdk-linux/esd/AM62X/08_03_00_19/exports/docs/linux/How_to_Guides.html
+

@@ -1,0 +1,76 @@
+
+
+
+I. Code walkthrough: -
+
+File : - /drivers/pci/controller/dwc/v920/pcie-exynos-v920-ep-auto.c
+---------------------------------------------------------------------
+
+	void exynos_v920_pcie_ep_work_cmd()
+	{
+	
+		case WORK_MEM_WR:
+                /* Destination Address: RC Reserved Memory Address */
+                pci_addr = WR_DMA_TEST_ADDR;
+                if (exynos_v920_pcie_ep_write_test(pcie_ep,
+                        pci_addr, pcie_ep->dma_num) == 0) {
+                        /* MSI Send to Notify End of Transaction */
+                        if (exynos_v920_pcie_ep_msi(pcie_ep, 0) != 0)
+                                dev_warn(dev, "MSI TEST Fail\n");
+                } else {
+                        dev_warn(dev, "WR TEST Fail\n");
+                }
+                break;
+
+        case WORK_MEM_RD:
+                /* Source Address: RC Reserved Memory Address */
+                pci_addr = RD_DMA_TEST_ADDR;
+                if (exynos_v920_pcie_ep_read_test(pcie_ep, pci_addr, pcie_ep->size,
+                        pcie_ep->dma_num) != 0)
+                        dev_warn(dev, "RD TEST Fail\n");
+                break;
+
+
+		//....
+		
+	}
+	
+II. Measure data rate: -
+------------------------------
+
+#define MEASURE_SPEED
+#ifdef MEASURE_SPEED
+u64 getCurrentTimestampInNSec_v920(void)
+{
+        struct timespec64 timeStamp;
+
+        ktime_get_real_ts64(&timeStamp);
+
+        return (u64)timeStamp.tv_sec * 1000000000ul + (u64)timeStamp.tv_nsec;
+}
+
+void measureTransitionSpeed_v920(struct exynos_ep_pcie *pcie_ep, u64 startTime,
+                u64 endTime, u64 size)
+{
+#if DMA_LOG_PRINT_EP
+        struct platform_device *pdev = pcie_ep->pdev;
+#endif
+        int unit = 1; /*        0: KB, 1: MB    */
+        u64 convertedSize = (u64)(size >> 20); /* MByte unit    */
+
+        convertedSize = size >> 10; /* KByte unit       */
+        unit = 0;
+
+#if DMA_LOG_PRINT_EP
+        if (unit == 1) {
+                dev_info(&pdev->dev, "###### size: %lldMB , time: %lld ns\n",
+                                convertedSize, endTime - startTime);
+        } else {
+                dev_info(&pdev->dev, "###### size: %lldKB , time: %lld ns\n",
+                                convertedSize, endTime-startTime);
+        }
+#endif
+}
+#endif
+
+	
