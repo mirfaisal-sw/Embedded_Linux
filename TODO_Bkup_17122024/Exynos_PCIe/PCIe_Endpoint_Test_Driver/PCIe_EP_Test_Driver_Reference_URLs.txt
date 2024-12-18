@@ -1,4 +1,0 @@
-
-
-	1) https://www.kernelconfig.io/config_pci_endpoint_test
-	2) https://software-dl.ti.com/processor-sdk-linux/esd/AM65X/07_03_00_07/exports/docs/linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point.html

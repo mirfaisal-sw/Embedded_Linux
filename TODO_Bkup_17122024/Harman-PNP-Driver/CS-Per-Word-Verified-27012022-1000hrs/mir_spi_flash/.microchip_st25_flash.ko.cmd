@@ -1,1 +1,0 @@
-cmd_drivers/mir_spi_flash/microchip_st25_flash.ko := arm-linux-gnueabihf-ld -r  -EL -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds  --build-id  -o drivers/mir_spi_flash/microchip_st25_flash.ko drivers/mir_spi_flash/microchip_st25_flash.o drivers/mir_spi_flash/microchip_st25_flash.mod.o ;  true

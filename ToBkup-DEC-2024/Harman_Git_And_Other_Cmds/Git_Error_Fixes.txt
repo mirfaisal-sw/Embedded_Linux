@@ -1,8 +1,0 @@
-
-
-1) If email Adrress is not registered. Use below: -
-	
-	git config --global user.name mirfaisal
-	git config --gloabal user.email mir.faisal@harman.com
-	git commit --amend --reset-author
-

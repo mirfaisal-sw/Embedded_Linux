@@ -1,5 +1,0 @@
-
-
-	Path: - Android/device/harman/samsung/pf_vBmw_b1/conf
-
-	File: - init.exynosauto9.rc

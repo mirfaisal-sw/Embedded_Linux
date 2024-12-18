@@ -1,9 +1,0 @@
-
-
-
-	1)  https://elvis.harman.com/cgi-bin/ticket?TID=3454000
-            Main Samsung person - Sejoong Yang
-
-	2) Pcie-probe-only query: -
-		https://elvis.harman.com/cgi-bin/ticket?TID=3487419
-

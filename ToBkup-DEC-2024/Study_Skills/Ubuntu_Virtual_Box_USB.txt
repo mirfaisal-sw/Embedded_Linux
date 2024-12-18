@@ -1,9 +1,0 @@
-
-
-1. Install extension pack, follow below URL: -
-	https://dev.to/rahedmir/virtualbox-can-t-find-usb-devices-in-linux-host-4cc1
-
-2. To access USB be " " by below command or follow below URL
-	# sudo usermod -aG vboxusers <username>
-
-	https://askubuntu.com/questions/25596/how-to-set-up-usb-for-virtualbox#:~:text=If%20you%20can't%20see,guest%20may%20need%20additional%20drivers.

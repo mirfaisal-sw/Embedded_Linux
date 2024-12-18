@@ -1,7 +1,0 @@
-
-
-
-
-	1. Grepping multiple string patterns.
-	
-		 grep -e pattern1 -e pattern2 *. pl.

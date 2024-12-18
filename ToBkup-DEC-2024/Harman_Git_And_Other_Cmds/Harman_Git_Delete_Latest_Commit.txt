@@ -1,7 +1,0 @@
-
-
-
-## Delete latest commit ID i.e. Commit ID-1
-git reset --hard <Commit ID - 2>
-
-Note:  Here Commit ID - 2 is older than Commit ID -1.

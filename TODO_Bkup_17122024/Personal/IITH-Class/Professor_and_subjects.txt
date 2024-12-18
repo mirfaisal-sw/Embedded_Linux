@@ -1,9 +1,0 @@
-
-
-1) Shishir Sir (shishirk@ee.iith.ac.in) -> Embedded Hw (EV5059 (EE5167) )
-
-	Classmate: Prithvi Raj <EV22MTECH15001@iith.ac.in>
-
-2) Jose Titus (jtitus@ee.iith.ac.in)  -> Power Converter (EE5210)
-
-3) Dr Nishant Dongri ( ) -> Testing and Certification of EV (ME5800)

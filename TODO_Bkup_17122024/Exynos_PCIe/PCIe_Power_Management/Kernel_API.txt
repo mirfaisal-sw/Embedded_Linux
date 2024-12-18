@@ -1,4 +1,0 @@
-
-
-
-	1. pci_prepare_to_sleep() -> File: - drivers/pci/pci.c

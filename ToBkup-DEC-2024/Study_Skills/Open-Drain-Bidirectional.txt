@@ -1,5 +1,0 @@
-
-
-
-
-	https://electronics.stackexchange.com/questions/152993/how-does-open-drain-io-act-as-bidirectional

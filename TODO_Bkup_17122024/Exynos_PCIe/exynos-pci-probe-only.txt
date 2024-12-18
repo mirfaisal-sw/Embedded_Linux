@@ -1,6 +1,0 @@
-
-
- grep -inr pci-probe-only
-drivers/pci/of.c:230: * of_pci_check_probe_only - Setup probe only mode if linux,pci-probe-only
-drivers/pci/of.c:238:   ret = of_property_read_u32(of_chosen, "linux,pci-probe-only", &val);
-drivers/pci/of.c:241:                   pr_warn("linux,pci-probe-only without valid value, ignoring\n");

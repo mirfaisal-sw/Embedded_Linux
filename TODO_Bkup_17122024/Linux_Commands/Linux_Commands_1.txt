@@ -1,4 +1,0 @@
-
-
-
-	1.) ln --symbolic file.txt link.txt

@@ -1,4 +1,0 @@
-for i 1 200
-send "s"
-mpause 80
-next

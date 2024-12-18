@@ -1,3 +1,0 @@
-
-
-	scp exynosauto9-space4-android-vm_b0.dtb rveer@awsmblx423bs407:~/Space4_Flash

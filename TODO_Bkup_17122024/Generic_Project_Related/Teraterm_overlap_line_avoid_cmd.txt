@@ -1,4 +1,0 @@
-
-
-
-	shopt -s checkwinsize; stty cols 400 rows 80

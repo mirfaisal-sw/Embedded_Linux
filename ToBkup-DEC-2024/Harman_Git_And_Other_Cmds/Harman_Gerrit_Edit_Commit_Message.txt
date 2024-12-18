@@ -1,7 +1,0 @@
-
-
-
-	In Gerrit, near by "Commit message", there is "EDIT" tab. Click on that and edit
-	commit message and then "Save".
-	
-	After this we have to click on tab "Publish Edit".
